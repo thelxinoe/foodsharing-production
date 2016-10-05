@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, Link, IndexRoute, browserHistory } from 'react-router';
-import Accounts from 'meteor/std:accounts-basic';
+import Accounts from 'meteor/std:accounts-ui';
 
-const login = React.createClass({ 
-      
+const Login = React.createClass({
+
       shouldComponentUpdate(nextProps, nextState){
       				       return false
       },
@@ -20,11 +20,10 @@ const login = React.createClass({
 
 	render : function () {
 	  	return(
-		
 		    <div>
-		    	<Accounts.ui.LoginForm redirect={this.handleLogin} />
+		    	<Accounts.ui.LoginForm  />
 		    </div>
 	  	);
 	  }
 	});
-export default login;
+export default Login;
