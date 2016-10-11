@@ -49,7 +49,7 @@ import MapsPersonPin from 'material-ui/svg-icons/maps/person-pin';
 import MapsMap from 'material-ui/svg-icons/maps/map';
 import ActionDashboard from 'material-ui/svg-icons/action/dashboard';
 
-import Login from './Login.jsx';
+
 
 import { Meteor } from 'meteor/meteor';
 

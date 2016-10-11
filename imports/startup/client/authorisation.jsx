@@ -1,6 +1,7 @@
-import {Accounts} from 'meteor/std:accounts-ui';
+import {Accounts} from 'meteor/accounts-base';
 
 Accounts.ui.config({
-    passwordSignupFields: 'USERNAME_AND_EMAIL',
-    onSignedInHook : () => browserHistory.push('/')
+    passwordSignupFields: 'USERNAME_ONLY',
 });
+
+
