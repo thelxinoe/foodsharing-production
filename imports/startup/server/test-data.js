@@ -1,10 +1,9 @@
-//insert the test data here
-//Reset all the databases before we add the test data in./*
 import { Meteor } from 'meteor/meteor';
-//Remove Users
+import { ImageItems } from '../../api/ImageItems/ImageItems.js';
+
+//Users
 Meteor.users.remove({});
 
-//Create user accounts
 var numUsers = 5;
 for (i = 0; i < numUsers; i++) {
     Accounts.createUser({
@@ -12,7 +11,17 @@ for (i = 0; i < numUsers; i++) {
         email: 'tom' + i + '@mail.com',
         password: 'password'
     });
-}
+};
+
+//ImageItems
+
+//Create some ImageItems
+images = [
+    "http://images.mentalfloss.com/sites/default/files/styles/article_640x430/public/istock_000050960496_medium.jpg",    
+    "http://ichef.bbci.co.uk/news/660/cpsprodpb/1325A/production/_88762487_junk_food.jpg", 
+    "http://www.foodmanufacture.co.uk/var/plain_site/storage/images/publications/food-beverage-nutrition/foodmanufacture.co.uk/npd/top-10-functional-food-trends/11097085-1-eng-GB/Top-10-functional-food-trends_strict_xxl.jpg"
+         ];
+
 
 //Create food items by random users
 // images = ["http://images.mentalfloss.com/sites/default/files/styles/article_640x430/public/istock_000050960496_medium.jpg", "http://ichef.bbci.co.uk/news/660/cpsprodpb/1325A/production/_88762487_junk_food.jpg", "http://www.foodmanufacture.co.uk/var/plain_site/storage/images/publications/food-beverage-nutrition/foodmanufacture.co.uk/npd/top-10-functional-food-trends/11097085-1-eng-GB/Top-10-functional-food-trends_strict_xxl.jpg"];
