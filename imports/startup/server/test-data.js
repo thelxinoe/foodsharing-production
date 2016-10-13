@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { ImageItems } from '../../api/ImageItems/ImageItems.js';
-
+import faker from 'faker';
 //Users
 Meteor.users.remove({});
 
@@ -14,13 +14,31 @@ for (i = 0; i < numUsers; i++) {
 };
 
 //ImageItems
+ImageItems.remove({});
 
 //Create some ImageItems
 images = [
-    "http://images.mentalfloss.com/sites/default/files/styles/article_640x430/public/istock_000050960496_medium.jpg",    
+    "http://images.mentalfloss.com/sites/default/files/styles/article_640x430/public/istock_000050960496_medium.jpg",
     "http://ichef.bbci.co.uk/news/660/cpsprodpb/1325A/production/_88762487_junk_food.jpg", 
     "http://www.foodmanufacture.co.uk/var/plain_site/storage/images/publications/food-beverage-nutrition/foodmanufacture.co.uk/npd/top-10-functional-food-trends/11097085-1-eng-GB/Top-10-functional-food-trends_strict_xxl.jpg"
          ];
+
+var numFoodItems = 20;
+var numPortions = 10;
+for (j = 0; j < images.length; j++) {
+    currUser = Meteor.users.find().fetch()[Math.floor(Math.random() * numUsers)]
+    ImageItems.insert({
+        imageURL: images[j],
+        foodDescription: faker.lorem.sentence(),
+        username: currUser.username,
+        totalItems: (Math.floor(Math.random() * numPortions)) + 1,
+        location: {
+            lat: faker.address.latitude(),
+            lng: faker.address.longitude()
+        },
+    });
+}
+
 
 
 //Create food items by random users

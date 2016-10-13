@@ -50,7 +50,7 @@ const GridListTab = React.createClass({
             }
             value="grid">
 
-            <GridPicView
+            <GridImageView
               foodItems={this.props.foodItems}
               handleChange={this.handleTileChange}/>
           </Tab>

@@ -33,11 +33,12 @@ ImageItems.schema = new SimpleSchema({
       type:String,
   },
   createdAt:{
-      type: Object,
+      type: Date,
       defaultValue: new Date(),
   },
   location:{
       type:Object,
+      blackbox:true,
   },
   totalItems:{
       type:Number,

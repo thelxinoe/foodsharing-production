@@ -36,7 +36,7 @@ const styles = {
 };
 
 var actions = [];
-const GridPicView = React.createClass({
+const GridImageView = React.createClass({
 
 
 
@@ -111,4 +111,4 @@ render(){
   );
 }
 });
-export default GridPicView;
+export default GridImageView;
