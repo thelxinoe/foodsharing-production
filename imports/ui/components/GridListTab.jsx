@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import {Router, Route, Link, IndexRoute, browserHistory} from 'react-router';
 
 import FoodView from './FoodView.jsx';
-import GridPicView from './GridPicView.jsx';
+import GridImageView from './GridImageView.jsx';
 
 import ActionViewModule from 'material-ui/svg-icons/action/view-module.js';
 import ActionList from 'material-ui/svg-icons/action/list.js';
