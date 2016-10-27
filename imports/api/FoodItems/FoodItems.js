@@ -10,11 +10,11 @@ FoodItems.deny({
 });
 
 FoodItems.schema = new SimpleSchema({
-  imageURL:{
+  imageID:{
     type:String,
   },
   foodname:{
-    type:string,
+    type:SimpleSchema.RegEx.Id,
   },
   username:{
       type:String,
@@ -23,27 +23,22 @@ FoodItems.schema = new SimpleSchema({
       type: Date,
       defaultValue: new Date(),
   },
-  location:{
-      type:Object,
-      blackbox:true,
-  },
-  totalItems:{
+  portions:{
       type:Number,
   },
   claims:{
     type:[Object],
-    opitonal:true,
+    optional:true,
   },
 });
 
 FoodItems.attachSchema(FoodItems.schema);
 
 FoodItems.publicFields = {
-    imageURL:1,
+    imageID:1,
     foodName:1,
     username:1,
     createdAt:1,
-    location:1,
-    totalItems:1,
-    messages:1,
+    portions:1,
+    claims:1,
 };
