@@ -3,14 +3,19 @@ import { createContainer } from 'meteor/react-meteor-data';
 
 import GridImageView from '../components/GridImageView.jsx';
 
-const GridImageViewContainer = createContainer(() => {
+import {ImageItems} from '../../api/ImageItems/ImageItems.js';
 
-    const imageItems = Meteor.subscribe('ImageItems.GridImageView');
+const GridImageViewContainer = createContainer(({handleChange}) => {
+    const imageItems = Meteor.subscribe('imageItems');
+    const imageItemList = ImageItems.find().fetch()
     const loading = !imageItems.ready();
-    
+    console.log('loading ',loading);
+    console.log('items ',imageItemList);
+
     return {
         loading,
-        imageItems.fetch(),
+        imageItemList,
+        handleChange,
     };
 
 }, GridImageView);
@@ -18,4 +23,3 @@ const GridImageViewContainer = createContainer(() => {
 
 
 export default GridImageViewContainer
-

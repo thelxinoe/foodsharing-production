@@ -35,18 +35,7 @@ const styles = {
 
 };
 
-var actions = [];
 const GridImageView = React.createClass({
-
-
-
-  getMeteorData() {
-
-    currentUser = Meteor.user() ? Meteor.user() : '';
-    return {
-      currentUser: currentUser
-    };
-  },
 
   calcTime: function(date){
     return(
@@ -54,61 +43,37 @@ const GridImageView = React.createClass({
     );
   },
 
+  renderGridList : function(){
 
-  generatorFunction(foodItem){
-    var timeS = this.calcTime(foodItem.createdAt);
     return(
-      <GridTile
-        key={foodItem._id}
-        onTouchTap={this.props.handleChange(foodItem.imgURL)}
-        title={foodItem.foodName}
-        subtitle={timeS}
-        >
-
-        <img src={foodItem.imgURL} />
-
-      </GridTile>
-    )
-  },
-
-
-  renderItems(){
-    distinct= []
-    //Filter the items for duplicates
-    var filter = (function(){
-      return (function(item){
-        if(distinct.filter((url)=>(url == item.imgURL)).length<1){
-          distinct.push(item.imgURL);
-          return true
-
-        }
-        return false
-      }
-    )
-  })();
-
-  return this.props.foodItems.filter(filter).map(this.generatorFunction)
-},
-
-render(){
-
-  return(
-    <div style={styles.root}>
-
       <GridList
         cellHeight={200}
         style={styles.gridList}
         >
+        this.props.imageItemList.map((imageItem) => (
+          <GridTile
+            key={imageItem._id}
+            onTouchTap={this.props.handleChange(imageItem.imageURL)}
+            title={imageItem.foodDescription}
+            subtitle={this.calcTime(imageItem.createdAt)}
+            >
 
-        {this.renderItems()}
+            <img src={imageItem.imageURL} />
 
-
+          </GridTile>
+        ));
       </GridList>
+    )
+  },
 
-    </div>
+  render: function(){
 
+    return(
+      <div style={styles.root}>
+        {this.props.loading ? 'loading...' : this.renderGridList()}
+      </div>
 
-  );
-}
+    );
+  }
 });
 export default GridImageView;

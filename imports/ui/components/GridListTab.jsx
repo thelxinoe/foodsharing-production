@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import {Router, Route, Link, IndexRoute, browserHistory} from 'react-router';
 
 import FoodView from './FoodView.jsx';
-import GridImageView from './GridImageView.jsx';
+import GridImageViewContainer from '../containers/GridImageViewContainer.jsx';
 
 import ActionViewModule from 'material-ui/svg-icons/action/view-module.js';
 import ActionList from 'material-ui/svg-icons/action/list.js';
@@ -38,35 +38,31 @@ const GridListTab = React.createClass({
 
   render: function() {
     return (
-      <div>
-        <Tabs
-          value={this.state.value}
-          onChange={this.handleChange}>
-          <Tab
-            label={
-              < IconButton >
-              <ActionViewModule color='green900'/>
-              < /IconButton>
-            }
-            value="grid">
-
-            <GridImageView
-              foodItems={this.props.foodItems}
-              handleChange={this.handleTileChange}/>
-          </Tab>
-
-          <Tab
-            label={
-              < ActionList color = 'green900' />
+      <Tabs
+        value={this.state.value}
+        onChange={this.handleChange}>
+        <Tab
+          label={
+            < IconButton >
+            <ActionViewModule color='green900'/>
+            < /IconButton>
           }
-          value="list">
-          <FoodView
-            renderer="list"
-            foodItems={this.props.foodItems}
-            imageURL={this.state.imageURL}/>
+          value="grid">
+          <GridImageViewContainer
+            handleChange={this.handleTileChange}/>
         </Tab>
-      </Tabs>
-    </div>
+
+        <Tab
+          label={
+            < ActionList color = 'green900' />
+        }
+        value="list">
+        <FoodView
+          renderer="list"
+          foodItems={this.props.foodItems}
+          imageURL={this.state.imageURL}/>
+      </Tab>
+    </Tabs>
   );
 }
 });
