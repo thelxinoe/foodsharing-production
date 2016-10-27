@@ -1,11 +1,11 @@
 import {Meteor} from 'meteor/meteor';
 import {createContainer} from 'meteor/react-meteor-data';
 
-import GridImageView from '../components/GridImageView.jsx';
+import ImageItemGrid from '../components/ImageItemGrid.jsx';
 
 import {ImageItems} from '../../api/ImageItems/ImageItems.js';
 
-const GridImageViewContainer = createContainer(({handleChange}) => {
+const ImageItemGridContainer = createContainer(({handleChange}) => {
     const user = Meteor.user()
         ? Meteor.user().username
         : '';
@@ -22,6 +22,6 @@ const GridImageViewContainer = createContainer(({handleChange}) => {
 
     return {loading, imageItemList, handleChange};
 
-}, GridImageView);
+}, ImageItemGrid);
 
-export default GridImageViewContainer
+export default ImageItemGridContainer

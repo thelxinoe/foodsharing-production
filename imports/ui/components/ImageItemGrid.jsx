@@ -35,7 +35,7 @@ const styles = {
 
 };
 
-const GridImageView = React.createClass({
+const ImageItemGrid = React.createClass({
 
   calcTime: function(date){
     return(
@@ -78,4 +78,4 @@ const GridImageView = React.createClass({
 
 });
 
-export default GridImageView;
+export default ImageItemGrid;

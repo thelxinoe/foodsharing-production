@@ -40,7 +40,7 @@ const styles = {
 
 var actions = [];
 
-const FoodView = React.createClass({
+const FoodItemList = React.createClass({
 
   getInitialState() {
     return {
@@ -213,4 +213,4 @@ render(){
 }
 
 });
-export default FoodView;
+export default FoodItemList;

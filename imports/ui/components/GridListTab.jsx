@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Router, Route, Link, IndexRoute, browserHistory} from 'react-router';
 
-import FoodView from './FoodView.jsx';
-import GridImageViewContainer from '../containers/GridImageViewContainer.jsx';
+import FoodItemList from './FoodItemList.jsx';
+import ImageItemGridContainer from '../containers/ImageItemGridContainer.jsx';
 
 import ActionViewModule from 'material-ui/svg-icons/action/view-module.js';
 import ActionList from 'material-ui/svg-icons/action/list.js';
@@ -46,7 +46,7 @@ const GridListTab = React.createClass({
             <ActionViewModule color='green900'/>
           }
           value="grid">
-          <GridImageViewContainer
+          <ImageItemGridContainer
             handleChange={this.handleTileChange}/>
         </Tab>
 
@@ -55,7 +55,7 @@ const GridListTab = React.createClass({
             < ActionList color = 'green900' />
         }
         value="list">
-        <FoodView
+        <FoodItemList
           renderer="list"
           foodItems={this.props.foodItems}
           imageURL={this.state.imageURL}/>
