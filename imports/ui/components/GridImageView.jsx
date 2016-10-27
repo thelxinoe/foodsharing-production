@@ -44,24 +44,25 @@ const GridImageView = React.createClass({
   },
 
   renderGridList : function(){
+    imageItems = this.props.imageItemList.map((imageItem) => (
+      <GridTile
+        key={imageItem._id}
+        onTouchTap={this.props.handleChange(imageItem.imageURL)}
+        title={imageItem.foodDescription}
+        subtitle={this.calcTime(imageItem.createdAt)}
+        >
+
+        <img src={imageItem.imageURL} />
+
+      </GridTile>
+    ));
 
     return(
       <GridList
         cellHeight={200}
         style={styles.gridList}
         >
-        this.props.imageItemList.map((imageItem) => (
-          <GridTile
-            key={imageItem._id}
-            onTouchTap={this.props.handleChange(imageItem.imageURL)}
-            title={imageItem.foodDescription}
-            subtitle={this.calcTime(imageItem.createdAt)}
-            >
-
-            <img src={imageItem.imageURL} />
-
-          </GridTile>
-        ));
+        {imageItems}
       </GridList>
     )
   },
@@ -72,8 +73,9 @@ const GridImageView = React.createClass({
       <div style={styles.root}>
         {this.props.loading ? 'loading...' : this.renderGridList()}
       </div>
-
     );
-  }
+  },
+
 });
+
 export default GridImageView;
