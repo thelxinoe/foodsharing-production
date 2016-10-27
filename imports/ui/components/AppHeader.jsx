@@ -256,10 +256,11 @@ const AppHeader = React.createClass({
                           <SvgIcons.ContentAddCircle color={green900}/>
                           < /IconButton>
                         }
-                        targetOrigin={{
-                          horizontal: 'right',
-                          vertical: 'top'
-                        }}/>
+                        // targetOrigin={{
+                        //   horizontal: 'right',
+                        //   vertical: 'top'
+                        // }}
+                        />
                       </div>
 
                       <div className="toolContain">

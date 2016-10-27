@@ -43,9 +43,7 @@ const GridListTab = React.createClass({
         onChange={this.handleChange}>
         <Tab
           label={
-            < IconButton >
             <ActionViewModule color='green900'/>
-            < /IconButton>
           }
           value="grid">
           <GridImageViewContainer
