@@ -66,6 +66,7 @@ const FoodItem = React.createClass({
     for (i = 0; i < pNum; i++){
       x.push(
         <img
+          key={i}
           className="carrotImg"
           src="/imgs/carrot.png" />
       );
@@ -75,6 +76,7 @@ const FoodItem = React.createClass({
     for (n = 0; n < pCla; n++){
       z.push(
         <img
+          key= {pNum+n}
           className="carrotImg"
           src="/imgs/noCarrot.png" />
       );

@@ -116,7 +116,6 @@ const FoodItemList = React.createClass({
 
     return foodItemsFiltered.map((foodItem) => {
       return (
-        <div>
           <FoodItem
             key = {foodItem._id}
             foodItem={foodItem}
@@ -124,7 +123,6 @@ const FoodItemList = React.createClass({
             calculatePortionsLeft={this.calculatePortionsLeft}
             handlePop={this.handleOpen}
             />
-        </div>
       );
     });
 
