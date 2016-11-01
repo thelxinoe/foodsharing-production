@@ -112,7 +112,6 @@ const FoodItemList = React.createClass({
       filter = (function(x){return x.imageID==this.props.imageIDFilter}).bind(this);
       var foodItemsFiltered=this.props.foodItemList.filter(filter)
     }
-    console.log('foodItemsFiltered : ', foodItemsFiltered);
 
 
     return foodItemsFiltered.map((foodItem) => {
