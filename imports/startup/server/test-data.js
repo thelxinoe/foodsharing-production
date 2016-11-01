@@ -22,6 +22,7 @@ for (i = 0; i < numUsers; i++) {
 
 //ImageItems
 ImageItems.remove({});
+FoodItems.remove({});
 
 //Create some ImageItems
 images = [
@@ -50,7 +51,8 @@ for (let j = 0; j < images.length; j++) {
             for (let k = 0; k < numFoodItems; k++) {
                 FoodItems.insert({
                     imageID: id,
-                    foodname:faker.lorem.sentence(),
+                    imageURL: images[j],
+                    foodName:faker.lorem.sentence(),
                     username: currUser.username,
                     portions:numPortions,
                 });

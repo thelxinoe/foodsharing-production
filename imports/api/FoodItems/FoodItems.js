@@ -13,7 +13,10 @@ FoodItems.schema = new SimpleSchema({
   imageID:{
     type:String,
   },
-  foodname:{
+  imageURL:{
+    type:String,
+  },
+  foodName:{
     type:SimpleSchema.RegEx.Id,
   },
   username:{
@@ -36,6 +39,7 @@ FoodItems.attachSchema(FoodItems.schema);
 
 FoodItems.publicFields = {
     imageID:1,
+    imageURL:1,
     foodName:1,
     username:1,
     createdAt:1,

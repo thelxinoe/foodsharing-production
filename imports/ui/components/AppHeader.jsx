@@ -95,25 +95,25 @@ const tabStyle = {
   color: green900
 };
 
-const testData = [
-  {
-    "_id": "aFcmipa2zsnyBFyhd",
-    "foodName": [
-      "tempora", "in", "dicta"
-    ],
-    "foodDesc": "totam esse sequi doloremque ipsa nobis",
-    "portionNo": 9,
-    "portionsClaimed": 0,
-    "imgURL": "http://images.mentalfloss.com/sites/default/files/styles/article_640x430/public/istock_000050960496_medium.jpg",
-    "owner": "FhQhdioTnn3pcXi57",
-    "username": "tom1",
-    "createdAt": "2016-10-05T14:39:10.789Z",
-    "location": {
-      "lat": "21.5891",
-      "lng": "92.8946"
-    }
-  }
-];
+// const testData = [
+//   {
+//     "_id": "aFcmipa2zsnyBFyhd",
+//     "foodName": [
+//       "tempora", "in", "dicta"
+//     ],
+//     "foodDesc": "totam esse sequi doloremque ipsa nobis",
+//     "portionNo": 9,
+//     "portionsClaimed": 0,
+//     "imgURL": "http://images.mentalfloss.com/sites/default/files/styles/article_640x430/public/istock_000050960496_medium.jpg",
+//     "owner": "FhQhdioTnn3pcXi57",
+//     "username": "tom1",
+//     "createdAt": "2016-10-05T14:39:10.789Z",
+//     "location": {
+//       "lat": "21.5891",
+//       "lng": "92.8946"
+//     }
+//   }
+// ];
 
 const AppHeader = React.createClass({
 
@@ -327,7 +327,6 @@ const AppHeader = React.createClass({
                             position: 'relative'
                           }}>
                           {React.cloneElement(this.props.children, {
-                            foodItems: testData,
                             openMessages: this.handleOpenMessage
                           })}
                         </Scrollbars>

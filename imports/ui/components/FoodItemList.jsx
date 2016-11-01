@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, Link, IndexRoute, browserHistory } from 'react-router';
 
-import FoodItems from './FoodItems.jsx'
+import FoodItem from './FoodItem.jsx'
 
 import ActionShoppingCart from 'material-ui/svg-icons/action/shopping-cart';
 import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bubble';
@@ -106,111 +106,60 @@ const FoodItemList = React.createClass({
   },
 
   renderItems(){
+    if(this.props.imageIDFilter===''){
+      var foodItemsFiltered=this.props.foodItemList;
+    }else{
+      filter = (function(x){return x.imageID==this.props.imageIDFilter}).bind(this);
+      var foodItemsFiltered=this.props.foodItemList.filter(filter)
+    }
+    console.log('foodItemsFiltered : ', foodItemsFiltered);
 
-    if(this.props.renderer=='grid'){
-      return(
-        <div style={styles.root}>
 
-          <GridList
-            cellHeight={200}
-            style={styles.gridList}
-            >
-            {this.props.foodItems.map((foodItem) => (
-              <GridTile
-                key={foodItem._id}
-                title={foodItem.foodName}
-                subtitle={
-                  <span>
-                    by <b>
-                    {foodItem.username}
-                  </b>
-                </span>
-              }
-              actionIcon={
-                <div>
+    return foodItemsFiltered.map((foodItem) => {
+      return (
+        <div>
+          <FoodItem
+            key = {foodItem._id}
+            foodItem={foodItem}
+            pathName={foodItem}
+            calculatePortionsLeft={this.calculatePortionsLeft}
+            handlePop={this.handleOpen}
+            />
+        </div>
+      );
+    });
 
-                  <IconButton onTouchTap={ (function(event){this.handleOpen(foodItem)}).bind(this) }>
+  },
 
-                    <ActionShoppingCart color='White' />
-
-                  </IconButton>
-
-                  <IconButton containerElement={
-                      <Link to={'/ItemView/'+foodItem._id}/>
-                    }>
-
-                    <CommunicationChatBubble color='White' />
-
-                  </IconButton>
-
-                </div>
-              }
-              >
-
-              <img src={foodItem.imgURL} />
-
-            </GridTile>
-          ))}
-
-        </GridList>
-
-      </div>
-    );
-  }
-
-  if(this.props.imageURL===''){
-    var foodItemsFiltered=this.props.foodItems;
-  }else{
-    filter = (function(x){return x.imgURL==this.props.imageURL}).bind(this);
-    var foodItemsFiltered=this.props.foodItems.filter(filter)
-  }
-
-  return foodItemsFiltered.map((foodItem) => {
-    return (
+  render(){
+    return(
       <div>
 
-        <FoodItems
+        {this.renderItems()}
 
-          foodItem={foodItem}
-          pathName={foodItem}
-          calculatePortionsLeft={this.calculatePortionsLeft}
-          handlePop={this.handleOpen}
+        <Snackbar
+          open={this.state.claimPop}
+          message={this.genClaimMess()}
+          autoHideDuration={3600}
+          action="Close"
+          onTouchTap={this.handleRequestClose}
+          onRequestClose={this.handleRequestClose}
           />
 
+        <Dialog
+          title="Claim!"
+          actions={actions}
+          modal={true}
+          contentStyle={styles.claim}
+          open={this.state.openClaim}
+          >
+          How many portions do you wish to claim?
+        </Dialog>
+
+
       </div>
-    );
-  });
-
-},
-
-render(){
-  return(
-    <div>
-      {this.renderItems()}
-
-      <Snackbar
-        open={this.state.claimPop}
-        message={this.genClaimMess()}
-        autoHideDuration={3600}
-        action="Close"
-        onTouchTap={this.handleRequestClose}
-        onRequestClose={this.handleRequestClose}
-        />
-
-      <Dialog
-        title="Claim!"
-        actions={actions}
-        modal={true}
-        contentStyle={styles.claim}
-        open={this.state.openClaim}
-        >
-        How many portions do you wish to claim?
-      </Dialog>
-
-
-    </div>
-  )
-}
+    )
+  }
 
 });
 export default FoodItemList;

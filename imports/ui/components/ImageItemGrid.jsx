@@ -47,7 +47,7 @@ const ImageItemGrid = React.createClass({
     imageItems = this.props.imageItemList.map((imageItem) => (
       <GridTile
         key={imageItem._id}
-        onTouchTap={this.props.handleChange(imageItem.imageURL)}
+        onTouchTap={this.props.handleChange(imageItem._id)}
         title={imageItem.foodDescription}
         subtitle={this.calcTime(imageItem.createdAt)}
         >

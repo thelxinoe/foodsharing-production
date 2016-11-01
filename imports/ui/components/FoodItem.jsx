@@ -36,7 +36,7 @@ import { ThemeManager, LightRawTheme } from 'material-ui';
 
 import TimeSince from './TimeSince.jsx';
 
-FoodItems = React.createClass({
+const FoodItem = React.createClass({
 
   propTypes: {
     foodItem: React.PropTypes.object.isRequired
@@ -61,7 +61,7 @@ FoodItems = React.createClass({
 
   genPrtnImg: function () {
     var pCla = this.props.calculatePortionsLeft(this.props.foodItem);
-    var pNum = this.props.foodItem.portionNo - pCla;
+    var pNum = this.props.foodItem.portions - pCla;
     var x = [];
     for (i = 0; i < pNum; i++){
       x.push(
@@ -113,7 +113,7 @@ FoodItems = React.createClass({
           label="CLOSE"
           />
       ];
-      var foodTit = this.props.foodItem.foodName.toString()
+      var foodTit = this.props.foodItem.foodName;
       var expander = true;
       var pathIV = window.location.pathname.includes("ItemView");
       if (pathIV){expander = false;}
@@ -130,7 +130,7 @@ FoodItems = React.createClass({
                 <CardHeader
                   title={this.props.foodItem.foodName}
                   subtitle={this.genPrtnImg()}
-                  avatar={this.props.foodItem.imgURL}
+                  avatar={this.props.foodItem.imageURL}
                   actAsExpander={true}
                   showExpandableButton={expander}
                   />
@@ -227,7 +227,7 @@ FoodItems = React.createClass({
 
             <img
               className="fillDiv"
-              src={this.props.foodItem.imgURL} />
+              src={this.props.foodItem.imageURL} />
 
           </Dialog>
 
@@ -236,4 +236,4 @@ FoodItems = React.createClass({
       );
     }
   });
-  export default FoodItems;
+  export default FoodItem;
