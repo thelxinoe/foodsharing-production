@@ -25,3 +25,4 @@ accounts-password
 aldeed:simple-schema
 aldeed:collection2
 react-meteor-data
+dburles:google-maps
