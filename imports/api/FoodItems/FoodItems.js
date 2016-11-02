@@ -32,6 +32,7 @@ FoodItems.schema = new SimpleSchema({
   claims:{
     type:[Object],
     optional:true,
+    blackbox:true,
   },
 });
 

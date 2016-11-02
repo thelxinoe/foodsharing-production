@@ -95,13 +95,16 @@ const FoodItemList = React.createClass({
     ];
   },
 
-  calculatePortionsLeft(item){
+  calculatePortionsLeft: function (item) {
     var x = 0;
     var claims = item.claims;
     if (claims){
       for(claim in claims){
-        x = x + claims[claim].accepted;
+        if (claims[claim].accepted){
+          x = x + claims[claim].request;
+        }
       }
+
     } return x
   },
 
@@ -116,13 +119,13 @@ const FoodItemList = React.createClass({
 
     return foodItemsFiltered.map((foodItem) => {
       return (
-          <FoodItem
-            key = {foodItem._id}
-            foodItem={foodItem}
-            pathName={foodItem}
-            calculatePortionsLeft={this.calculatePortionsLeft}
-            handlePop={this.handleOpen}
-            />
+        <FoodItem
+          key = {foodItem._id}
+          foodItem={foodItem}
+          pathName={foodItem}
+          calculatePortionsLeft={this.calculatePortionsLeft}
+          handlePop={this.handleOpen}
+          />
       );
     });
 

@@ -7,6 +7,7 @@ import AppHeader from '../../ui/components/AppHeader';
 import GridListTab from '../../ui/components/GridListTab';
 import AccountsUIWrapper from '../../ui/AccountsUIWrapper';
 import MapViewContainer from '../../ui/containers/MapViewContainer.jsx';
+import YourItemsContainer from '../../ui/containers/YourItemsContainer.jsx';
 
 
 const requireAuth = function(nextState, replace){
@@ -26,6 +27,10 @@ const renderRoutes = () => (
       <Route
         path='/MapView'
         component={MapViewContainer}
+        />
+      <Route
+        path='/YourItems'
+        component={YourItemsContainer}
         />
     </Route>
   </Router>

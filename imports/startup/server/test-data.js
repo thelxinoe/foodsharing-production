@@ -30,18 +30,16 @@ images = [
     "http://ichef.bbci.co.uk/news/660/cpsprodpb/1325A/production/_88762487_junk_food.jpg",
     "http://www.foodmanufacture.co.uk/var/plain_site/storage/images/publications/food-beverage-nutrition/foodmanufacture.co.uk/npd/top-10-functional-food-trends/11097085-1-eng-GB/Top-10-functional-food-trends_strict_xxl.jpg"
 ];
-
+users = ['tom0','tom1','tom2']
 var numPortions = 5;
-var totalItems = 15;
-var numFoodItems = totalItems / numPortions;
+var numFoodItems = 5;
 
 for (let j = 0; j < images.length; j++) {
-    currUser = Meteor.users.find().fetch()[Math.floor(Math.random() * numUsers)]
     ImageItems.insert({
         imageURL: images[j],
         foodDescription: faker.lorem.sentence(),
-        username: currUser.username,
-        totalItems: totalItems,
+        username: users[j],
+        totalItems: numFoodItems,
         location: {
             lat: faker.address.latitude(),
             lng: faker.address.longitude()
@@ -52,9 +50,25 @@ for (let j = 0; j < images.length; j++) {
                 FoodItems.insert({
                     imageID: id,
                     imageURL: images[j],
-                    foodName:faker.lorem.sentence(),
-                    username: currUser.username,
-                    portions:numPortions,
+                    foodName: faker.lorem.sentence(),
+                    username: users[j],
+                    portions: numPortions,
+                    claims: [{
+                        username: Meteor.users.find().fetch()[Math.floor(Math.random() * numUsers)].username,
+                        requested: 1,
+                        accepted: 1,
+                        createdAt: new Date(),
+                    }, {
+                        username: Meteor.users.find().fetch()[Math.floor(Math.random() * numUsers)].username,
+                        requested: 5,
+                        accepted: 0,
+                        createdAt: new Date(),
+                    }, {
+                        username: Meteor.users.find().fetch()[Math.floor(Math.random() * numUsers)].username,
+                        requested: 3,
+                        accepted: 2,
+                        createdAt: new Date(),
+                    }, ],
                 });
             }
         }
