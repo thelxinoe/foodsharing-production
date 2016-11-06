@@ -29,7 +29,6 @@ const TimeSince = React.createClass({
 	    }
 	    return Math.floor(seconds) + " secs";
 	},
-
 		render: function () {
 			return(
 				<div>

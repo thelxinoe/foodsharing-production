@@ -32,6 +32,7 @@ images = [
 ];
 users = ['tom0','tom1','tom2']
 var numPortions = 5;
+var portionsLeft = 3;
 var numFoodItems = 5;
 
 for (let j = 0; j < images.length; j++) {
@@ -53,6 +54,7 @@ for (let j = 0; j < images.length; j++) {
                     foodName: faker.lorem.sentence(),
                     username: users[j],
                     portions: numPortions,
+                    portionsLeft: portionsLeft,
                     claims: [{
                         username: Meteor.users.find().fetch()[Math.floor(Math.random() * numUsers)].username,
                         requested: 1,

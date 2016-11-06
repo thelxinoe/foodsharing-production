@@ -20,7 +20,7 @@ const FoodItemListContainer = createContainer(({imageIDFilter}) => {
     const foodItemList = FoodItems.find(query).fetch()
     const loading = !foodItems.ready();
 
-    return {loading, foodItemList, imageIDFilter};
+    return {loading, foodItemList, imageIDFilter, user};
 
 }, FoodItemList);
 

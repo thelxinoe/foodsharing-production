@@ -1,21 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { Router, Route, Link, IndexRoute, browserHistory } from 'react-router';
-
-import ActionList from 'material-ui/svg-icons/action/list';
-import TimeSince from './TimeSince.jsx';
-
 import {
-  FlatButton,
-  IconButton,
-  Dialog,
-  Snackbar,
   GridList,
   GridTile,
-  Styles
 } from 'material-ui';
-
-import ActionSchedule from 'material-ui/svg-icons/action/schedule';
+import TimeSince from './TimeSince';
 
 const styles = {
   root: {
@@ -37,7 +25,7 @@ const styles = {
 
 const ImageItemGrid = React.createClass({
 
-  calcTime: function(date){
+  calcTime: function (date) {
     return(
       <TimeSince time={date} />
     );
@@ -67,9 +55,8 @@ const ImageItemGrid = React.createClass({
     )
   },
 
-  render: function(){
-
-    return(
+  render() {
+    return (
       <div style={styles.root}>
         {this.props.loading ? 'loading...' : this.renderGridList()}
       </div>
