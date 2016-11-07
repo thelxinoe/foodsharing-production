@@ -5,6 +5,7 @@ import {
   Card,
   CardActions,
   CardHeader,
+  CardText,
 } from 'material-ui';
 
 import ActionSchedule from 'material-ui/svg-icons/action/schedule';
@@ -15,6 +16,7 @@ import ImagePopOver from './ImagePopOverButton';
 import ClaimsButton from './ClaimsButton';
 import TimeSince from './TimeSince';
 import PortionImages from './PortionImages';
+import Requests from './Requests';
 
 class FoodItemList extends React.Component{
 
@@ -26,14 +28,7 @@ class FoodItemList extends React.Component{
   deleteFoodItem(){}
 
   renderItems(){
-    if(this.props.imageIDFilter===''){
-      var foodItemsFiltered=this.props.foodItemList;
-    }else{
-      filter = (function(x){return x.imageID==this.props.imageIDFilter}).bind(this);
-      var foodItemsFiltered=this.props.foodItemList.filter(filter);
-    }
-
-    return foodItemsFiltered.map((foodItem) => {
+    return this.props.foodItemList.map((foodItem) => {
       return (
         <Card key={foodItem._id}>
           <CardHeader
@@ -43,6 +38,21 @@ class FoodItemList extends React.Component{
             actAsExpander={true}
             showExpandableButton={true}
             />
+          {this.props.renderClaims ?
+            foodItem.claims ?
+            <CardText>
+              <Requests
+                foodID={foodItem._id}
+                claims={foodItem.claims}
+              />
+            </CardText>
+          :
+            <CardText>
+              <p>No one has claimed this item yet</p>
+            </CardText>
+          :
+          ''
+          }
           <CardActions expandable={true}>
             <div className="buttons-container">
               <div className="buttons-item">

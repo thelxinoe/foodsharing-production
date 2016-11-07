@@ -60,16 +60,19 @@ for (let j = 0; j < images.length; j++) {
                         requested: 1,
                         accepted: 1,
                         createdAt: new Date(),
+                        rejected: false,
                     }, {
                         username: Meteor.users.find().fetch()[Math.floor(Math.random() * numUsers)].username,
                         requested: 5,
                         accepted: 0,
                         createdAt: new Date(),
+                        rejected: false,
                     }, {
                         username: Meteor.users.find().fetch()[Math.floor(Math.random() * numUsers)].username,
                         requested: 3,
                         accepted: 2,
                         createdAt: new Date(),
+                        rejected: false,
                     }, ],
                 });
             }

@@ -46,6 +46,7 @@ ImageItems.schema = new SimpleSchema({
   messages:{
     type:[Object],
     optional:true,
+    blackbox:true,
   },
 });
 

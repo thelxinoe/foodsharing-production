@@ -9,18 +9,27 @@ const FoodItemListContainer = createContainer(({imageIDFilter}) => {
     const user = Meteor.user()
         ? Meteor.user().username
         : '';
-    const query = {
+    const query = imageIDFilter ? {
         username: {
             $not: {
                 $eq: user
             }
-        }
-    };
+        },
+        imageID: imageIDFilter,
+    } :
+    {
+        username: {
+            $not: {
+                $eq: user
+            }
+        },
+    }
+
     const foodItems = Meteor.subscribe('foodItems');
     const foodItemList = FoodItems.find(query).fetch()
     const loading = !foodItems.ready();
 
-    return {loading, foodItemList, imageIDFilter, user};
+    return {loading, foodItemList, user};
 
 }, FoodItemList);
 
