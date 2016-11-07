@@ -19,8 +19,8 @@ class RequestedItem extends React.Component {
       acceptRequestOpen: false,
       rejectRequestOpen: false,
     };
-    this.rejectRequestToggle = this.rejectRequestToggle.bind();
-    this.acceptRequestToggle = this.acceptRequestToggle.bind();
+    this.rejectRequestToggle = this.rejectRequestToggle.bind(this);
+    this.acceptRequestToggle = this.acceptRequestToggle.bind(this);
   }
 
   rejectRequestToggle() {
