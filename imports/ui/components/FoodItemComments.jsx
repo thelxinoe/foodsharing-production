@@ -6,7 +6,6 @@ import {
   Paper,
 } from 'material-ui';
 
-import TimeSince from './TimeSince.jsx';
 import { Scrollbars } from 'react-custom-scrollbars';
 import ContentSend from 'material-ui/svg-icons/content/send';
 
@@ -14,6 +13,8 @@ import {
   lightGreenA200,
 } from 'material-ui/styles/colors';
 
+import FoodItemList from './FoodItemList';
+import Comments from './Comments';
 
 const styles = {
   claim: {
@@ -41,32 +42,8 @@ const FoodItemComments = React.createClass({
 
     getInitialState() {
       return {
-        openClaim: false,
-        alreadyClaimed: false,
-        claimPop: false,
-        actions: [],
-        commentText:"",
+        commentText: '',
       }
-    },
-
-    renderComments(){
-
-        return this.props.imageItem.comments.map((message) => {
-          var currUsr = message.username;
-          var same = false;
-          if(currUsr == prvUsr){
-            same = true;
-          }else{prvUsr = currUsr;}
-          prvUsr = currUsr;
-          return(
-            <Comment
-              comment={message.comment}
-              date={<TimeSince time={message.createdAt} />}
-              username={currUsr}
-              same={same}
-            />
-          )
-        });
     },
 
     handleComment(event){
@@ -78,24 +55,25 @@ const FoodItemComments = React.createClass({
     addComment(event) {
     },
 
-    keyDown (value) {
-      if (value.keyCode == 13){
-        this.addComment()
-      }
-    },
     render : function () {
       return (
         <div className="fillDiv">
+            <FoodItemList
+              foodItemList={[this.props.foodItem]}
+              user={this.props.user}
+            />
           <div>
-            <div comment="put the thing that tells you what you are commenting on"/>
-          </div>
-          <div>
-            <Paper style={styles.paper} zDepth={5}>
+            <Scrollbars style={{ height: 200, position: 'relative' }}>
+              <div>
+                <Comments comments={this.props.foodItem.comments} />
+              </div>
+            </Scrollbars>
+
+            <Paper style={styles.paper} zDepth={0}>
               <div className="leftcolumn">
                 <TextField
                   style={{color: 'white'}}
                   hintText="You can leave a comment here"
-                  onKeyDown={this.keyDown}
                   onChange={this.handleComment}
                   value={this.state.commentText}/>
               </div>
@@ -110,11 +88,7 @@ const FoodItemComments = React.createClass({
               </div>
             </Paper>
           </div>
-          <Scrollbars style={{ height: 285, position: 'relative' }}>
-            <div>
-              {this.renderComments()}
-            </div>
-          </Scrollbars>
+
         </div>
       );
     }
