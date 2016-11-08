@@ -43,11 +43,6 @@ ImageItems.schema = new SimpleSchema({
   totalItems:{
       type:Number,
   },
-  messages:{
-    type:[Object],
-    optional:true,
-    blackbox:true,
-  },
 });
 
 ImageItems.attachSchema(ImageItems.schema);
@@ -59,5 +54,4 @@ ImageItems.publicFields = {
     createdAt:1,
     location:1,
     totalItems:1,
-    messages:1,
 };

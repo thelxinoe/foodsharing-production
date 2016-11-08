@@ -37,6 +37,11 @@ FoodItems.schema = new SimpleSchema({
     optional:true,
     blackbox:true,
   },
+  comments:{
+    type:[Object],
+    optional:true,
+    blackbox:true,
+  },
 });
 
 FoodItems.attachSchema(FoodItems.schema);
@@ -49,4 +54,5 @@ FoodItems.publicFields = {
   createdAt:1,
   portions:1,
   claims:1,
+  comments:1,
 };

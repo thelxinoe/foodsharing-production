@@ -6,9 +6,9 @@ import { render } from 'react-dom';
 import AppHeader from '../../ui/components/AppHeader';
 import GridListTab from '../../ui/components/GridListTab';
 import AccountsUIWrapper from '../../ui/AccountsUIWrapper';
-import MapViewContainer from '../../ui/containers/MapViewContainer.jsx';
-import YourItemsContainer from '../../ui/containers/YourItemsContainer.jsx';
-
+import MapViewContainer from '../../ui/containers/MapViewContainer';
+import YourItemsContainer from '../../ui/containers/YourItemsContainer';
+import FoodItemCommentsContainer from '../../ui/containers/FoodItemCommentsContainer';
 
 const requireAuth = function(nextState, replace){
   if(Meteor.userId() == null){
@@ -23,15 +23,20 @@ const renderRoutes = () => (
       <Route
         path='/Login'
         component={AccountsUIWrapper}
-        />
+      />
       <Route
         path='/MapView'
         component={MapViewContainer}
-        />
+      />
       <Route
         path='/YourItems'
         component={YourItemsContainer}
-        />
+        onEnter={requireAuth}
+      />
+      <Route
+        path='/FoodComments/:foodID'
+        component={FoodItemCommentsContainer}
+      />
     </Route>
   </Router>
 );

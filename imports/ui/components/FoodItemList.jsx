@@ -78,7 +78,7 @@ class FoodItemList extends React.Component{
                   />
               </div>
               <div className="buttons-item">
-                <Link to={'/ItemView/'+foodItem.imageID}>
+                <Link to={'/FoodComments/'+foodItem._id}>
                   <CommunicationChat />
                 </Link>
               </div>
