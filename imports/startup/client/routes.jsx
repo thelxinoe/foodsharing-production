@@ -3,9 +3,10 @@ import {Router, Route, browserHistory, IndexRoute} from 'react-router';
 import { Meteor } from 'meteor/meteor';
 import { render } from 'react-dom';
 
-import AppHeader from '../../ui/components/AppHeader';
+import AppHeader from '../../ui/components/AppHeader.jsx';
 import GridListTab from '../../ui/components/GridListTab';
-import AccountsUIWrapper from '../../ui/AccountsUIWrapper';
+import userAccounts from '../../ui/components/Login/userAccounts';
+import userAccountsRegister from '../../ui/components/Login/userAccountsRegister.jsx';
 import MapViewContainer from '../../ui/containers/MapViewContainer.jsx';
 import YourItemsContainer from '../../ui/containers/YourItemsContainer.jsx';
 
@@ -22,7 +23,7 @@ const renderRoutes = () => (
       <IndexRoute component={GridListTab}/>
       <Route
         path='/Login'
-        component={AccountsUIWrapper}
+        component={userAccounts}
         />
       <Route
         path='/MapView'
@@ -31,6 +32,10 @@ const renderRoutes = () => (
       <Route
         path='/YourItems'
         component={YourItemsContainer}
+        />
+      <Route
+        path='/Register'
+        component={userAccountsRegister}
         />
     </Route>
   </Router>

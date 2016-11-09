@@ -139,9 +139,6 @@ const AppHeader = React.createClass({
     h1.style["background-size"] = "auto 85%";
     h1.style["background-repeat"] = "no-repeat";
     h1.style["background-position"] = "center";
-
-    var h2 = childs[1];
-    h2.style["color"] = "#1b5e20";
   },
 
   handleLogout: function() {
@@ -230,13 +227,11 @@ const AppHeader = React.createClass({
         this.handleClose
       } />
     ];
-
     return (
       <div className="bigBoy">
         <MuiThemeProvider muiTheme={muiTheme}>
           <div className="phone">
             <div className="container">
-
               <div className="headContain">
                 <AppBar
                   title=""
@@ -262,7 +257,6 @@ const AppHeader = React.createClass({
                         // }}
                         />
                       </div>
-
                       <div className="toolContain">
                         <Toolbar>
                           <ToolbarGroup firstChild={true}>
@@ -318,9 +312,7 @@ const AppHeader = React.createClass({
                             </IconButton>
                           </ToolbarGroup>
                         </Toolbar>
-
                       </div>
-
                       <div className="contentContain">
                         <Scrollbars style={{
                             height: 350,
@@ -331,9 +323,7 @@ const AppHeader = React.createClass({
                           })}
                         </Scrollbars>
                       </div>
-
                       <div className="tabsContain">
-
                         <Tabs>
                           <Tab
                             icon={
@@ -363,11 +353,8 @@ const AppHeader = React.createClass({
                                   onActive={this.handleActiveTab("/YourItems")}
                                   style={tabStyle}/>
                               </Tabs>
-
                             </div>
-
                             {/* <div>
-
                               <Drawer width={winWidth} openSecondary={true} open={this.state.openNav} docked={false} onRequestChange={this.handleCloseNav}>
                               <div className="headContain">
                               <AppBar title="Messages" iconElementLeft={< IconButton onTouchTap = {
@@ -396,14 +383,11 @@ const AppHeader = React.createClass({
                     action="Close"
                     onTouchTap={this.handleRequestClose}/>
                 </div>
-
               </div>
             </div>
           </MuiThemeProvider>
         </div>
       );
-
     }
   });
-
   export default AppHeader;
