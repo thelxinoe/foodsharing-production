@@ -55,7 +55,7 @@ for (let j = 0; j < images.length; j++) {
           sharedBy:currUser,
           requestedBy:nextUser,
           seenBy:[nextUser],
-          comments: [{
+          messages: [{
             username: currUser,
             comment: faker.lorem.sentences(),
             createdAt: new Date()

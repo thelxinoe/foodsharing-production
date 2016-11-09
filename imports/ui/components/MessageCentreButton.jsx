@@ -15,11 +15,10 @@ import SvgIcons from 'material-ui/svg-icons';
 
 class MessageCentreButton extends React.Component {
   render(){
-    console.log(this.props.user)
     return (
       this.props.user ?
       <Badge
-        badgeContent={4}
+        badgeContent={this.props.unreadMessages}
         primary={true}
         badgeStyle={{top: '10%'}}
         >
@@ -38,7 +37,6 @@ class MessageCentreButton extends React.Component {
       </Badge>
       :
       <IconButton
-        className='messagething'
         linkButton={true}
         containerElement={
           <Link to={{ pathname: this.props.pathname, query: { openMessageCentre: true }}}/>
