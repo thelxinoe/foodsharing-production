@@ -63,7 +63,7 @@ const FoodItemComments = React.createClass({
               user={this.props.user}
             />
           <div>
-            <Scrollbars style={{ height: 200, position: 'relative' }}>
+            <Scrollbars style={{ height: 215, position: 'relative' }}>
               <div>
                 <Comments comments={this.props.foodItem.comments} />
               </div>

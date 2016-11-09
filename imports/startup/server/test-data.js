@@ -1,14 +1,9 @@
-import {
-  Meteor
-} from 'meteor/meteor';
-import {
-  ImageItems
-} from '../../api/ImageItems/ImageItems.js';
-import {
-  FoodItems
-} from '../../api/FoodItems/FoodItems.js';
+import { Meteor } from 'meteor/meteor';
+import { ImageItems } from '../../api/ImageItems/ImageItems.js';
+import { FoodItems } from '../../api/FoodItems/FoodItems.js';
+import { Messages } from '../../api/Messages/Messages.js';
 import faker from 'faker';
-//Users
+
 Meteor.users.remove({});
 
 var numUsers = 5;
@@ -20,11 +15,12 @@ for (i = 0; i < numUsers; i++) {
   });
 };
 
-//ImageItems
 ImageItems.remove({});
 FoodItems.remove({});
+Messages.remove({});
 
-//Create some ImageItems
+
+
 images = [
   "http://images.mentalfloss.com/sites/default/files/styles/article_640x430/public/istock_000050960496_medium.jpg",
   "http://ichef.bbci.co.uk/news/660/cpsprodpb/1325A/production/_88762487_junk_food.jpg",
@@ -47,6 +43,41 @@ for (let j = 0; j < images.length; j++) {
     },
   }, function(err, id) {
     if (!err) {
+      //Insert Comments
+      var numComments = 35;
+      for (i = 0; i < numComments; i++) {
+        const userNum = Math.floor(Math.random() * numUsers);
+        const users = Meteor.users.find().fetch();
+        const currUser = users[userNum].username;
+        const nextUser = users[(userNum+1)%numUsers].username;
+        Messages.insert({
+          imageID:id,
+          sharedBy:currUser,
+          requestedBy:nextUser,
+          seenBy:[nextUser],
+          comments: [{
+            username: currUser,
+            comment: faker.lorem.sentences(),
+            createdAt: new Date()
+          },
+          {
+            username: nextUser,
+            comment: faker.lorem.sentences(),
+            createdAt: new Date()
+          },
+          {
+            username: currUser,
+            comment: faker.lorem.sentences(),
+            createdAt: new Date()
+          },
+          {
+            username: nextUser,
+            comment: faker.lorem.sentences(),
+            createdAt: new Date()
+          },],
+        });
+      }
+      //Insert the food items and comments
       for (let k = 0; k < numFoodItems; k++) {
         FoodItems.insert({
           imageID: id,
@@ -96,7 +127,7 @@ for (let j = 0; j < images.length; j++) {
   });
 }
 
-//Create comments by random users
+// Create comments by random users
 // var numComments = 35;
 // for (i = 0; i < numComments; i++) {
 //   currUser = Meteor.users.find().fetch()[Math.floor(Math.random() * numUsers)];

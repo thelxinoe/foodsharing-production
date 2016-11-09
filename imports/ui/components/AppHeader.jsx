@@ -1,44 +1,25 @@
+import { Meteor } from 'meteor/meteor';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import {
-  Router,
-  Route,
   Link,
-  IndexRoute,
   browserHistory,
-  withRouter
 } from 'react-router';
 
 import AppBar from 'material-ui/AppBar';
-// import MessageBar from './MessageBar.jsx';
-  import {
-  AppCanvas,
+
+import {
   Dialog,
-  Styles,
-  RaisedButton,
-  IconMenu,
   IconButton,
-  MenuItem,
-  MoreVertIcon,
-  TextField,
-  NavigationClose,
-  Avatar,
-  DatePicker,
   Tabs,
   Tab,
-  Slider,
   FlatButton,
   Snackbar,
-  SwipeableViews,
   Toolbar,
   ToolbarGroup,
-  ToolbarSeparator,
-  ToolbarTitle,
-  Badge,
-  Drawer,
-  FontIcon,
-  AutoComplete
-} from 'material-ui'
+} from 'material-ui';
 
 import SvgIcons from 'material-ui/svg-icons';
 
@@ -49,7 +30,8 @@ import MapsPersonPin from 'material-ui/svg-icons/maps/person-pin';
 import MapsMap from 'material-ui/svg-icons/maps/map';
 import ActionDashboard from 'material-ui/svg-icons/action/dashboard';
 
-import { Meteor } from 'meteor/meteor';
+
+import MessageCentreButtonContainer from '../containers/MessageCentreButtonContainer';
 
 const logoutContentStyle = {
   width: '100%',
@@ -66,7 +48,7 @@ import {
   grey50
 } from 'material-ui/styles/colors';
 
-import {Scrollbars} from 'react-custom-scrollbars';
+import { Scrollbars } from 'react-custom-scrollbars';
 
 const muiTheme = getMuiTheme({
   palette: {
@@ -102,8 +84,6 @@ const AppHeader = React.createClass({
   getInitialState() {
     return {messageUser: '', openLogout: false, openLogMess: false, openNav: false, filter: ''}
   },
-
-
 
   filterList(event) {
     this.setState({filter: event});
@@ -234,13 +214,8 @@ const AppHeader = React.createClass({
                           <SvgIcons.ContentAddCircle color={green900}/>
                           < /IconButton>
                         }
-                        // targetOrigin={{
-                        //   horizontal: 'right',
-                        //   vertical: 'top'
-                        // }}
                         />
                       </div>
-
                       <div className="toolContain">
                         <Toolbar>
                           <ToolbarGroup firstChild={true}>
@@ -285,18 +260,11 @@ const AppHeader = React.createClass({
                           }}/>
                         </ToolbarGroup> */}
                         <ToolbarGroup lastChild={true}>
-                          <IconButton
-                            onTouchTap={this.handleOpenNav}
-                            tooltip="Messages"
-                            tooltipPosition="bottom-left"
-                            disabled={Meteor.user()
-                              ? false
-                              : true}>
-                              <SvgIcons.CommunicationForum color='White'/>
-                            </IconButton>
-                          </ToolbarGroup>
+                          <MessageCentreButtonContainer
+                            pathname={this.props.location.pathname}
+                          />
+                        </ToolbarGroup>
                         </Toolbar>
-
                       </div>
 
                       <div className="contentContain">
@@ -311,7 +279,6 @@ const AppHeader = React.createClass({
                             position: 'relative'
                           }}
                           >
-                          {console.log(this.props)}
                           {React.cloneElement(this.props.children, {
                             openMessages: this.handleOpenMessage
                           })}
@@ -331,6 +298,7 @@ const AppHeader = React.createClass({
                               label="ITEM VIEW"
                               onActive={this.handleActiveTab("/")}
                               style={tabStyle}/>
+
                             <Tab
                               icon={
                                 < MapsMap color = {
@@ -340,6 +308,7 @@ const AppHeader = React.createClass({
                                 label="MAP VIEW"
                                 onActive={this.handleActiveTab("/MapView")}
                                 style={tabStyle}/>
+
                               <Tab
                                 icon={
                                   < MapsPersonPin color = {
@@ -352,29 +321,6 @@ const AppHeader = React.createClass({
                               </Tabs>
 
                             </div>
-
-                            {/* <div>
-
-                              <Drawer width={winWidth} openSecondary={true} open={this.state.openNav} docked={false} onRequestChange={this.handleCloseNav}>
-                              <div className="headContain">
-                              <AppBar title="Messages" iconElementLeft={< IconButton onTouchTap = {
-                              this.handleCloseNav
-                            } > <SvgIcons.ContentBackspace color={green900}/> < /IconButton>} iconElementRight={< IconButton onTouchTap = {
-                            this.handleOpen
-                          } > <SvgIcons.ActionSettings color={green900}/> < /IconButton>} targetOrigin={{
-                          horizontal: 'right',
-                          vertical: 'top'
-                        }}/>
-                      </div>
-                      {this.data.currentUser == ''
-                      ? <div className="vertAlign">
-                      <br/>
-                      You have no messages, go share some food! :)
-                    </div>
-                    : <MessageBar user={this.state.messageUser} reset={this.resetState}/>}
-                  </Drawer>
-                </div> */}
-                <div>
                   <Snackbar
                     open={this.state.openLogMess}
                     message="You've been logged out!"
@@ -385,7 +331,6 @@ const AppHeader = React.createClass({
                 </div>
 
               </div>
-            </div>
           </MuiThemeProvider>
         </div>
       );

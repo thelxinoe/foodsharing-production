@@ -23,7 +23,6 @@ class Comments extends React.Component {
         />
       )
     });
-    console.log(comments)
     return (<div>{comments}</div>);
   }
 }
