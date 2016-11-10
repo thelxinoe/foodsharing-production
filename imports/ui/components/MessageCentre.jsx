@@ -3,55 +3,57 @@ import React, {PropTypes} from 'react';
 import { IconButton, Drawer, AppBar } from 'material-ui';
 import SvgIcons from 'material-ui/svg-icons';
 
-const MessageCentre = (props) => {
+import {
+  Link,
+} from 'react-router';
+
+import {
+  green900,
+} from 'material-ui/styles/colors';
+
+class MessageCentre extends React.Component {
+  render() {
+    console.log('messages ', this.props)
+    const open = this.props.open === 'true' ? true : false;
+    const queryString = Object.assign({},this.props.query,{ openMessageCentre: false });
+    const closeDrawerButton =
+    <IconButton
+      linkButton ={true}
+      containerElement = {
+        < Link to = {{
+            pathname: this.props.pathname,
+            query: queryString
+          }}/>
+        }
+        >
+        <SvgIcons.ContentBackspace
+          color={green900}/>
+        </IconButton>
     return (
       <Drawer
-        width={winWidth}
+        width={window.innerWidth}
         openSecondary={true}
-        open={this.state.openNav}
+        open={open}
         docked={false}
-        onRequestChange={this.handleCloseNav}>
+        >
         <div className="headContain">
           <AppBar
             title="Messages"
             iconElementLeft={
-              < IconButton onTouchTap = {
-                  this.handleCloseNav
-                }>
-                <SvgIcons.ContentBackspace
-                  color={green900}/>
-                < /IconButton>
-              }
-              iconElementRight={
-                <IconButton
-                  onTouchTap = {
-                    this.handleOpen
-                  }
-                  >
-                  <SvgIcons.ActionSettings
-                    color={green900}
-                    />
-
-                  < /IconButton>
-                }
-                targetOrigin={{
-                  horizontal: 'right',
-                  vertical: 'top'
-                }}/>
-              </div>
-              {this.data.currentUser == ''
-                ?
-                <div className="vertAlign">
-                  <br/>
-                  You have no messages, go share some food! :)
-                </div>
-                :
-                <MessageBar
-                  user={this.state.messageUser}
-                  reset={this.resetState}/>
-              }
-            </Drawer>
+              closeDrawerButton
+            }
+            targetOrigin={{
+              horizontal: 'right',
+              vertical: 'top'
+            }}/>
+        </div>
+          {/*<MessageBar
+            user={this.state.messageUser}
+            reset={this.resetState}
+            />*/}
+      </Drawer>
     )
+  }
 }
 
 export default MessageCentre;

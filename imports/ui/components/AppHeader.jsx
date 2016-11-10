@@ -32,6 +32,7 @@ import ActionDashboard from 'material-ui/svg-icons/action/dashboard';
 
 
 import MessageCentreButtonContainer from '../containers/MessageCentreButtonContainer';
+import MessageCentre from './MessageCentre';
 
 const logoutContentStyle = {
   width: '100%',
@@ -45,7 +46,7 @@ import {
   blueGrey300,
   blueGrey900,
   blueGrey600,
-  grey50
+  grey50,
 } from 'material-ui/styles/colors';
 
 import { Scrollbars } from 'react-custom-scrollbars';
@@ -82,8 +83,13 @@ const AppHeader = React.createClass({
   },
 
   getInitialState() {
-    return {messageUser: '', openLogout: false, openLogMess: false, openNav: false, filter: ''}
-  },
+    return {
+      messageUser: '',
+      openLogout: false,
+      openLogMess: false,
+      filter: ''
+    }
+},
 
   filterList(event) {
     this.setState({filter: event});
@@ -105,7 +111,7 @@ const AppHeader = React.createClass({
   handleLogout: function() {
     Meteor.logout();
     this.setState({openLogout: false});
-    browserHistory.push('/Login');
+    browserHistory.push('/');
     this.logOutPop();
   },
 
@@ -145,21 +151,11 @@ const AppHeader = React.createClass({
     this.setState({openNav: true, messageUser: user});
   },
 
-  handleOpenNav: function() {
-    this.setState({openNav: true});
-  },
-
-  handleCloseNav: function() {
-    this.setState({openNav: false});
-  },
-
   handleBackClick: function() {
     this.context.router.goBack();
   },
 
   render: function() {
-
-    var winWidth = window.innerWidth;
     const actions = [
       < FlatButton
       label = "Logout"
@@ -322,6 +318,14 @@ const AppHeader = React.createClass({
                               </Tabs>
 
                             </div>
+                            {console.log(this.props)}
+                            {console.log(this.context)}
+
+                  <MessageCentre
+                    pathname={this.props.location.pathname}
+                    open={this.props.location.query.openMessageCentre}
+                  />
+
                   <Snackbar
                     open={this.state.openLogMess}
                     message="You've been logged out!"
