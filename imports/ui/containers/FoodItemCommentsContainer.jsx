@@ -16,7 +16,6 @@ const FoodItemCommentsContainer = createContainer((props) => {
     const foodItems = Meteor.subscribe('foodItems');
     const foodItem = FoodItems.findOne(query);
     const loading = !foodItems.ready();
-
     return { loading, foodItem, user };
 
 }, FoodItemComments);

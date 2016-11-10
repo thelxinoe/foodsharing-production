@@ -57,6 +57,9 @@ const FoodItemComments = React.createClass({
 
     render : function () {
       return (
+        this.props.loading ?
+        <div>'loading...'</div>
+        :
         <div className="fillDiv">
             <FoodItemList
               foodItemList={[this.props.foodItem]}

@@ -262,6 +262,7 @@ const AppHeader = React.createClass({
                         <ToolbarGroup lastChild={true}>
                           <MessageCentreButtonContainer
                             pathname={this.props.location.pathname}
+                            queryString={this.props.location.query}
                           />
                         </ToolbarGroup>
                         </Toolbar>
