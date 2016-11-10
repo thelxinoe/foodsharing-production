@@ -1,26 +1,24 @@
 import React, {PropTypes} from 'react';
 
-import { IconButton, Drawer, AppBar } from 'material-ui';
-import SvgIcons from 'material-ui/svg-icons';
-
 import {
   Link,
 } from 'react-router';
 
+import { IconButton, Drawer, AppBar } from 'material-ui';
+import SvgIcons from 'material-ui/svg-icons';
 import {
   green900,
 } from 'material-ui/styles/colors';
 
 class MessageCentre extends React.Component {
   render() {
-    console.log('messages ', this.props)
     const open = this.props.open === 'true' ? true : false;
     const queryString = Object.assign({},this.props.query,{ openMessageCentre: false });
     const closeDrawerButton =
     <IconButton
       linkButton ={true}
       containerElement = {
-        < Link to = {{
+        <Link to={{
             pathname: this.props.pathname,
             query: queryString
           }}/>
@@ -28,7 +26,7 @@ class MessageCentre extends React.Component {
         >
         <SvgIcons.ContentBackspace
           color={green900}/>
-        </IconButton>
+    </IconButton>
     return (
       <Drawer
         width={window.innerWidth}
@@ -47,7 +45,7 @@ class MessageCentre extends React.Component {
               vertical: 'top'
             }}/>
         </div>
-          {/*<MessageBar
+          {/*<MessageCentreMessages
             user={this.state.messageUser}
             reset={this.resetState}
             />*/}
