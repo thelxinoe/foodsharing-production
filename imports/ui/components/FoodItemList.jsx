@@ -37,6 +37,7 @@ class FoodItemList extends React.Component{
             avatar={foodItem.imageURL}
             actAsExpander={true}
             showExpandableButton={true}
+            textStyle={{padding: '0px'}}
             />
           {this.props.renderClaims ?
             foodItem.claims ?
@@ -56,7 +57,7 @@ class FoodItemList extends React.Component{
           <CardActions expandable={true}>
             <div className="buttons-container">
               <div className="buttons-item">
-                <ActionSchedule style="smallButton" />
+                <ActionSchedule className="smallButton" />
                 <TimeSince time={foodItem.createdAt}/>
               </div>
               {this.props.user == foodItem.username?

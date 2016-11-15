@@ -31,7 +31,7 @@ const styles = {
     padding: 8,
   },
   paper: {
-    padding: '0px 0px 0px 10px',
+  	padding: '0px',
     textAlign: 'center',
     display: 'inline-block',
     width: '100%',
@@ -55,43 +55,49 @@ const FoodItemComments = React.createClass({
     addComment(event) {
     },
 
-    render : function () {
-      return (
-        <div className="fillDiv">
-            <FoodItemList
-              foodItemList={[this.props.foodItem]}
-              user={this.props.user}
-            />
-          <div>
-            <Scrollbars style={{ height: 215, position: 'relative' }}>
-              <div>
-                <Comments comments={this.props.foodItem.comments} />
-              </div>
-            </Scrollbars>
+	render : function () {
 
-            <Paper style={styles.paper} zDepth={0}>
-              <div className="leftcolumn">
-                <TextField
-                  style={{color: 'white'}}
-                  hintText="You can leave a comment here"
-                  onChange={this.handleComment}
-                  value={this.state.commentText}/>
-              </div>
-              <div className="rightcolumn">
-                <IconButton
-                  iconStyle={styles.smallIcon}
-                  style={styles.small}
-                  onTouchTap={this.addComment}
-                  >
-                  <ContentSend color={lightGreenA200} />
-                </IconButton>
-              </div>
-            </Paper>
-          </div>
-
-        </div>
-      );
-    }
-  });
+		return (
+			<div className="scrollcontainer">
+				<div className="floor">
+					<div className="broom item">
+						<FoodItemList
+							foodItemList={[this.props.foodItem]}
+							user={this.props.user}
+						/>
+					</div>
+					<div className="dirt item">
+						<Scrollbars
+							autoHeight
+						>
+						<Comments comments={this.props.foodItem.comments} />
+					</Scrollbars>
+					</div>
+				</div>
+				<div className="rug">
+					<Paper style={styles.paper} zDepth={0}>
+						<div className="leftcolumn">
+							<TextField
+								style={{color: 'white'}}
+								hintText="You can leave a comment here"
+								onChange={this.handleComment}
+								value={this.state.commentText}
+							/>
+						</div>
+						<div className="rightcolumn">
+							<IconButton
+								iconStyle={styles.smallIcon}
+								style={styles.small}
+								onTouchTap={this.addComment}
+							>
+							<ContentSend color={lightGreenA200} />
+							</IconButton>
+						</div>
+					</Paper>
+				</div>
+			</div>
+			);
+		}
+	});
 
 export default FoodItemComments;
