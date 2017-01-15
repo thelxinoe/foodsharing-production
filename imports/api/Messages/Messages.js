@@ -16,6 +16,9 @@ Messages.schema = new SimpleSchema({
     sharedBy:{
       type:String,
     },
+    requestedBy:{
+      type:String,
+    },
     createdAt:{
       type: Date,
       defaultValue: new Date(),
@@ -39,6 +42,7 @@ Messages.attachSchema(Messages.schema);
 Messages.publicFields = {
   imageID:1,
   sharedBy:1,
+  requestedBy:1,
   createdAt:1,
   messages:1,
   seenBy:1,

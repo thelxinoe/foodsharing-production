@@ -9,7 +9,6 @@ import ClaimControl from './ClaimControl';
 
 class AcceptRequest extends React.Component {
     render() {
-      console.log(this.props)
 
         const actions = [
           <ClaimControl

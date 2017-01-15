@@ -318,8 +318,6 @@ const AppHeader = React.createClass({
                               </Tabs>
 
                             </div>
-                            {console.log(this.props)}
-                            {console.log(this.context)}
 
                   <MessageCentre
                     pathname={this.props.location.pathname}

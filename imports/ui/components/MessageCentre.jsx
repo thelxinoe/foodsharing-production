@@ -10,6 +10,8 @@ import {
   green900,
 } from 'material-ui/styles/colors';
 
+import MessageCentreMessagesContainer from '../containers/MessageCentreMessagesContainer'
+
 class MessageCentre extends React.Component {
   render() {
     const open = this.props.open === 'true' ? true : false;
@@ -45,10 +47,7 @@ class MessageCentre extends React.Component {
               vertical: 'top'
             }}/>
         </div>
-          {/*<MessageCentreMessages
-            user={this.state.messageUser}
-            reset={this.resetState}
-            />*/}
+        <MessageCentreMessagesContainer />
       </Drawer>
     )
   }
