@@ -1,38 +1,39 @@
 {
-    "name": "foodsharing-production",
-    "private": true,
-    "scripts": {
-        "start": "meteor run"
+  "name": "foodsharing-production",
+  "private": true,
+  "scripts": {
+    "start": "meteor run"
+  },
+  "dependencies": {
+    "faker": "^3.1.0",
+    "material-ui": "^0.16.0",
+    "meteor-node-stubs": "~0.2.0",
+    "react": "^15.3.2",
+    "react-addons-pure-render-mixin": "^15.3.2",
+    "react-addons-update": "^15.3.2",
+    "react-custom-scrollbars": "^4.0.0",
+    "react-dom": "^15.3.2",
+    "react-dropzone": "^3.10.0",
+    "react-google-maps": "^4.11.0",
+    "react-router": "^2.8.1",
+    "react-tap-event-plugin": "^1.0.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.1.0",
+    "eslint": "^3.9.1",
+    "eslint-config-airbnb": "^12.0.0",
+    "eslint-plugin-import": "^1.16.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.5.0"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "node": true
     },
-    "dependencies": {
-        "faker": "^3.1.0",
-        "material-ui": "^0.16.0",
-        "meteor-node-stubs": "~0.2.0",
-        "react": "^15.3.2",
-        "react-addons-pure-render-mixin": "^15.3.2",
-        "react-addons-update": "^15.3.2",
-        "react-custom-scrollbars": "^4.0.0",
-        "react-dom": "^15.3.2",
-        "react-google-maps": "^4.11.0",
-        "react-router": "^2.8.1",
-        "react-tap-event-plugin": "^1.0.0"
+    "rules": {
+      "react/jsx-boolean-value": 0
     },
-    "devDependencies": {
-        "babel-eslint": "^7.1.0",
-        "eslint": "^3.9.1",
-        "eslint-config-airbnb": "^12.0.0",
-        "eslint-plugin-import": "^1.16.0",
-        "eslint-plugin-jsx-a11y": "^2.2.3",
-        "eslint-plugin-react": "^6.5.0"
-    },
-    "eslintConfig": {
-        "env": {
-            "browser": true,
-            "node": true
-        },
-        "rules": {
-            "react/jsx-boolean-value": 0
-        },
-        "extends": "eslint-config-airbnb"
-    }
+    "extends": "eslint-config-airbnb"
+  }
 }

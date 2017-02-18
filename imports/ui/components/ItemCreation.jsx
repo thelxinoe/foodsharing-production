@@ -11,7 +11,6 @@ import {
     StepContent,
 } from 'material-ui/Stepper';
 
-
 import {
     Snackbar,
     TextField,
@@ -25,8 +24,6 @@ import {
     Tabs,
     IconButton,
 } from 'material-ui';
-
-
 
 import {ImagePhotoCamera } from 'material-ui/svg-icons/image/photo-camera';
 import {EditorModeEdit } from 'material-ui/svg-icons/editor/mode-edit';
@@ -113,8 +110,8 @@ const ItemCreation = React.createClass({
 	}
     },
 
-    onUpload(url, tinyURL){
-
+    onUpload(url){
+    	console.log("onUpload sprung")
         this.setState({
         	imageURL:url,
 	        completedIndex:1
