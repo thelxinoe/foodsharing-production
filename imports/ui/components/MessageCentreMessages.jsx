@@ -55,11 +55,15 @@ const MessageCentreMessages = React.createClass({
           }
           rightIconButton={
             !thread.seenBy.includes(this.props.user) ?
-            <SvgIcons.CommunicationChatBubble />
+            <SvgIcons.CommunicationChatBubble 
+              style={{
+                top: '35%',
+              }}
+            />
             : ''
           }
           onTouchTap={
-            this.openPrivateMessage()
+            this.openPrivateMessage(this.props.user, otherUser)
           }
           primaryText={otherUser}
           secondaryText={
@@ -82,12 +86,12 @@ const MessageCentreMessages = React.createClass({
     }
   },
 
-  openPrivateMessage: function() {
+  openPrivateMessage: function(currUser, otherUser) {
+    handleIt = function() {
+      console.log("Messages between: " + currUser + " & " + otherUser)
+    }
+    return handleIt
   },
-
-  // compoentWillUpdate(){
-  //   this.forceUpdate();
-  // },
 
   render : function(){
     return(

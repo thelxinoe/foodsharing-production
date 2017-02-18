@@ -18,7 +18,6 @@ class MessageCentre extends React.Component {
     const queryString = Object.assign({},this.props.query,{ openMessageCentre: false });
     const closeDrawerButton =
     <IconButton
-      linkButton ={true}
       containerElement = {
         <Link to={{
             pathname: this.props.pathname,
@@ -42,10 +41,11 @@ class MessageCentre extends React.Component {
             iconElementLeft={
               closeDrawerButton
             }
-            targetOrigin={{
-              horizontal: 'right',
-              vertical: 'top'
-            }}/>
+            // targetOrigin={{
+            //   horizontal: 'right',
+            //   vertical: 'top'
+            // }}
+        />
         </div>
         <MessageCentreMessagesContainer />
       </Drawer>

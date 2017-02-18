@@ -28,9 +28,12 @@ class FoodItemList extends React.Component{
   deleteFoodItem(){}
 
   renderItems(){
+    var xCount = 1;
+
     return this.props.foodItemList.map((foodItem) => {
+      xCount ++;
       return (
-        <Card key={foodItem._id}>
+        <Card key={foodItem._id + xCount}>
           <CardHeader
             title={foodItem.foodName}
             subtitle={<PortionImages portions={foodItem.portions} portionsLeft={foodItem.portionsLeft} />}
