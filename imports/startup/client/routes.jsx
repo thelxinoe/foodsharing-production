@@ -9,6 +9,7 @@ import AccountsUIWrapper from '../../ui/AccountsUIWrapper';
 import MapViewContainer from '../../ui/containers/MapViewContainer';
 import YourItemsContainer from '../../ui/containers/YourItemsContainer';
 import FoodItemCommentsContainer from '../../ui/containers/FoodItemCommentsContainer';
+import ItemCreation from '../../ui/components/ItemCreation';
 
 const requireAuth = function(nextState, replace){
   if(Meteor.userId() == null){
