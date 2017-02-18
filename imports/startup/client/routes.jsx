@@ -5,6 +5,7 @@ import { render } from 'react-dom';
 
 import AppHeader from '../../ui/components/AppHeader';
 import GridListTab from '../../ui/components/GridListTab';
+import ItemCreation from '../../ui/components/ItemCreation';
 import AccountsUIWrapper from '../../ui/AccountsUIWrapper';
 import MapViewContainer from '../../ui/containers/MapViewContainer';
 import YourItemsContainer from '../../ui/containers/YourItemsContainer';
@@ -37,6 +38,10 @@ const renderRoutes = () => (
       <Route
         path='/FoodComments/:foodID'
         component={FoodItemCommentsContainer}
+      />
+      <Route
+        path='/ItemCreation'
+        component={ItemCreation}
       />
     </Route>
   </Router>

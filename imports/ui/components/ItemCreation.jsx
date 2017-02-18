@@ -63,15 +63,6 @@ const styles = {
 
 const ItemCreation = React.createClass({
 
-    mixins: [ReactMeteorData],
-
-    getMeteorData(){
-
-        return{	
-	    
-	    addedItems : FoodItemsC.find({'imgURL':this.state.imageURL}).fetch()
-	}
-    },
 
     getInitialState(){
         return{

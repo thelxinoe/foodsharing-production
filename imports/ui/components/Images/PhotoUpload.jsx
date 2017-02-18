@@ -59,7 +59,7 @@ export default class PhotoUpload extends React.Component{
 				</Dropzone>
 				<Snackbar
 					open={this.state.open}
-					message="Sadly an error has occured please try to upload your image again."
+					message="Sadly an error has occured, please try to upload your image again."
 					autoHideDuration={4000}
 					onRequestClose={this.handleRequestClose}
 				/>
