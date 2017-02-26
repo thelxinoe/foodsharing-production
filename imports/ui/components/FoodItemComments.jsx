@@ -14,7 +14,7 @@ import {
 } from 'material-ui/styles/colors';
 
 import FoodItemList from './FoodItemList';
-import Comments from './Comments';
+import CommentSystem from './CommentSystem';
 
 const styles = {
   claim: {
@@ -40,18 +40,6 @@ const styles = {
 
 const FoodItemComments = React.createClass({
 
-    getInitialState() {
-      return {
-        commentText: '',
-      }
-    },
-
-    handleComment(event){
-      this.setState({
-        commentText : event.target.value,
-      });
-    },
-
     addComment(event) {
     },
 
@@ -61,36 +49,15 @@ const FoodItemComments = React.createClass({
         <div>'loading...'</div>
         :
         <div className="fillDiv">
-            <FoodItemList
+          <FoodItemList
               foodItemList={[this.props.foodItem]}
               user={this.props.user}
-            />
-          <div>
-            <Scrollbars style={{ height: 215, position: 'relative' }}>
-              <div>
-                <Comments comments={this.props.foodItem.comments} />
-              </div>
-            </Scrollbars>
-
-            <Paper style={styles.paper} zDepth={0}>
-              <div className="leftcolumn">
-                <TextField
-                  style={{color: 'white'}}
-                  hintText="You can leave a comment here"
-                  onChange={this.handleComment}
-                  value={this.state.commentText}/>
-              </div>
-              <div className="rightcolumn">
-                <IconButton
-                  iconStyle={styles.smallIcon}
-                  style={styles.small}
-                  onTouchTap={this.addComment}
-                  >
-                  <ContentSend color={lightGreenA200} />
-                </IconButton>
-              </div>
-            </Paper>
-          </div>
+          />
+        console.log('food items')
+        <CommentSystem
+          comments={this.props.foodItem.comment}
+          addComment={this.addComment}
+        />
 
         </div>
       );

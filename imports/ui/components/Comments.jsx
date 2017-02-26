@@ -6,7 +6,8 @@ import TimeSince from './TimeSince.jsx';
 class Comments extends React.Component {
 
   render () {
-    const comments = this.props.comments.map((comment) => {
+    console.log(this.props.comments)
+    return this.props.comments.map((comment) => {
       var prvUsr;
       var currUsr = comment.username;
       var same = false;
@@ -23,7 +24,6 @@ class Comments extends React.Component {
         />
       )
     });
-    return (<div>{comments}</div>);
   }
 }
 

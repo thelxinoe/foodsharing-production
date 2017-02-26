@@ -33,6 +33,7 @@ import ActionDashboard from 'material-ui/svg-icons/action/dashboard';
 
 import MessageCentreButtonContainer from '../containers/MessageCentreButtonContainer';
 import MessageCentre from './MessageCentre';
+import PrivateChatDrawer from './PrivateChatDrawer'
 
 const logoutContentStyle = {
   width: '100%',
@@ -323,7 +324,11 @@ const AppHeader = React.createClass({
                     pathname={this.props.location.pathname}
                     open={this.props.location.query.openMessageCentre}
                   />
-
+                  <PrivateChatDrawer
+                    pathname={this.props.location.pathname}
+                    open={this.props.location.query.openPrivateChat}
+                    id={this.props.location.query.privateChatID}
+                  />
                   <Snackbar
                     open={this.state.openLogMess}
                     message="You've been logged out!"
