@@ -104,15 +104,16 @@ const PrivateChat = React.createClass({
       <div id='containerDiv'>
         <br/>
         <br/>
-        console.log('private chat')
-        {this.props.messageThread
+        {console.log('private chat')}
+        {console.log(this.props.messageThread)}
+        {this.props.messageThread>0
         ?
         <CommentSystem
           comments={this.props.messageThread.messages}
           addComment={this.addComment}
         />
         :
-        ''}
+        'No messages.'}
       </div>
 
     );
