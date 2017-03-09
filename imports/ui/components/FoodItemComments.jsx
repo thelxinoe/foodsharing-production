@@ -53,7 +53,6 @@ const FoodItemComments = React.createClass({
               foodItemList={[this.props.foodItem]}
               user={this.props.user}
           />
-        {console.log('food items')}
         <CommentSystem
           comments={this.props.foodItem.comment}
           addComment={this.addComment}

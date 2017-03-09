@@ -57,7 +57,12 @@ const CommentSystem = React.createClass({
         <div>
           <Scrollbars style={{ height: 215, position: 'relative' }}>
             <div>
+              {console.log(this.props.comments)}
+              {this.props.comments !== undefined ?
               <Comments comments={this.props.comments} />
+              :
+              'There are no messages.'
+              }
             </div>
           </Scrollbars>
           <Paper style={styles.paper} zDepth={0}>
