@@ -7,6 +7,8 @@ import AppHeader from '../../ui/components/AppHeader';
 import GridListTab from '../../ui/components/GridListTab';
 import ItemCreation from '../../ui/components/ItemCreation';
 import AccountsUIWrapper from '../../ui/AccountsUIWrapper';
+import userAccounts from '../../ui/components/userAccounts';
+import userAccountsRegister from '../../ui/components/userAccountsRegister';
 import MapViewContainer from '../../ui/containers/MapViewContainer';
 import YourItemsContainer from '../../ui/containers/YourItemsContainer';
 import FoodItemCommentsContainer from '../../ui/containers/FoodItemCommentsContainer';
@@ -24,7 +26,11 @@ const renderRoutes = () => (
       <IndexRoute component={GridListTab}/>
       <Route
         path='/Login'
-        component={AccountsUIWrapper}
+        component={userAccounts}
+      />
+      <Route
+        path='/register'
+        component={userAccountsRegister}
       />
       <Route
         path='/MapView'
