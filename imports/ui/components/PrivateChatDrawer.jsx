@@ -21,13 +21,17 @@ class PrivateChatDrawer extends React.Component {
   render() {
     var winWidth = window.innerWidth*0.83;
     const open = this.props.open === 'true' ? true : false;
-    const queryString = Object.assign({},this.props.query,{ openPrivateChat: false });
+    const queryString = Object.assign(
+                          {},
+                          this.context.location.query,
+                          { openPrivateChat: false }
+                        );
     const closeDrawerButton =
     <IconButton
       linkButton ={true}
       containerElement = {
         <Link to={{
-            pathname: this.props.pathname,
+            pathname: this.context.location.pathname,
             query: queryString
           }}/>
         }
@@ -54,12 +58,15 @@ class PrivateChatDrawer extends React.Component {
               />
           </div>
           <PrivateChatContainer
-            messageID = {this.props.id}
+            messageID = {this.context.location.query.messageID}
           />
         </Drawer>
       </div>
   )
   }
 }
+PrivateChatDrawer.contextTypes = {
+    location: React.PropTypes.object
+ }
 
 export default PrivateChatDrawer;

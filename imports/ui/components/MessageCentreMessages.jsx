@@ -25,6 +25,11 @@ import TimeSince from './TimeSince.jsx';
 
 const MessageCentreMessages = React.createClass({
 
+  contextTypes : {
+    router: React.PropTypes.object,
+    location: React.PropTypes.object,
+  },
+
   getInitialState(){
     return{
       openNav: false,
@@ -36,7 +41,6 @@ const MessageCentreMessages = React.createClass({
     if(props.user != ''){
       this.setState({userCurr:props.user, openNav:true});
     }
-
   },
 
   getOtherUser(users, currentUser) {
@@ -59,7 +63,7 @@ const MessageCentreMessages = React.createClass({
             : ''
           }
           onTouchTap={
-            this.openPrivateMessage()
+            this.openPrivateMessage(thread._id)
           }
           primaryText={otherUser}
           secondaryText={
@@ -82,7 +86,22 @@ const MessageCentreMessages = React.createClass({
     }
   },
 
-  openPrivateMessage: function() {
+  openPrivateMessage: function(messageID) {
+    return function () {
+      const queryString = Object.assign(
+                            {},
+                            this.context.location.query,
+                            { openPrivateChat: true,
+                              messageID : messageID,
+                              openMessageCentre: true
+                            }
+                          );
+      this.context.router.pushState(
+                            this.context.location,
+                            this.context.location.path,
+                            queryString
+                          )
+    }.bind(this);
   },
 
   // compoentWillUpdate(){

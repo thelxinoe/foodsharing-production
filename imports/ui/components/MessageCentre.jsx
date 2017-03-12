@@ -13,9 +13,14 @@ import {
 import MessageCentreMessagesContainer from '../containers/MessageCentreMessagesContainer'
 
 class MessageCentre extends React.Component {
+
   render() {
     const open = this.props.open === 'true' ? true : false;
-    const queryString = Object.assign({},this.props.query,{ openMessageCentre: false });
+    const queryString = Object.assign(
+                          {},
+                          this.context.location.query,
+                          { openMessageCentre: false }
+                        );
     const closeDrawerButton =
     <IconButton
       linkButton ={true}
@@ -52,5 +57,9 @@ class MessageCentre extends React.Component {
     )
   }
 }
+
+MessageCentre.contextTypes = {
+    location: React.PropTypes.object
+ }
 
 export default MessageCentre;

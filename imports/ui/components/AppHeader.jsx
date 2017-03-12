@@ -80,7 +80,11 @@ const tabStyle = {
 const AppHeader = React.createClass({
 
   contextTypes: {
-    router: React.PropTypes.object
+    router: React.PropTypes.object,
+  },
+
+  childContextTypes: {
+    location: React.PropTypes.object
   },
 
   getInitialState() {
@@ -90,7 +94,14 @@ const AppHeader = React.createClass({
       openLogMess: false,
       filter: ''
     }
-},
+  },
+
+  getChildContext() {
+    return {
+      location: this.props.location
+    }
+  },
+
 
   filterList(event) {
     this.setState({filter: event});
@@ -321,13 +332,10 @@ const AppHeader = React.createClass({
                             </div>
 
                   <MessageCentre
-                    pathname={this.props.location.pathname}
                     open={this.props.location.query.openMessageCentre}
                   />
                   <PrivateChatDrawer
-                    pathname={this.props.location.pathname}
                     open={this.props.location.query.openPrivateChat}
-                    id={this.props.location.query.privateChatID}
                   />
                   <Snackbar
                     open={this.state.openLogMess}

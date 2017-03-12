@@ -17,7 +17,7 @@ const PrivateChatContainer = createContainer(({ messageID }) => {
   const messageThreadExists = !loading && !!messageThread
 
   return { loading,
-           messageThread : messageThreadExists ? messageThread.fetch() : [],
+           messageThread : messageThreadExists ? messageThread : [],
            user };
 }, PrivateChat);
 
