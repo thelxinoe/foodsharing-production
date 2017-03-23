@@ -19,14 +19,14 @@ import {
 	grey50
 } from 'material-ui/styles/colors';
 
+import PopUp from '/imports/ui/components/Tools/PopUp.jsx'
+
 const userAccounts = React.createClass({ 
 
 	getInitialState(){
 		return{
 			username: '',
 			password: '',
-			openErrPop: false,
-			errPopMess: ''
 		}
 	},
 
@@ -41,15 +41,8 @@ const userAccounts = React.createClass({
 	},
 
 	loginFail(err){
-		var that = this;
-		loginF = function (event) {
-			if(err == "close"){
-				that.setState({openErrPop: false})
-			}else{
-				that.setState({errPopMess: err, openErrPop: true, username: '', password: ''})
-			}
-		}
-		return loginF
+		console.log("loginFail called..");
+		<PopUp text={err} modal={false} />
 	},
 
 	handleLogin(){
@@ -58,8 +51,10 @@ const userAccounts = React.createClass({
 		var username = this.state.username;
 		var that = this;
 		if(pass !== '' && username !== ''){
+			console.log("meteor login..")
 			Meteor.loginWithPassword(username, pass, function(err) {
   				if (err) {
+  					console.log("Login failed " + err.message)
 			    	that.loginFail(err.message);
 				}else{
 			  	console.log("Successful Login!")
@@ -84,13 +79,6 @@ const userAccounts = React.createClass({
 
 	render : function () {
 		var haveAcc = this.state.haveAcc;
-		const errActions = [
-	    <RaisedButton
-		label="ok"
-		secondary={true}
-		onTouchTap={this.loginFail("close")}
-	    />,
-	];
 	  	return(	
 			<div style={{height: '100%', width: '100%'}}>
 				<div>
