@@ -39,4 +39,7 @@ jspm_packages
 *#*
 *~*
 
+#ignore magic keys
+development.json
+
 .meteor/local
