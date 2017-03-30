@@ -20,14 +20,6 @@ const MapView = React.createClass({
 
     }
   },
-  //
-  // getMeteorData() {
-  //   return {
-  //     loaded: GoogleMaps.loaded(),
-  //     mapOptions: GoogleMaps.loaded() && this._mapOptions(),
-  //     foodItems: FoodItemsC.find({}).fetch()
-  //   };
-  // },
 
   _mapOptions() {
     return {
@@ -38,8 +30,6 @@ const MapView = React.createClass({
 
   render() {
 
-    console.log('proploaded',this.props.loaded);
-    console.log('stateloaded',this.state.loaded);
     if (this.props.loaded){
       return <GoogleMap
         name="mymap"
