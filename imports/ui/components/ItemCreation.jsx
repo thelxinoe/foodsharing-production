@@ -77,15 +77,11 @@ const ItemCreation = React.createClass({
             },
             address: location.address,
             completedIndex: 2
-        })
-        console.log(location)
-
+        });
     },
 
     handleSubmit(item) {
-
-        this.setState({completedIndex: 3})
-
+        this.setState({completedIndex: 3});
     },
 
     genStepButtons(step) {
