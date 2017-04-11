@@ -1,5 +1,6 @@
 import { Mongo } from 'meteor/mongo';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+import { Images } from '../Images/Images'
 
 // class ImageItemsCollection extends Mongo.Collection {
 //     insert(doc, callback){
@@ -23,11 +24,8 @@ ImageItems.deny({
 
 //Schema can be extended to validate data
 ImageItems.schema = new SimpleSchema({
-  imageURL:{
+  imageID:{
     type:String,
-  },
-  foodDescription:{
-      type:String,
   },
   username:{
       type:String,
@@ -48,10 +46,15 @@ ImageItems.schema = new SimpleSchema({
 ImageItems.attachSchema(ImageItems.schema);
 
 ImageItems.publicFields = {
-    imageURL:1,
-    foodDescription:1,
+    imageID:1,
     username:1,
     createdAt:1,
     location:1,
     totalItems:1,
 };
+
+ImageItems.helpers({
+  image(){
+    return Images.findOne(this.imageID);
+  }
+})

@@ -33,8 +33,11 @@ class FoodItemList extends React.Component{
         <Card key={foodItem._id}>
           <CardHeader
             title={foodItem.foodName}
-            subtitle={<PortionImages portions={foodItem.portions} portionsLeft={foodItem.portionsLeft} />}
-            avatar={foodItem.imageURL}
+            subtitle={<PortionImages
+                        portions={foodItem.portions}
+                        portionsLeft={foodItem.portionsLeft}
+                      />}
+            avatar={foodItem.image().url({store: 'thumbs'})}
             actAsExpander={true}
             showExpandableButton={true}
             />

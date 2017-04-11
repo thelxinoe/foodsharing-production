@@ -22,9 +22,9 @@ Messages.remove({});
 
 
 images = [
-  "http://images.mentalfloss.com/sites/default/files/styles/article_640x430/public/istock_000050960496_medium.jpg",
-  "http://ichef.bbci.co.uk/news/660/cpsprodpb/1325A/production/_88762487_junk_food.jpg",
-  "http://www.foodmanufacture.co.uk/var/plain_site/storage/images/publications/food-beverage-nutrition/foodmanufacture.co.uk/npd/top-10-functional-food-trends/11097085-1-eng-GB/Top-10-functional-food-trends_strict_xxl.jpg"
+  "kdeWoezuFAoohsa7H",
+  "6pz8JTnfbqRryqKhw",
+  "Q6zLTSrFZ3kCpWEtH"
 ];
 users = ['tom0','tom1','tom2']
 var numPortions = 5;
@@ -33,8 +33,7 @@ var numFoodItems = 5;
 
 for (let j = 0; j < images.length; j++) {
   ImageItems.insert({
-    imageURL: images[j],
-    foodDescription: faker.lorem.sentence(),
+    imageID: images[j],
     username: users[j],
     totalItems: numFoodItems,
     location: {
@@ -51,7 +50,7 @@ for (let j = 0; j < images.length; j++) {
         const currUser = users[userNum].username;
         const nextUser = users[(userNum+1)%numUsers].username;
         Messages.insert({
-          imageID:id,
+          imageItemID:id,
           sharedBy:currUser,
           requestedBy:nextUser,
           seenBy:[nextUser],
@@ -80,8 +79,8 @@ for (let j = 0; j < images.length; j++) {
       //Insert the food items and comments
       for (let k = 0; k < numFoodItems; k++) {
         FoodItems.insert({
-          imageID: id,
-          imageURL: images[j],
+          imageItemID: id,
+          imageID: images[j],
           foodName: faker.lorem.sentence(),
           username: users[j],
           portions: numPortions,

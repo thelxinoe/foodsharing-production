@@ -1,5 +1,6 @@
 import { Mongo } from 'meteor/mongo';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+import { Images } from '../Images/Images'
 
 export const FoodItems = new Mongo.Collection('FoodItems');
 
@@ -10,10 +11,10 @@ FoodItems.deny({
 });
 
 FoodItems.schema = new SimpleSchema({
-  imageID:{
+  imageItemID:{
     type:SimpleSchema.RegEx.Id,
   },
-  imageURL:{
+  imageID:{
     type:String,
   },
   foodName:{
@@ -47,8 +48,8 @@ FoodItems.schema = new SimpleSchema({
 FoodItems.attachSchema(FoodItems.schema);
 
 FoodItems.publicFields = {
+  imageItemID:1,
   imageID:1,
-  imageURL:1,
   foodName:1,
   username:1,
   createdAt:1,
@@ -56,3 +57,9 @@ FoodItems.publicFields = {
   claims:1,
   comments:1,
 };
+
+FoodItems.helpers({
+  image(){
+    return Images.findOne(this.imageID);
+  }
+})

@@ -277,11 +277,7 @@ const AppHeader = React.createClass({
                       </div>
 
                       <div className="contentContain">
-                        {this.props.location.pathname.split('/')[1]=='FoodComments'?
-                          React.cloneElement(this.props.children, {
-                            openMessages: this.handleOpenMessage
-                          })
-                        :
+                        {
                         <Scrollbars
                           style={{
                             height: 350,

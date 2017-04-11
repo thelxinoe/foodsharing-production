@@ -14,7 +14,7 @@ import {
 import PhotoUpload from './PhotoUpload';
 import AddLocation from './AddLocation';
 import AddItem from './AddItem';
-import FoodItemList from './FoodItemList';
+import FoodItemListAddContainer from '../containers/FoodItemListAddContainer';
 
 const ItemCreation = React.createClass({
 
@@ -24,7 +24,7 @@ const ItemCreation = React.createClass({
             stepIndex: 0,
             completedIndex: 0,
 
-            imageID: '',
+            imageItemID: '',
             imagePreview:'',
 
             //For the snackbar
@@ -65,8 +65,8 @@ const ItemCreation = React.createClass({
         }
     },
 
-    onUpload(imageID) {
-        this.setState({imageID: imageID, completedIndex: 1})
+    onUpload(imageItemID) {
+        this.setState({imageItemID: imageItemID, completedIndex: 1})
     },
 
     onCoordSelection(location) {
@@ -148,8 +148,8 @@ const ItemCreation = React.createClass({
                           If you have multiple items, please add them seperatly!
                         </StepLabel>
                         <StepContent>
-                            <FoodItemList
-                              foodItemList={this.props.addedItems}
+                            <FoodItemListAddContainer
+                              imageItemIDFilter = {this.props.imageItemID}
                             />
                             <br/>
                             <AddItem handleSubmit={this.handleSubmit}/>

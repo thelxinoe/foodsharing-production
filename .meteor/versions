@@ -38,6 +38,7 @@ cfs:tempstore@0.1.5
 cfs:upload-http@0.0.20
 cfs:worker@0.1.4
 check@1.2.3
+dburles:collection-helpers@1.0.4
 dburles:google-maps@1.1.5
 ddp@1.2.5
 ddp-client@1.2.9
@@ -91,6 +92,7 @@ reactive-dict@1.1.8
 reactive-var@1.0.10
 reload@1.1.10
 retry@1.0.8
+reywood:publish-composite@1.4.2
 routepolicy@1.0.11
 service-configuration@1.0.10
 session@1.1.6

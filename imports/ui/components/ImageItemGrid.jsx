@@ -13,8 +13,8 @@ const styles = {
   },
   gridList: {
     width: '100%',
-    height: 200,
-    marginBottom: 12,
+    height: '100%',
+    overflowY: 'auto',
   },
   claim: {
     width: '100%',
@@ -36,11 +36,13 @@ const ImageItemGrid = React.createClass({
       <GridTile
         key={imageItem._id}
         onTouchTap={this.props.handleChange(imageItem._id)}
-        title={imageItem.foodDescription}
+        title={imageItem.totalItems + " items to share"}
         subtitle={this.calcTime(imageItem.createdAt)}
         >
-
-        <img src={imageItem.imageURL} />
+        {console.log(imageItem.image())}
+        <img
+          src={imageItem.image().url({store: 'images'})}
+        />
 
       </GridTile>
     ));

@@ -10,7 +10,7 @@ Messages.deny({
 });
 
 Messages.schema = new SimpleSchema({
-    imageID:{
+    imageItemID:{
       type:SimpleSchema.RegEx.Id,
     },
     sharedBy:{
@@ -40,7 +40,7 @@ Messages.schema = new SimpleSchema({
 Messages.attachSchema(Messages.schema);
 
 Messages.publicFields = {
-  imageID:1,
+  imageItemID:1,
   sharedBy:1,
   requestedBy:1,
   createdAt:1,

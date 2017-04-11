@@ -23,18 +23,18 @@ import {
 const GridListTab = React.createClass({
 
   getInitialState() {
-    return {value: 'grid', imageID: ''}
+    return {value: 'grid', imageItemID: ''}
   },
 
   handleTileChange(value) {
     var val = value;
     return (function() {
-      this.setState({imageID: val, value: 'list'});
+      this.setState({imageItemID: val, value: 'list'});
     }).bind(this)
   },
 
   handleChange(value) {
-    this.setState({value: value, imageID: ''});
+    this.setState({value: value, imageItemID: ''});
   },
 
   render: function() {
@@ -57,7 +57,7 @@ const GridListTab = React.createClass({
         }
         value="list">
         <FoodItemListContainer
-          imageIDFilter={this.state.imageID}/>
+          imageItemIDFilter={this.state.imageItemID}/>
       </Tab>
     </Tabs>
   );

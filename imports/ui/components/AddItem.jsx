@@ -1,9 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import Snackbar from 'material-ui/Snackbar';
+
+import NumberOptions from './NumberOptions'
 
 const AddItem = React.createClass({
 
@@ -12,22 +13,17 @@ const AddItem = React.createClass({
       foodName:'',
       prtNo:1,
       open:false
-
     }
   },
-
   setPrtNo(prtNo){
     this.setState({prtNo:prtNo});
   },
-
   handleName(event){
     this.setState({foodName:event.target.value});
   },
-
   handleRequestClose(){
     this.setState({open:false});
   },
-
   handleSubmit(){
     if((this.state.foodName == '')){
       this.setState({open:true});
@@ -37,7 +33,6 @@ const AddItem = React.createClass({
 
     }
   },
-
   render() {
     return (
       <div>
@@ -54,7 +49,7 @@ const AddItem = React.createClass({
         <br />
         <div className="textBox">
           Number of Portions:
-        <NumberOptionsState
+        <NumberOptions
           value={this.state.prtNo}
           options="20"
           optionChange={this.setPrtNo}
