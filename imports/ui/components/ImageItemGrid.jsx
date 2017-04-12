@@ -39,11 +39,9 @@ const ImageItemGrid = React.createClass({
         title={imageItem.totalItems + " items to share"}
         subtitle={this.calcTime(imageItem.createdAt)}
         >
-        {console.log(imageItem.image())}
         <img
           src={imageItem.image().url({store: 'images'})}
         />
-
       </GridTile>
     ));
 
