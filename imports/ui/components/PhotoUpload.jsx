@@ -5,7 +5,7 @@ import Snackbar from 'material-ui/Snackbar';
 import { Images } from '../../api/Images/Images';
 
 import { Meteor } from 'meteor/meteor';
-const readyMe = Meteor.subscribe('images');
+const images = Meteor.subscribe('images');
 
 const PhotoUpload = React.createClass({
 
@@ -26,7 +26,6 @@ const PhotoUpload = React.createClass({
       }
       this.setState({imageUpload:file[0].preview})
       Images.insert(file[0], callback.bind(this));
-      console.log(Images)
     },
 
     render() {

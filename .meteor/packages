@@ -30,3 +30,4 @@ cfs:standard-packages
 cfs:gridfs
 reywood:publish-composite
 dburles:collection-helpers
+mdg:validated-method

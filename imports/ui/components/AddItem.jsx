@@ -4,7 +4,7 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import Snackbar from 'material-ui/Snackbar';
 
-import NumberOptions from './NumberOptions'
+import NumberOptions from './NumberOptions';
 
 const AddItem = React.createClass({
 
@@ -30,7 +30,6 @@ const AddItem = React.createClass({
     }else{
       this.props.handleSubmit({name: this.state.foodName,portions:this.state.prtNo});
       this.setState({foodName:'',prtNo:1})
-
     }
   },
   render() {

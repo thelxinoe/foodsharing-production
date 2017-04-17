@@ -40,6 +40,7 @@ ImageItems.schema = new SimpleSchema({
   },
   totalItems:{
       type:Number,
+      defaultValue: 0,
   },
 });
 

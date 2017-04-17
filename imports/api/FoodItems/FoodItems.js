@@ -1,8 +1,17 @@
 import { Mongo } from 'meteor/mongo';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import { Images } from '../Images/Images'
+import { foodItemDenormalizer } from './foodItemDenormalizer';
 
-export const FoodItems = new Mongo.Collection('FoodItems');
+class FoodItemsCollection extends Mongo.Collection{
+  insert(doc, callback) {
+    const result = super.insert(doc, callback);
+    foodItemDenormalizer.afterInsertFoodItem(doc.imageItemID);
+    return result;
+  }
+}
+
+export const FoodItems = new FoodItemsCollection('FoodItems');
 
 FoodItems.deny({
   insert() { return true; },
