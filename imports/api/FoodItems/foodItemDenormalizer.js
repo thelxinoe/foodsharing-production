@@ -1,7 +1,7 @@
 import { ImageItems } from '../ImageItems/ImageItems';
 
-const foodItemDenormalizer = {
+export const foodItemDenormalizer = {
   afterInsertFoodItem(_id){
-    ImageItems.update({_id:_id}, {$inc, {totalItems:1}})
+    ImageItems.update({_id:_id}, {$inc: {totalItems:1}})
   }
 }

@@ -28,8 +28,8 @@ const AddItem = React.createClass({
     if((this.state.foodName == '')){
       this.setState({open:true});
     }else{
-      this.props.handleSubmit({name: this.state.foodName,portions:this.state.prtNo});
-      this.setState({foodName:'',prtNo:1})
+      this.props.handleSubmit({foodName: this.state.foodName,portions:this.state.prtNo});
+      this.setState({foodName:'',prtNo:1});
     }
   },
   render() {

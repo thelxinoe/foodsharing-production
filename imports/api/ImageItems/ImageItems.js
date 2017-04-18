@@ -2,17 +2,6 @@ import { Mongo } from 'meteor/mongo';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import { Images } from '../Images/Images'
 
-// class ImageItemsCollection extends Mongo.Collection {
-//     insert(doc, callback){
-//         const ourDoc = doc;
-//         ourDoc.createdAt = ourDoc.createdAt || new Date();
-//         const result = super.insert(ourDoc,callback);
-//         return result
-//     }
-
-// };
-
-//It's possible to implement custom collection commands if we need
 export const ImageItems = new Mongo.Collection('ImageItems');
 
 // Deny all client-side updates since we will be using methods to manage this collection

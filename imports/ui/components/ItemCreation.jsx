@@ -70,30 +70,35 @@ const ItemCreation = React.createClass({
   },
 
   onCoordSelection(location) {
+    const insertItem = {
+      imageID: this.state.imageID,
+      location: {
+        lat: location.latLng.lat(),
+        lng: location.latLng.lng()
+      },
+    }
+    const imageItemID = insertImageItem.call(
+                          insertItem
+                        )
     this.setState({
       latLng: {
         lat: location.latLng.lat(),
         lng: location.latLng.lng()
       },
       address: location.address,
-      completedIndex: 2
+      completedIndex: 2,
+      imageItemID: imageItemID
     });
   },
 
   handleSubmit({foodName, portions}) {
-    this.setState({completedIndex: 3});
-    if (!this.state.imageItemID){
-      insertItem = {
-
-      }
-      const imageItemID = insertImageItem.call(
-                            insertItem,
-
-                          )
-
-
+    const foodItem = {
+      imageItemID: this.state.imageItemID,
+      imageID: this.state.imageID,
+      foodName: foodName,
+      portions: portions,
     }
-
+    insertFoodItems.call(foodItem)
   },
 
   genStepButtons(step) {

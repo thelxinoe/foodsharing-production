@@ -4,7 +4,7 @@ class PortionImages extends React.Component {
 
   render () {
 
-    var pCla = this.props.portionsLeft;
+    var pCla = this.props.portions- this.props.portionsLeft;
     var pNum = this.props.portions - pCla;
     var x = [];
     for (i = 0; i < pNum; i++){
@@ -12,7 +12,8 @@ class PortionImages extends React.Component {
         <img
           key={i}
           className="carrotImg"
-          src="/imgs/carrot.png" />
+          src="/imgs/carrot.png"
+        />
       );
     }
     var z = [];
