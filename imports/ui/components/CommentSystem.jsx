@@ -45,7 +45,10 @@ const CommentSystem = React.createClass({
         commentText: '',
       }
     },
-
+    addComment(){
+      this.props.addComment(this.state.commentText);
+      this.setState({ commentText: '' });
+    },
     handleComment(event){
       this.setState({
         commentText : event.target.value,

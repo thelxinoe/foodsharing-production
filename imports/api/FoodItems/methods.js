@@ -19,7 +19,7 @@ export const insertFoodItems = new ValidatedMethod({
       type:Number,
     },
   }).validator(),
-  run({ imageItemID, imageID, foodName, portions }){  
+  run({ imageItemID, imageID, foodName, portions }){
     const user = Meteor.user()
     if (!user) {
       throw new Meteor.Error('api.lists.makePublic.notLoggedIn',
@@ -35,4 +35,34 @@ export const insertFoodItems = new ValidatedMethod({
     })
   }
 
+})
+
+export const insertFoodItemComment = new ValidatedMethod({
+    name: 'foodItem.comment.insert',
+    validate: new SimpleSchema({
+      foodItemID:{
+        type:SimpleSchema.RegEx.Id,
+      },
+      comment: {
+        type: String,
+      },
+    }).validator(),
+    run({ foodItemID, comment }){
+      const user = Meteor.user()
+      if (!user) {
+        throw new Meteor.Error('api.lists.makePublic.notLoggedIn',
+        'Must be logged in.');
+      }
+      FoodItems.update(
+        {_id:foodItemID},
+        {$push:{
+          comments: {
+            username: user.username,
+            comment : comment,
+            createdAt: new Date()
+          }
+        }
+      }
+    )
+  }
 })

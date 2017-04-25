@@ -1,10 +1,10 @@
 import React from 'react';
-import {browserHistory} from 'react-router';
+import { browserHistory } from 'react-router';
 
-import {Meteor} from 'meteor/meteor';
+import { Meteor } from 'meteor/meteor';
 
-import {Step, Stepper, StepLabel, StepContent} from 'material-ui/Stepper';
-import {Snackbar, RaisedButton, FlatButton} from 'material-ui';
+import { Step, Stepper, StepLabel, StepContent } from 'material-ui/Stepper';
+import { Snackbar, RaisedButton, FlatButton } from 'material-ui';
 
 import { insertImageItem } from '../../api/ImageItems/methods.js';
 import { insertFoodItems } from '../../api/FoodItems/methods.js';
@@ -57,7 +57,7 @@ const ItemCreation = React.createClass({
   },
 
   handlePrev() {
-    stepIndex = this.state.stepIndex;
+    const stepIndex = this.state.stepIndex;
     if (stepIndex > 0) {
       this.setState({
         stepIndex: stepIndex - 1

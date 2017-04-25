@@ -15,6 +15,7 @@ import {
 
 import FoodItemList from './FoodItemList';
 import CommentSystem from './CommentSystem';
+import { insertFoodItemComment } from '../../api/FoodItems/methods';
 
 const styles = {
   claim: {
@@ -39,11 +40,15 @@ const styles = {
 };
 
 const FoodItemComments = React.createClass({
-
-    addComment(event) {
+    addComment(comment) {
+      insertFoodItemComment.call({
+        foodItemID: this.props.params.foodID,
+        comment: comment,
+      });
     },
 
     render : function () {
+      console.log(this.props)
       return (
         this.props.loading ?
         <div>'loading...'</div>
@@ -54,7 +59,7 @@ const FoodItemComments = React.createClass({
               user={this.props.user}
           />
         <CommentSystem
-          comments={this.props.foodItem.comment}
+          comments={this.props.foodItem.comments}
           addComment={this.addComment}
         />
 
