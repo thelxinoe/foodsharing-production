@@ -22,7 +22,8 @@ import { Scrollbars } from 'react-custom-scrollbars';
 import ContentSend from 'material-ui/svg-icons/content/send';
 
 import TimeSince from './TimeSince';
-import CommentSystem from './CommentSystem'
+import CommentSystem from './CommentSystem';
+import { insertMessage } from '../../api/Messages/methods';
 
 import {
   lightGreenA200,
@@ -59,25 +60,9 @@ const styles = {
 
 const PrivateChat = React.createClass({
 
-  getInitialState(){
-    return{
-      messageText:"",
-    }
-  },
-
-  messagesSeen : function (){
-  },
-
-  addMessage(event){
-  },
-
-  deleteMessage(){
-  },
-
-  handleComment(event){
-    this.setState({
-      messageText : event.target.value,
-    });
+  addComment(comment){
+    const messageID = this.props.messageID;
+    insertMessage.call({messageID, comment})
   },
 
   componentWillUpdate: function() {
