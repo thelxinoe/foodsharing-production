@@ -66,3 +66,35 @@ export const insertFoodItemComment = new ValidatedMethod({
     )
   }
 })
+
+export const makeFoodItemClaim = new ValidatedMethod({
+  name: 'foodItem.claim',
+  validate: new SimpleSchema({
+    foodItemID:{
+      type:SimpleSchema.RegEx.Id,
+    },
+    requested: {
+      type: Number,
+    },
+  }).validator(),
+  run({foodItemID, requested}){
+    const user = Meteor.user()
+    if (!user) {
+      throw new Meteor.Error('api.lists.makePublic.notLoggedIn',
+      'Must be logged in.');
+    }
+    FoodItems.update(
+      {_id:foodItemID},
+      {$push: {
+        claims: {
+          username: user.username,
+          requested: requested,
+          accepted: 0,
+          createdAt: new Date(),
+          rejected: false,
+        }
+      }}
+    )
+
+  }
+})

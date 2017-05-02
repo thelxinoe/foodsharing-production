@@ -3,20 +3,23 @@ import React from 'react';
 import { FlatButton, Snackbar } from 'material-ui';
 
 import NumberOptions from './NumberOptions';
+import { makeFoodItemClaim } from '../../api/FoodItems/methods';
 
 const ClaimControl = React.createClass({
 
 	getInitialState() {
 		return {
-			claimAccepted: false,
 			claimSnackbar: false,
-			portionClaim: 0,
+			portionClaim: 1,
 			claimMessage: "Please choose some portions to claim."
 		};
 	},
 
 	makeClaim: function() {
-		//put the actual claims code here
+		makeFoodItemClaim.call({
+			foodItemID: this.props.foodID,
+			requested: this.state.portionClaim,
+		})
 	},
 
 	getPortionClaim(value){
@@ -30,17 +33,14 @@ const ClaimControl = React.createClass({
 	render() {
 		return (
 			<div>
-
 				<NumberOptions
 					options={this.props.portionsLeft}
 					optionChange={this.getPortionClaim}
 					/>
-
 				<FlatButton
 					label="Claim"
 					primary={true}
 					onTouchTap={this.makeClaim}/>
-
 				<Snackbar
 					open={this.state.claimSnackbar}
 					message={this.state.claimMessage}
@@ -48,10 +48,8 @@ const ClaimControl = React.createClass({
 					action="Close"
 					onTouchTap={this.handleSnackbarClose}
 					onRequestClose={this.handleSnackbarClose}/>
-
 			</div>
 		);
 	}
-
 });
 export default ClaimControl;

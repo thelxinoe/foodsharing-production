@@ -76,7 +76,7 @@ class FoodItemList extends React.Component{
               }
               <div className="buttons-item">
                 <ImagePopOver
-                  image={foodItem.imageURL}
+                  image={foodItem.image().url({store: 'images'})}
                   title={foodItem.foodName}
                   />
               </div>
