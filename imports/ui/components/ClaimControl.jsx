@@ -16,10 +16,11 @@ const ClaimControl = React.createClass({
 	},
 
 	makeClaim: function() {
+		this.props.closeClaim();
 		makeFoodItemClaim.call({
 			foodItemID: this.props.foodID,
 			requested: this.state.portionClaim,
-		})
+		});
 	},
 
 	getPortionClaim(value){

@@ -23,6 +23,7 @@ class ClaimsButton extends React.Component {
       <ClaimControl
         foodID={this.props.foodID}
         portionsLeft={this.props.portionsLeft}
+        closeClaim={this.closeClaim}
       />,
       <FlatButton
         label="Cancel"
