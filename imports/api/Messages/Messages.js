@@ -23,6 +23,10 @@ Messages.schema = new SimpleSchema({
       type: Date,
       defaultValue: new Date(),
     },
+    items:{
+      type: [String],
+      optional: true
+    },
     messages:{
       type:[Object],
       optional:true,

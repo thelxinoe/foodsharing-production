@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import { Dialog, FlatButton } from 'material-ui';
 import ActionShoppingCart from 'material-ui/svg-icons/action/shopping-cart';
+import { makeFoodItemClaim } from '../../api/FoodItems/methods';
 
 import ClaimControl from './ClaimControl';
 
@@ -13,7 +14,17 @@ class ClaimsButton extends React.Component {
     };
     this.openClaim = this.openClaim.bind(this);
     this.closeClaim = this.closeClaim.bind(this);
+    this.makeClaim = this.makeClaim.bind(this);
+
   }
+
+  makeClaim() {
+		this.props.closeClaim();
+		makeFoodItemClaim.call({
+			foodItemID: this.props.foodID,
+			requested: this.state.portionClaim,
+		});
+	}
 
   openClaim() { this.setState({ claimOpen: true }); }
   closeClaim() { this.setState({ claimOpen: false }); }
@@ -24,6 +35,7 @@ class ClaimsButton extends React.Component {
         foodID={this.props.foodID}
         portionsLeft={this.props.portionsLeft}
         closeClaim={this.closeClaim}
+        makeClaim={this.makeClaim}
       />,
       <FlatButton
         label="Cancel"

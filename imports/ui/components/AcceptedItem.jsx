@@ -10,12 +10,7 @@ import CommunicationChat from 'material-ui/svg-icons/communication/chat';
 
 class AcceptedItem extends React.Component {
 
-  openChat(){
-    console.log(this).bind(this)
-  }
-
   render() {
-    console.log(this)
     return (<div>
       <ListItem
         primaryText={this.props.claim.username}

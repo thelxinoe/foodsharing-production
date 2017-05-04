@@ -26,6 +26,7 @@ const Requests = React.createClass({
                   key={claim.username}
                   foodID={this.props.foodID}
                   claim={claim}
+                  imageItemID={this.props.imageItemId}
                 />
                 :
                 <AcceptedItem

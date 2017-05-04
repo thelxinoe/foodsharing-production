@@ -3,7 +3,6 @@ import React from 'react';
 import { FlatButton, Snackbar } from 'material-ui';
 
 import NumberOptions from './NumberOptions';
-import { makeFoodItemClaim } from '../../api/FoodItems/methods';
 
 const ClaimControl = React.createClass({
 
@@ -13,14 +12,6 @@ const ClaimControl = React.createClass({
 			portionClaim: 1,
 			claimMessage: "Please choose some portions to claim."
 		};
-	},
-
-	makeClaim: function() {
-		this.props.closeClaim();
-		makeFoodItemClaim.call({
-			foodItemID: this.props.foodID,
-			requested: this.state.portionClaim,
-		});
 	},
 
 	getPortionClaim(value){
@@ -41,7 +32,7 @@ const ClaimControl = React.createClass({
 				<FlatButton
 					label="Claim"
 					primary={true}
-					onTouchTap={this.makeClaim}/>
+					onTouchTap={this.props.makeClaim}/>
 				<Snackbar
 					open={this.state.claimSnackbar}
 					message={this.state.claimMessage}

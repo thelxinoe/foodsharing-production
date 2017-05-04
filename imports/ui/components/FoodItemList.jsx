@@ -45,6 +45,7 @@ class FoodItemList extends React.Component{
             foodItem.claims ?
             <CardText>
               <Requests
+                imageItemId={foodItem.imageItemID}
                 foodID={foodItem._id}
                 claims={foodItem.claims}
               />

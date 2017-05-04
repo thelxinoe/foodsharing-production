@@ -8,11 +8,22 @@ import {
 import ClaimControl from './ClaimControl';
 
 class AcceptRequest extends React.Component {
-    render() {
+    cosntructor(){
+        super();
+        this.makeClaim = this.makeClaim.bind(this);
+    }
 
+    makeClaim() {
+
+    }
+
+    render() {
+        console.log(this)
         const actions = [
           <ClaimControl
+            
             portionsLeft={this.props.claim.requested}
+
           />,
           <FlatButton
             label="Cancel"
