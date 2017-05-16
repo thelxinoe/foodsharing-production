@@ -14,12 +14,17 @@ export default class PopUp extends React.Component{
 	constructor(props) {
 		super(props);
 		this.state = {
-				open: true,
+				open: false,
 		};
 	}
 
   handleClose(){
     this.setState({open: false});
+  }
+
+  handleOpen(){
+    this.setState({open: true});
+    console.log("pop up opened")
   }
 
   render() {
@@ -37,15 +42,16 @@ export default class PopUp extends React.Component{
     ];
 
     return (
-      <div>
+      <div style={{height: '100%', width: '100%'}}>
+      {this.handleOpen()}
         <Dialog
-          title={this.props.text}
+          title={this.props.tit}
           actions={actions}
           modal={this.props.modal}
           contentStyle={customContentStyle}
           open={this.state.open}
         >
-          Please try again...
+          {this.props.text}
         </Dialog>
       </div>
     );
