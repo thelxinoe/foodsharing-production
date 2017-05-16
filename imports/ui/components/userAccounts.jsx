@@ -41,8 +41,8 @@ const userAccounts = React.createClass({
 	},
 
 	loginFail(err){
-		console.log("loginFail called..");
-		<PopUp text={err} modal={false} />
+		var uppop = <PopUp tit={err} text={"Please try again..."} modal={false} />;
+		return uppop
 	},
 
 	handleLogin(){
@@ -53,13 +53,13 @@ const userAccounts = React.createClass({
 		if(pass !== '' && username !== ''){
 			console.log("meteor login..")
 			Meteor.loginWithPassword(username, pass, function(err) {
-  				if (err) {
+  				if (err){
   					console.log("Login failed " + err.message)
 			    	that.loginFail(err.message);
 				}else{
-			  	console.log("Successful Login!")
-			  	browserHistory.push('/');
-			  }
+					console.log("Successful Login!")
+					browserHistory.push('/');
+				}
 			});
 		}else{
 			console.log("put a password & username in!")
@@ -79,7 +79,7 @@ const userAccounts = React.createClass({
 
 	render : function () {
 		var haveAcc = this.state.haveAcc;
-	  	return(	
+		return(	
 			<div style={{height: '100%', width: '100%'}}>
 				<div>
 					<div className="loginContain">
