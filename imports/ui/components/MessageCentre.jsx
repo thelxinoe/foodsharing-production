@@ -41,10 +41,6 @@ class MessageCentre extends React.Component {
             iconElementLeft={
               closeDrawerButton
             }
-            // targetOrigin={{
-            //   horizontal: 'right',
-            //   vertical: 'top'
-            // }}
         />
         </div>
         <MessageCentreMessagesContainer />

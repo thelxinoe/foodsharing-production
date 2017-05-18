@@ -60,10 +60,11 @@ const FoodItemComments = React.createClass({
         this.props.loading ?
         <div>'loading...'</div>
         :
-        <div className="fillDiv">
+          <div>
             <FoodItemList
               foodItemList={[this.props.foodItem]}
               user={this.props.user}
+              expandable={false}
             />
           <div>
             <Scrollbars style={{ height: 215, position: 'relative' }}>
@@ -91,8 +92,8 @@ const FoodItemComments = React.createClass({
               </div>
             </Paper>
           </div>
-
         </div>
+
       );
     }
   });

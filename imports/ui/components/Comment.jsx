@@ -16,8 +16,8 @@ render(){
 			:
 				<div style={{height: "10px"}}></div>
 			}
-			<div className={container}>
-				<div className={item}>
+			<div className={container} key={Math.random()}>
+				<div className={item} key={Math.random()}>
 					{ this.props.same ?
 						<div style={{height: "4px", width: "40px"}}>
 						</div>
@@ -29,7 +29,7 @@ render(){
 						</div>
 					}
 				</div>
-				<div className={item}>
+				<div className={item} key={Math.random()}>
 					{this.props.comment}
 				</div>
 			</div>

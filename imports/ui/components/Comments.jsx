@@ -12,6 +12,7 @@ class Comments extends React.Component {
       var same = false;
       if(currUsr === prvUsr){
         same = true;
+        console.log(same)
       }else{prvUsr = currUsr;}
       prvUsr = currUsr;
       return(
@@ -20,6 +21,7 @@ class Comments extends React.Component {
           date={<TimeSince time={comment.createdAt} />}
           username={currUsr}
           same={same}
+          key={Math.random()}
         />
       )
     });

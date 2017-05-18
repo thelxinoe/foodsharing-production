@@ -5,8 +5,9 @@ import { Router, Route, Link, IndexRoute, browserHistory } from 'react-router';
 
 import {
 	TextField,
-	RaisedButton
-
+	RaisedButton,
+	FlatButton,
+	Dialog
 } from 'material-ui'
 
 import { 
@@ -19,6 +20,12 @@ import {
 	grey50
 } from 'material-ui/styles/colors';
 
+const customContentStyle = {
+  width: '100%',
+  maxWidth: 'none',
+};
+
+
 import PopUp from '/imports/ui/components/Tools/PopUp.jsx'
 
 const userAccounts = React.createClass({ 
@@ -27,6 +34,7 @@ const userAccounts = React.createClass({
 		return{
 			username: '',
 			password: '',
+			open: false
 		}
 	},
 
@@ -41,8 +49,8 @@ const userAccounts = React.createClass({
 	},
 
 	loginFail(err){
-		var uppop = <PopUp tit={err} text={"Please try again..."} modal={false} />;
-		return uppop
+		this.setState({tit: err})
+		this.setState({open: true})
 	},
 
 	handleLogin(){
@@ -77,10 +85,27 @@ const userAccounts = React.createClass({
 		browserHistory.push('/');
 	},
 
+
+  handleClose(){
+    this.setState({open: false});
+  },
+
+  handleOpen(){
+    this.setState({open: true});
+  },
+
 	render : function () {
+
+		    const actions = [
+      <FlatButton
+        label="OK"
+        primary={true}
+        onTouchTap={this.handleClose}
+      />,
+    ];
 		var haveAcc = this.state.haveAcc;
 		return(	
-			<div style={{height: '100%', width: '100%'}}>
+			<div id="flarge" style={{height: '100%', width: '100%'}}>
 				<div>
 					<div className="loginContain">
 						<div className="loginField">
@@ -121,6 +146,15 @@ const userAccounts = React.createClass({
 						</div>
 					</div>
 				</div>
+				 <Dialog
+          title={this.state.tit}
+          actions={actions}
+          modal={false}
+          contentStyle={customContentStyle}
+          open={this.state.open}
+        >
+          {this.state.text}
+        </Dialog>
 			</div>
 	  	);
 	  }

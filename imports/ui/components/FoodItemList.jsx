@@ -18,6 +18,18 @@ import TimeSince from './TimeSince';
 import PortionImages from './PortionImages';
 import Requests from './Requests';
 
+
+
+const smallButton = {
+  width: '25px',
+  height: '25px',
+  margin: '-175px',
+  position: 'relative',
+  top:' 50%',
+  transform: 'translateY(-50%)',
+};
+
+
 class FoodItemList extends React.Component{
 
   constructor() {
@@ -56,10 +68,10 @@ class FoodItemList extends React.Component{
           :
           ''
           }
-          <CardActions expandable={true}>
+          <CardActions expandable={this.props.expandable}>
             <div className="buttons-container">
               <div className="buttons-item">
-                <ActionSchedule style="smallButton" />
+                <ActionSchedule style={smallButton} />
                 <TimeSince time={foodItem.createdAt}/>
               </div>
               {this.props.user == foodItem.username?
