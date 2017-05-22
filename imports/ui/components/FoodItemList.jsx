@@ -43,8 +43,7 @@ class FoodItemList extends React.Component{
 
   genTit(tit){
     if (tit.lenth > 100) {
-     var shortTit =  tit.substring(0, yourString.length() / 2));
-     var titty = shortTit + "...";
+     var shortTit =  tit.substring(0, 100)
     }
     return titty;
   }

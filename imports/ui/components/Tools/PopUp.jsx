@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
-
-<<<<<<< HEAD
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
@@ -18,14 +16,11 @@ import {
   grey50,
 } from 'material-ui/styles/colors';
 
-=======
->>>>>>> dd1ea7fcad1b57575b08895e53f06284413b8a43
 const customContentStyle = {
   width: '100%',
   maxWidth: 'none',
 };
 
-<<<<<<< HEAD
 const muiTheme = getMuiTheme({
   palette: {
     primary1Color: lightGreenA200,
@@ -46,18 +41,14 @@ const muiTheme = getMuiTheme({
     textColor: grey50
   }
 });
-=======
->>>>>>> dd1ea7fcad1b57575b08895e53f06284413b8a43
+
 
 export default class PopUp extends React.Component{
 	constructor(props) {
 		super(props);
 		this.state = {
-<<<<<<< HEAD
 				open: true,
-=======
 				open: false,
->>>>>>> dd1ea7fcad1b57575b08895e53f06284413b8a43
 		};
 	}
 
@@ -86,11 +77,10 @@ export default class PopUp extends React.Component{
 
     return (
       <div style={{height: '100%', width: '100%'}}>
-<<<<<<< HEAD
       <MuiThemeProvider muiTheme={muiTheme}>
-=======
+
       {this.handleOpen()}
->>>>>>> dd1ea7fcad1b57575b08895e53f06284413b8a43
+
         <Dialog
           title={this.props.tit}
           actions={actions}
@@ -100,10 +90,7 @@ export default class PopUp extends React.Component{
         >
           {this.props.text}
         </Dialog>
-<<<<<<< HEAD
         </MuiThemeProvider>
-=======
->>>>>>> dd1ea7fcad1b57575b08895e53f06284413b8a43
       </div>
     );
   }
