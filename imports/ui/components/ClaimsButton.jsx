@@ -32,9 +32,7 @@ class ClaimsButton extends React.Component {
   render() {
     const actions = [
       <ClaimControl
-        foodID={this.props.foodID}
         portionsLeft={this.props.portionsLeft}
-        closeClaim={this.closeClaim}
         makeClaim={this.makeClaim}
       />,
       <FlatButton

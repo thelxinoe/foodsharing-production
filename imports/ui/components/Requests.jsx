@@ -11,6 +11,7 @@ import AcceptedItem from './AcceptedItem';
 const Requests = React.createClass({
 
   render() {
+    console.log(this.props)
     return (
       <div>
         <List>

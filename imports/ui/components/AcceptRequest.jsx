@@ -7,23 +7,28 @@ import {
 
 import ClaimControl from './ClaimControl';
 
+import { createMessageClaim } from '../../api/Messages/methods';
+
 class AcceptRequest extends React.Component {
-    cosntructor(){
+    constructor(){
         super();
         this.makeClaim = this.makeClaim.bind(this);
     }
 
     makeClaim() {
-
+      this.props.toggle()
+      createMessageClaim.call({
+        imageItemID: this.props.imageItemID,
+        requestedBy: this.props.claim.username,
+      })
     }
 
     render() {
         console.log(this)
         const actions = [
           <ClaimControl
-            
             portionsLeft={this.props.claim.requested}
-
+            makeClaim={this.makeClaim}
           />,
           <FlatButton
             label="Cancel"

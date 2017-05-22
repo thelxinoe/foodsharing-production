@@ -34,16 +34,13 @@ export const insertMessage = new ValidatedMethod({
 }
 })
 
-export const createAppendMessageClaim = new ValidatedMethod({
+export const createMessageClaim = new ValidatedMethod({
   name: 'messages.claim.createAppend',
   validate: new SimpleSchema({
     imageItemID:{
       type:SimpleSchema.RegEx.Id,
     },
     requestedBy:{
-      type:String,
-    },
-    item:{
       type:String,
     },
   }).validator(),
@@ -54,19 +51,24 @@ export const createAppendMessageClaim = new ValidatedMethod({
         'api.FoodItem.makeFoodClaim.notLoggedIn',
         'Must be logged in.');
       }
-    const exists = Messages.find({
-      imageItemID,
-      requestedBy
-    }).count()
-    if (!!exists){
-      Messages.update({
-        imageItemID: imageItemID,
-        requestedBy: requestedBy
-      },
-      {
-        $push:
-          {items: item}
-      }
-    }
-    }
-  })
+      Messages.update(
+        {
+          imageItemID: imageItemID,
+          requestedBy: requestedBy,
+        },
+        {
+          $set:
+          {
+            imageItemID: imageItemID,
+            sharedBy: user.username,
+            requestedBy: requestedBy,
+            seenBy: [user.username],
+            createdAt: new Date(),
+          }
+        },
+        {
+          upsert: true,
+        }
+    );
+  }
+})

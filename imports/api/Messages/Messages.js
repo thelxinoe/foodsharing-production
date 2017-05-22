@@ -23,10 +23,6 @@ Messages.schema = new SimpleSchema({
       type: Date,
       defaultValue: new Date(),
     },
-    items:{
-      type: [String],
-      optional: true
-    },
     messages:{
       type:[Object],
       optional:true,
@@ -38,6 +34,7 @@ Messages.schema = new SimpleSchema({
     lastComment:{
       type: Date,
       defaultValue: new Date(),
+      optional: true,
     },
 });
 
