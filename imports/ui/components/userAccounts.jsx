@@ -5,9 +5,14 @@ import { Router, Route, Link, IndexRoute, browserHistory } from 'react-router';
 
 import {
 	TextField,
+<<<<<<< HEAD
 	RaisedButton,
 	FlatButton,
 	Dialog
+=======
+	RaisedButton
+
+>>>>>>> dd1ea7fcad1b57575b08895e53f06284413b8a43
 } from 'material-ui'
 
 import { 
@@ -20,12 +25,15 @@ import {
 	grey50
 } from 'material-ui/styles/colors';
 
+<<<<<<< HEAD
 const customContentStyle = {
   width: '100%',
   maxWidth: 'none',
 };
 
 
+=======
+>>>>>>> dd1ea7fcad1b57575b08895e53f06284413b8a43
 import PopUp from '/imports/ui/components/Tools/PopUp.jsx'
 
 const userAccounts = React.createClass({ 
@@ -34,7 +42,10 @@ const userAccounts = React.createClass({
 		return{
 			username: '',
 			password: '',
+<<<<<<< HEAD
 			open: false
+=======
+>>>>>>> dd1ea7fcad1b57575b08895e53f06284413b8a43
 		}
 	},
 
@@ -49,8 +60,13 @@ const userAccounts = React.createClass({
 	},
 
 	loginFail(err){
+<<<<<<< HEAD
 		this.setState({tit: err})
 		this.setState({open: true})
+=======
+		var uppop = <PopUp tit={err} text={"Please try again..."} modal={false} />;
+		return uppop
+>>>>>>> dd1ea7fcad1b57575b08895e53f06284413b8a43
 	},
 
 	handleLogin(){
@@ -85,6 +101,7 @@ const userAccounts = React.createClass({
 		browserHistory.push('/');
 	},
 
+<<<<<<< HEAD
 
   handleClose(){
     this.setState({open: false});
@@ -106,6 +123,12 @@ const userAccounts = React.createClass({
 		var haveAcc = this.state.haveAcc;
 		return(	
 			<div id="flarge" style={{height: '100%', width: '100%'}}>
+=======
+	render : function () {
+		var haveAcc = this.state.haveAcc;
+		return(	
+			<div style={{height: '100%', width: '100%'}}>
+>>>>>>> dd1ea7fcad1b57575b08895e53f06284413b8a43
 				<div>
 					<div className="loginContain">
 						<div className="loginField">
@@ -146,6 +169,7 @@ const userAccounts = React.createClass({
 						</div>
 					</div>
 				</div>
+<<<<<<< HEAD
 				 <Dialog
           title={this.state.tit}
           actions={actions}
@@ -155,6 +179,8 @@ const userAccounts = React.createClass({
         >
           {this.state.text}
         </Dialog>
+=======
+>>>>>>> dd1ea7fcad1b57575b08895e53f06284413b8a43
 			</div>
 	  	);
 	  }
