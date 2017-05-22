@@ -35,32 +35,36 @@ class FoodItemList extends React.Component{
     super();
     this.deleteFoodItem = this.deleteFoodItem.bind(this);
   }
-  test(){
-    console.log(this.props)
-    console.log(this.props.comments)
-  }
 
   deleteFoodItem(item){
     //should probably do some code here
     this.deleteFoodItem(item);
   }
 
+  genTit(tit){
+    if (tit.lenth > 100) {
+     var shortTit =  tit.substring(0, yourString.length() / 2));
+     var titty = shortTit + "...";
+    }
+    return titty;
+  }
+
   renderItems(){
     var xCount = 1;
     var location = "how did i get here?"
-    this.test();
+
     return this.props.foodItemList.map((foodItem) => {
       xCount ++;
       return (
         <Card key={foodItem._id + xCount}>
           <CardHeader
-            title={foodItem.foodName}
+            title={this.genTit(foodItem.foodName)}
             subtitle={<PortionImages portions={foodItem.portions} portionsLeft={foodItem.portionsLeft} />}
             avatar={foodItem.imageURL}
             actAsExpander={false}
             showExpandableButton={false}
-            onTouchTap={console.log("hello!")}
-            />
+            
+          />
           {this.props.renderClaims ?
             foodItem.claims ?
             <CardText>
