@@ -43,14 +43,18 @@ class FoodItemList extends React.Component{
 
   genTit(tit){
     if (tit.lenth > 100) {
-     var shortTit =  tit.substring(0, 100)
+     var titty =  tit.substring(0, 100) + "...";
     }
+    console.log(titty)
     return titty;
+  }
+
+  test(){
+    console.log("oi!")
   }
 
   renderItems(){
     var xCount = 1;
-    var location = "how did i get here?"
 
     return this.props.foodItemList.map((foodItem) => {
       xCount ++;
@@ -62,7 +66,7 @@ class FoodItemList extends React.Component{
             avatar={foodItem.imageURL}
             actAsExpander={false}
             showExpandableButton={false}
-            
+            onClick={this.test()}
           />
           {this.props.renderClaims ?
             foodItem.claims ?
