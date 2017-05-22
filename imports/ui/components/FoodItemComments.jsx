@@ -55,8 +55,15 @@ const FoodItemComments = React.createClass({
     addComment(event) {
     },
 
+    calcScreenH(){
+      var height = window.innerHeight - 446;
+      return height;
+    },
+
+
     render : function () {
       return (
+
         this.props.loading ?
         <div>'loading...'</div>
         :
@@ -65,9 +72,10 @@ const FoodItemComments = React.createClass({
               foodItemList={[this.props.foodItem]}
               user={this.props.user}
               expandable={false}
+              comments={true}
             />
           <div>
-            <Scrollbars style={{ height: 215, position: 'relative' }}>
+            <Scrollbars style={{ height: this.calcScreenH(), position: 'relative' }}>
               <div>
                 <Comments comments={this.props.foodItem.comments} />
               </div>

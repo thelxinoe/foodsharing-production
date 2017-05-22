@@ -2,6 +2,21 @@ import React from 'react';
 
 Comment = React.createClass({
 
+	tester(){
+		
+	},
+
+	avatar(){
+		var username = this.props.username;
+		var user = Meteor.users.find({ "username" : username });
+		console.log(user)
+		if (user.avatar){
+			return user.avatar;
+		}else{
+			return "http://thesocialmediamonthly.com/wp-content/uploads/2015/08/photo.png";
+		}
+	},
+
 render(){
 	var container = "commentFlexOther-container";
 	var item = "commentFlex-item";
@@ -11,6 +26,7 @@ render(){
 	}
 	return(
 		<div>
+			{this.tester()}
 			{ this.props.same ?
 				""
 			:
@@ -23,7 +39,7 @@ render(){
 						</div>
 					:
 						<div>
-							<img className="avatar" src="http://thesocialmediamonthly.com/wp-content/uploads/2015/08/photo.png" />
+							<img className="avatar" src={this.avatar()} />
 							<br/>
 							{this.props.date}
 						</div>

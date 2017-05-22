@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import {Router, Route, browserHistory, IndexRoute} from 'react-router';
 
 import {
   Card,
@@ -18,8 +19,6 @@ import TimeSince from './TimeSince';
 import PortionImages from './PortionImages';
 import Requests from './Requests';
 
-
-
 const smallButton = {
   width: '25px',
   height: '25px',
@@ -36,12 +35,20 @@ class FoodItemList extends React.Component{
     super();
     this.deleteFoodItem = this.deleteFoodItem.bind(this);
   }
+  test(){
+    console.log(this.props)
+    console.log(this.props.comments)
+  }
 
-  deleteFoodItem(){}
+  deleteFoodItem(item){
+    //should probably do some code here
+    this.deleteFoodItem(item);
+  }
 
   renderItems(){
     var xCount = 1;
-
+    var location = "how did i get here?"
+    this.test();
     return this.props.foodItemList.map((foodItem) => {
       xCount ++;
       return (
@@ -50,8 +57,9 @@ class FoodItemList extends React.Component{
             title={foodItem.foodName}
             subtitle={<PortionImages portions={foodItem.portions} portionsLeft={foodItem.portionsLeft} />}
             avatar={foodItem.imageURL}
-            actAsExpander={true}
-            showExpandableButton={true}
+            actAsExpander={false}
+            showExpandableButton={false}
+            onTouchTap={console.log("hello!")}
             />
           {this.props.renderClaims ?
             foodItem.claims ?
@@ -68,7 +76,14 @@ class FoodItemList extends React.Component{
           :
           ''
           }
-          <CardActions expandable={this.props.expandable}>
+
+
+
+          { this.props.comments == true ?
+          ""
+          :
+
+          <CardActions expandable={false}>
             <div className="buttons-container">
               <div className="buttons-item">
                 <ActionSchedule style={smallButton} />
@@ -76,7 +91,7 @@ class FoodItemList extends React.Component{
               </div>
               {this.props.user == foodItem.username?
                 <div className="buttons-item">
-                  <ActionDelete onTouchTap={this.deleteFoodItem} />
+                  <ActionDelete onTouchTap={this.deleteFoodItem(foodItem)} />
                 </div>
                 :
                 <div className="buttons-item">
@@ -99,6 +114,8 @@ class FoodItemList extends React.Component{
               </div>
             </div>
           </CardActions>
+
+        }
         </Card>
       );
     });
