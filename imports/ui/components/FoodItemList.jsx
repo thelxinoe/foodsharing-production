@@ -42,15 +42,17 @@ class FoodItemList extends React.Component{
   }
 
   genTit(tit){
-    if (tit.lenth > 100) {
-     var titty =  tit.substring(0, 100) + "...";
+    var len = 100;
+    var titty;
+    if (tit.lenth > len) {
+     var titty =  tit.substring(0, len) + "...";
     }
     console.log(titty)
     return titty;
   }
 
   test(){
-    console.log("oi!")
+    console.log("oooweeee")
   }
 
   renderItems(){
