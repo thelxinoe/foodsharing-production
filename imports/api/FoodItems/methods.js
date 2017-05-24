@@ -111,3 +111,60 @@ export const makeFoodItemClaim = new ValidatedMethod({
       }
     }
 })
+
+export const acceptFoodItemClaim = new ValidatedMethod({
+    name: 'foodItem.accept',
+    validate: new SimpleSchema({
+        foodItemID: {
+            type: SimpleSchema.RegEx.Id
+        },
+        accepted: {
+            type: Number
+        },
+        username: {
+          type: String
+        }
+    }).validator(),
+    run({foodItemID, accepted, username}) {
+        const user = Meteor.user()
+        if (!user) {
+            throw new Meteor.Error(
+              'api.FoodItem.acceptFoodClaim.notLoggedIn',
+              'Must be logged in.');
+        }
+        FoodItems.update({
+          _id: foodItemID,
+          "claims.username": username
+        },
+        { $set:
+          {"claims.$.accepted":accepted}
+        })
+    }
+})
+
+export const rejectFoodItemClaim = new ValidatedMethod({
+    name: 'foodItem.reject',
+    validate: new SimpleSchema({
+        foodItemID: {
+            type: SimpleSchema.RegEx.Id
+        },
+        username: {
+          type: String
+        }
+    }).validator(),
+    run({foodItemID, username}) {
+        const user = Meteor.user()
+        if (!user) {
+            throw new Meteor.Error(
+              'api.FoodItem.acceptFoodClaim.notLoggedIn',
+              'Must be logged in.');
+        }
+        FoodItems.update({
+          _id: foodItemID,
+          "claims.username": username
+        },
+        { $set:
+          {"claims.$.rejected":true}
+        })
+    }
+})

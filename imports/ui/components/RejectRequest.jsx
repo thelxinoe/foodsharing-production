@@ -5,14 +5,22 @@ import {
   Dialog,
 } from 'material-ui';
 
+import { rejectFoodItemClaim } from '../../api/FoodItems/methods';
+
 class RejectRequest extends React.Component {
 
   constructor() {
     super();
-    this.rejectClaim = this.rejectClaim.bind();
+    this.rejectClaim = this.rejectClaim.bind(this);
   }
 
-  rejectClaim(){}
+  rejectClaim(){
+    this.props.toggle()
+    rejectFoodItemClaim.call({
+      foodItemID: this.props.foodID,
+      username: this.props.claim.username
+    })
+  }
 
   render() {
     const actions = [

@@ -18,11 +18,11 @@ class ClaimsButton extends React.Component {
 
   }
 
-  makeClaim() {
-		this.props.closeClaim();
+  makeClaim(requested) {
+		this.closeClaim();
 		makeFoodItemClaim.call({
 			foodItemID: this.props.foodID,
-			requested: this.state.portionClaim,
+			requested: requested,
 		});
 	}
 

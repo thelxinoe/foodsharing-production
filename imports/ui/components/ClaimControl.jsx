@@ -22,6 +22,10 @@ const ClaimControl = React.createClass({
 		this.setState({claimSnackbar:false})
 	},
 
+	makeClaim(){
+		this.props.makeClaim(this.state.portionClaim)
+	},
+
 	render() {
 		return (
 			<div>
@@ -32,7 +36,7 @@ const ClaimControl = React.createClass({
 				<FlatButton
 					label="Claim"
 					primary={true}
-					onTouchTap={this.props.makeClaim}/>
+					onTouchTap={this.makeClaim}/>
 				<Snackbar
 					open={this.state.claimSnackbar}
 					message={this.state.claimMessage}

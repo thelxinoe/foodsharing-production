@@ -8,6 +8,7 @@ import {
 import ClaimControl from './ClaimControl';
 
 import { createMessageClaim } from '../../api/Messages/methods';
+import { acceptFoodItemClaim } from '../../api/FoodItems/methods';
 
 class AcceptRequest extends React.Component {
     constructor(){
@@ -15,11 +16,16 @@ class AcceptRequest extends React.Component {
         this.makeClaim = this.makeClaim.bind(this);
     }
 
-    makeClaim() {
+    makeClaim(accepted) {
       this.props.toggle()
       createMessageClaim.call({
         imageItemID: this.props.imageItemID,
         requestedBy: this.props.claim.username,
+      })
+      acceptFoodItemClaim.call({
+        foodItemID: this.props.foodID,
+        username: this.props.claim.username,
+        accepted: accepted
       })
     }
 
