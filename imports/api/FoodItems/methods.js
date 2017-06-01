@@ -2,6 +2,7 @@ import {Meteor} from 'meteor/meteor';
 import {ValidatedMethod} from 'meteor/mdg:validated-method';
 
 import {FoodItems} from './FoodItems';
+import {Messages} from '../Messages/Messages';
 
 export const insertFoodItems = new ValidatedMethod({
     name: 'foodItem.insert',
@@ -115,6 +116,9 @@ export const makeFoodItemClaim = new ValidatedMethod({
 export const acceptFoodItemClaim = new ValidatedMethod({
     name: 'foodItem.accept',
     validate: new SimpleSchema({
+        messageID: {
+            type: SimpleSchema.RegEx.Id
+        },
         foodItemID: {
             type: SimpleSchema.RegEx.Id
         },
@@ -125,19 +129,21 @@ export const acceptFoodItemClaim = new ValidatedMethod({
           type: String
         }
     }).validator(),
-    run({foodItemID, accepted, username}) {
+    run({messageID, foodItemID, accepted, username}) {
         const user = Meteor.user()
         if (!user) {
             throw new Meteor.Error(
               'api.FoodItem.acceptFoodClaim.notLoggedIn',
               'Must be logged in.');
         }
+
         FoodItems.update({
           _id: foodItemID,
           "claims.username": username
         },
         { $set:
-          {"claims.$.accepted":accepted}
+          {"claims.$.accepted":accepted,
+          "claims.$.messageID":messageID}
         })
     }
 })

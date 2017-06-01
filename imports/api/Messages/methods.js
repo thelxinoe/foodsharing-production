@@ -70,5 +70,10 @@ export const createMessageClaim = new ValidatedMethod({
           upsert: true,
         }
     );
+    const messageID = Messages.find({
+      imageItemID: imageItemID,
+      requestedBy: requestedBy,
+    }).fetch()[0]._id
+    return messageID
   }
 })

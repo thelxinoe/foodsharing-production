@@ -18,15 +18,17 @@ class AcceptRequest extends React.Component {
 
     makeClaim(accepted) {
       this.props.toggle()
-      createMessageClaim.call({
+      const messageID = createMessageClaim.call({
         imageItemID: this.props.imageItemID,
         requestedBy: this.props.claim.username,
       })
       acceptFoodItemClaim.call({
+        messageID: messageID,
         foodItemID: this.props.foodID,
         username: this.props.claim.username,
         accepted: accepted
       })
+
     }
 
     render() {
