@@ -17,15 +17,20 @@ import ClaimsButton from './ClaimsButton';
 import TimeSince from './TimeSince';
 import PortionImages from './PortionImages';
 import Requests from './Requests';
+import {deleteFoodItem} from '../../api/FoodItems/methods';
 
 class FoodItemList extends React.Component{
 
   constructor() {
     super();
-    this.deleteFoodItem = this.deleteFoodItem.bind(this);
+    this.deleteFoodItemButton = this.deleteFoodItemButton.bind(this);
   }
 
-  deleteFoodItem(){}
+  deleteFoodItemButton(foodItemID){
+    return function(){
+      deleteFoodItem.call({foodItemID})
+    }
+  }
 
   renderItems(){
     return this.props.foodItemList.map((foodItem) => {
@@ -65,7 +70,7 @@ class FoodItemList extends React.Component{
               </div>
               {this.props.user == foodItem.username?
                 <div className="buttons-item">
-                  <ActionDelete onTouchTap={this.deleteFoodItem} />
+                  <ActionDelete onTouchTap={this.deleteFoodItemButton(foodItem._id)} />
                 </div>
                 :
                 <div className="buttons-item">
