@@ -22,9 +22,9 @@ Messages.remove({});
 
 
 images = [
-  "kdeWoezuFAoohsa7H",
-  "6pz8JTnfbqRryqKhw",
-  "Q6zLTSrFZ3kCpWEtH"
+  "8AbzvpwEnpkrQ5Gvg",
+  "8AbzvpwEnpkrQ5Gvg",
+  "8AbzvpwEnpkrQ5Gvg"
 ];
 users = ['tom0','tom1','tom2']
 var numPortions = 5;

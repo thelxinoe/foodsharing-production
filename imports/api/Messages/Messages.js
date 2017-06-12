@@ -29,7 +29,7 @@ Messages.schema = new SimpleSchema({
       blackbox:true,
     },
     seenBy:{
-      type:[String]
+      type:[String],
     },
     lastComment:{
       type: Date,

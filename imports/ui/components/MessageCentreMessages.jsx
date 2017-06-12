@@ -22,6 +22,7 @@ import SvgIcons from 'material-ui/svg-icons';
 import PrivateChatDrawer from './PrivateChatDrawer';
 import TimeSince from './TimeSince.jsx';
 
+import { updateSeenBy } from '../../api/Messages/methods';
 
 const MessageCentreMessages = React.createClass({
 
@@ -101,6 +102,9 @@ const MessageCentreMessages = React.createClass({
                             this.context.location.path,
                             queryString
                           )
+      console.log(messageID)
+      updateSeenBy.call({messageID})
+
     }.bind(this);
   },
 

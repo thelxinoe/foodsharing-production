@@ -77,3 +77,27 @@ export const createMessageClaim = new ValidatedMethod({
     return messageID
   }
 })
+
+export const updateSeenBy = new ValidatedMethod({
+  name: 'messages.update.seenBy',
+  validate: new SimpleSchema({
+    messageID:{
+      type:SimpleSchema.RegEx.Id,
+    },
+  }).validator(),
+  run({messageID}){
+    const user = Meteor.user()
+    if (!user) {
+      throw new Meteor.Error(
+        'api.FoodItem.makeFoodClaim.notLoggedIn',
+        'Must be logged in.');
+      }
+    console.log(user.username, messageID)
+    Messages.update(
+      {_id: messageID},
+      {$addToSet:
+        {seenBy: user.username}
+      }
+    )
+  }
+})
