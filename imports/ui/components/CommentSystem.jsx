@@ -61,7 +61,10 @@ const CommentSystem = React.createClass({
           <Scrollbars style={{ height: 215, position: 'relative' }}>
             <div>
               {this.props.comments !== undefined ?
-              <Comments comments={this.props.comments} />
+              <Comments 
+                comments={this.props.comments}
+                {...this.props}
+              />
               :
               'There are no messages.'
               }

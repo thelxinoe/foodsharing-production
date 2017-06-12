@@ -50,13 +50,14 @@ const MessageCentreMessages = React.createClass({
   },
 
   renderMessagesList: function(){
+    console.log(this)
     if(this.props.messageThreads){
       return this.props.messageThreads.map((thread) => {
         const otherUser = this.getOtherUser([thread.sharedBy, thread.requestedBy], this.props.user)
         const item =
         (<ListItem
           leftAvatar={
-            <Avatar src="http://thesocialmediamonthly.com/wp-content/uploads/2015/08/photo.png" />
+            <Avatar src={thread.foodImage().url({store:'images'})} />
           }
           rightIconButton={
             !thread.seenBy.includes(this.props.user) ?
@@ -66,7 +67,7 @@ const MessageCentreMessages = React.createClass({
           onTouchTap={
             this.openPrivateMessage(thread._id)
           }
-          primaryText={otherUser}
+          primaryText={thread.requestedBy}
           secondaryText={
             <div>
               <TimeSince time={thread.createdAt} />

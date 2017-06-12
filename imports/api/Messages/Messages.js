@@ -1,5 +1,7 @@
+import { meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+import { ImageItems } from '../ImageItems/ImageItems';
 
 export const Messages = new Mongo.Collection('Messages');
 
@@ -48,3 +50,15 @@ Messages.publicFields = {
   messages:1,
   seenBy:1,
 }
+
+Messages.helpers({
+  foodImage(){
+    return ImageItems.findOne(this.imageItemID).image();
+  },
+  requestedImage(){
+    return Meteor.users.findOne({username:this.requestedBy}).avatar()
+  },
+  sharedImage(){
+    return Meteor.users.findOne({username:this.sharedBy}).avatar()
+  }
+})

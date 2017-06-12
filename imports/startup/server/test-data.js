@@ -11,7 +11,10 @@ for (i = 0; i < numUsers; i++) {
   Accounts.createUser({
     username: 'tom' + i,
     email: 'tom' + i + '@mail.com',
-    password: 'password'
+    password: 'password',
+    profile: {
+        avatar: "8AbzvpwEnpkrQ5Gvg",
+    }
   });
 };
 

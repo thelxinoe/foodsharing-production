@@ -21,7 +21,7 @@ class Comments extends React.Component {
                     }
                     prvUsr = currUsr;
                     return (
-                        <Comment comment={comment.comment} date={< TimeSince time = {
+                        <Comment {...this.props} comment={comment.comment} date={< TimeSince time = {
                             comment.createdAt
                         } />} username={currUsr} same={same}/>
                     )

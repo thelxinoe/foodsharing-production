@@ -9,6 +9,8 @@ Comment = React.createClass({
       container = "commentFlexUser-container";
       item = "commentFlexUser-item";
     }
+    console.log(this.props)
+
     return(
       <div>
         { this.props.same ?
