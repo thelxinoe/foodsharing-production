@@ -23,7 +23,6 @@ class MessageCentre extends React.Component {
                         );
     const closeDrawerButton =
     <IconButton
-      linkButton ={true}
       containerElement = {
         <Link to={{
             pathname: this.props.pathname,
@@ -47,10 +46,7 @@ class MessageCentre extends React.Component {
             iconElementLeft={
               closeDrawerButton
             }
-            targetOrigin={{
-              horizontal: 'right',
-              vertical: 'top'
-            }}/>
+        />
         </div>
         <MessageCentreMessagesContainer />
       </Drawer>

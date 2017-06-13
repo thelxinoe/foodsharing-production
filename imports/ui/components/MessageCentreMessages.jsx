@@ -61,11 +61,19 @@ const MessageCentreMessages = React.createClass({
           }
           rightIconButton={
             !thread.seenBy.includes(this.props.user) ?
-            <SvgIcons.CommunicationChatBubble />
+            <SvgIcons.CommunicationChatBubble 
+              style={{
+                top: '35%',
+              }}
+            />
             : ''
           }
           onTouchTap={
+
             this.openPrivateMessage(thread._id)
+
+            //this.openPrivateMessage(this.props.user, otherUser)
+
           }
           primaryText={thread.requestedBy}
           secondaryText={
@@ -88,6 +96,7 @@ const MessageCentreMessages = React.createClass({
     }
   },
 
+
   openPrivateMessage: function(messageID) {
     return function () {
       const queryString = Object.assign(
@@ -107,11 +116,14 @@ const MessageCentreMessages = React.createClass({
       updateSeenBy.call({messageID})
 
     }.bind(this);
-  },
 
-  // compoentWillUpdate(){
-  //   this.forceUpdate();
-  // },
+  openPrivateMessage: function(currUser, otherUser) {
+    handleIt = function() {
+      console.log("Messages between: " + currUser + " & " + otherUser)
+    }
+    return handleIt
+
+  },
 
   render : function(){
     return(

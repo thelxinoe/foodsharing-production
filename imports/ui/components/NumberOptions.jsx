@@ -18,7 +18,7 @@ const NumberOptions = React.createClass({
 
   portionNumbers: function (pNo) {
     var x = [];
-    for (i = 1; i <= pNo; i++){
+    for (i = 0; i <= pNo; i++){
       x.push(
         <MenuItem key={i} value={i} primaryText={i}/>
       );

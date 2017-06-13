@@ -47,12 +47,24 @@ const FoodItemComments = React.createClass({
       });
     },
 
+
+    addComment(event) {
+    },
+
+    calcScreenH(){
+      var height = window.innerHeight - 446;
+      return height;
+    },
+
+
     render : function () {
       console.log(this.props)
       return (
+
         this.props.loading ?
         <div>'loading...'</div>
         :
+
         <div className="fillDiv">
           <FoodItemList
               foodItemList={[this.props.foodItem]}
@@ -63,7 +75,42 @@ const FoodItemComments = React.createClass({
           addComment={this.addComment}
         />
 
+
+          <div>
+            <FoodItemList
+              foodItemList={[this.props.foodItem]}
+              user={this.props.user}
+              expandable={false}
+              comments={true}
+            />
+          <div>
+            <Scrollbars style={{ height: this.calcScreenH(), position: 'relative' }}>
+              <div>
+                <Comments comments={this.props.foodItem.comments} />
+              </div>
+            </Scrollbars>
+
+            <Paper style={styles.paper} zDepth={0}>
+              <div className="leftcolumn">
+                <TextField
+                  style={{color: 'white'}}
+                  hintText="You can leave a comment here"
+                  onChange={this.handleComment}
+                  value={this.state.commentText}/>
+              </div>
+              <div className="rightcolumn">
+                <IconButton
+                  iconStyle={styles.smallIcon}
+                  style={styles.small}
+                  onTouchTap={this.addComment}
+                  >
+                  <ContentSend color={lightGreenA200} />
+                </IconButton>
+              </div>
+            </Paper>
+          </div>
         </div>
+
       );
     }
   });
