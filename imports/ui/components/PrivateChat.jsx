@@ -92,7 +92,7 @@ const PrivateChat = React.createClass({
         <CommentSystem
           comments={this.props.messageThread.messages}
           addComment={this.addComment}
-          
+          {...this.props}
         />
       </div>
 

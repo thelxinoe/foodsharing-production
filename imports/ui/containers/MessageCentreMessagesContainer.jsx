@@ -9,12 +9,13 @@ const MessageCentreMessagesContainer = createContainer(() => {
 
   const user = Meteor.user() ? Meteor.user().username : '';
 
+  const images = Meteor.subscribe('images');
   const messages = Meteor.subscribe('messages');
   const loading = !messages.ready();
 
   const query = { $or: [{ sharedBy: user }, { requestedBy: user }] };
   const messageThreads = Messages.find(query);
-  const messageThreadExists = !loading && !!messageThreads
+  const messageThreadExists = !loading && !!messageThreads && !!images.ready()
 
   return { loading,
            messageThreads : messageThreadExists ? messageThreads.fetch() : [],
