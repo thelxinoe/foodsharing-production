@@ -200,7 +200,6 @@ const AppHeader = React.createClass({
     return (
       <div className="bigBoy">
         <MuiThemeProvider muiTheme={muiTheme}>
-          <div className="phone">
             <div className="container">
 
               <div className="headContain">
@@ -342,7 +341,7 @@ const AppHeader = React.createClass({
                     onTouchTap={this.handleRequestClose}/>
                 </div>
 
-              </div>
+
           </MuiThemeProvider>
         </div>
       );
