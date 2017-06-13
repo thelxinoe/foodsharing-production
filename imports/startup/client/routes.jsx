@@ -6,13 +6,8 @@ import { render } from 'react-dom';
 import AppHeader from '../../ui/components/AppHeader';
 import GridListTab from '../../ui/components/GridListTab';
 
-import UserAccounts from '../../ui/components/UserAccounts';
+import UserAccounts from '../../ui/components/userAccounts';
 import UserAccountsRegister from '../../ui/components/UserAccountsRegister';
-
-import ItemCreation from '../../ui/components/ItemCreation';
-import AccountsUIWrapper from '../../ui/AccountsUIWrapper';
-import userAccounts from '../../ui/components/userAccounts';
-import userAccountsRegister from '../../ui/components/userAccountsRegister';
 
 import MapViewContainer from '../../ui/containers/MapViewContainer';
 import YourItemsContainer from '../../ui/containers/YourItemsContainer';
@@ -38,7 +33,7 @@ const renderRoutes = () => (
         path='/register'
         component={UserAccountsRegister}
 
-        component={userAccounts}
+        component={UserAccounts}
       />
 
       <Route

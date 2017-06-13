@@ -110,7 +110,7 @@ const FoodItemComments = React.createClass({
             </Paper>
           </div>
         </div>
-
+       </div>
       );
     }
   });

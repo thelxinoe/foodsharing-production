@@ -28,7 +28,6 @@ class PrivateChatDrawer extends React.Component {
                         );
     const closeDrawerButton =
     <IconButton
-      linkButton ={true}
       containerElement = {
         <Link to={{
             pathname: this.context.location.pathname,

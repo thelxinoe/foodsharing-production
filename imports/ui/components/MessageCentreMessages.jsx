@@ -53,6 +53,7 @@ const MessageCentreMessages = React.createClass({
     console.log(this)
     if(this.props.messageThreads){
       return this.props.messageThreads.map((thread) => {
+        console.log(thread)
         const otherUser = this.getOtherUser([thread.sharedBy, thread.requestedBy], this.props.user)
         const item =
         (<ListItem
@@ -116,6 +117,7 @@ const MessageCentreMessages = React.createClass({
       updateSeenBy.call({messageID})
 
     }.bind(this);
+  },
 
   openPrivateMessage: function(currUser, otherUser) {
     handleIt = function() {

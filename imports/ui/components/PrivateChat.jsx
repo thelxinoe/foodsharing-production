@@ -78,9 +78,10 @@ const PrivateChat = React.createClass({
     }
   },
 
-  componentDidMount () {
-    this.refs.scrollbars.scrollToBottom();
-  },
+  //Something so simple is a nightmare...what a suprise
+  // componentDidMount () {
+  //   this.refs.scrollbars.scrollToBottom();
+  // },
 
   render() {
     var winHeight = window.innerHeight - 64;

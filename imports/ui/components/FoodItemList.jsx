@@ -37,22 +37,23 @@ class FoodItemList extends React.Component{
     this.deleteFoodItemButton = this.deleteFoodItemButton.bind(this);
   }
 
-
   deleteFoodItemButton(foodItemID){
     return function(){
       deleteFoodItem.call({foodItemID})
+      }
     }
 
+  // for some reason getting an error on line 47 (unexpected token)
 
-  genTit(tit){
-    var len = 100;
-    var titty;
-    if (tit.lenth > len) {
-     var titty =  tit.substring(0, len) + "...";
-    }
-    console.log(titty)
-    return titty;
-  }
+  // genTit(tit){
+  //   var len = 100;
+  //   var titty;
+  //   if (tit.lenth > len) {
+  //    var titty =  tit.substring(0, len) + "...";
+  //   }
+  //   console.log(titty)
+  //   return titty;
+  // },
 
   test(){
     console.log("oooweeee")
