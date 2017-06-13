@@ -25,7 +25,12 @@ Comment = React.createClass({
               </div>
               :
               <div>
-                <img className="avatar" src="http://thesocialmediamonthly.com/wp-content/uploads/2015/08/photo.png" />
+                <img
+                  className="avatar"
+                  src={this.props.messageThread.sharedBy==this.props.username ?
+                      this.props.messageThread.sharedImage().url({store:'images'}) :
+                      this.props.messageThread.requestedImage().url({store:'images'})
+                    } />
                 <br/>
                 {this.props.date}
               </div>

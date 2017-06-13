@@ -2,6 +2,7 @@ import { meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import { ImageItems } from '../ImageItems/ImageItems';
+import '../users/users.js';
 
 export const Messages = new Mongo.Collection('Messages');
 
