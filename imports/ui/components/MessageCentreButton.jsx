@@ -46,9 +46,9 @@ class MessageCentreButton extends React.Component {
       :
         <IconButton
           containerElement={
-            <Link to={{ pathname: pathname, query: queryString }}/>
+            <Link to={"/Login"}/>
           }
-          tooltip="Messages"
+          tooltip="Please Login"
           disabled={false}>
           <SvgIcons.CommunicationForum color='White'/>
         </IconButton>

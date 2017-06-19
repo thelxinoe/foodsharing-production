@@ -103,6 +103,7 @@ const AddLocation = React.createClass({
           />
 
         <GoogleMapAddContainer
+            options={this.mapOptions}
             mapOptions={this._mapOptions}
             listeners={this.listeners}
           />

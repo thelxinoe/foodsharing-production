@@ -27,7 +27,7 @@ const TimeSince = React.createClass({
 	    if (interval > 1) {
 	        return interval + " mins";
 	    }
-	    return Math.floor(seconds) + " secs";
+	    return Math.floor(seconds);
 	},
 		render: function () {
 			return(
