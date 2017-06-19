@@ -17,14 +17,14 @@ const Requests = React.createClass({
         <List>
           <Divider />
           {this.props.claims.map((claim) => {
-
+            var xC = 1;
             return (
               claim.rejected ?
               ""
               :
               claim.accepted === 0 ?
                 <RequestedItem
-                  key={claim.username}
+                  key={claim.username + xC}
                   foodID={this.props.foodID}
                   claim={claim}
                   imageItemID={this.props.imageItemId}
@@ -37,6 +37,7 @@ const Requests = React.createClass({
                   claim={claim}
                 />
             );
+            xC ++;
           })}
         </List>
       </div>

@@ -169,7 +169,7 @@ const AppHeader = React.createClass({
 
   render: function() {
     const actions = [
-      < FlatButton
+      <FlatButton
       label = "Logout"
       primary = {
         true
@@ -178,7 +178,7 @@ const AppHeader = React.createClass({
         this.handleLogout
       } />
       ,
-      < FlatButton
+      <FlatButton
       label = "Change Password"
       primary = {
         true
@@ -187,7 +187,7 @@ const AppHeader = React.createClass({
         this.handlePassChange
       } />
       ,
-      < FlatButton
+      <FlatButton
       label = "Cancel"
       secondary = {
         true
@@ -200,27 +200,25 @@ const AppHeader = React.createClass({
     return (
       <div className="bigBoy">
         <MuiThemeProvider muiTheme={muiTheme}>
-          <div className="phone">
             <div className="container">
 
               <div className="headContain">
                 <AppBar
                   title=""
                   iconElementLeft={
-                    < IconButton onTouchTap = {
+                    <IconButton onTouchTap = {
                         this.handleBackClick
                       } >
                       <SvgIcons.ContentReply color={green900}/>
-                      < /IconButton>
+                      </IconButton>
                     }
                     iconElementRight={
-                      < IconButton containerElement = {
-                          < Link to = {
-                              '/ItemCreation'
-                            } />
+                      <IconButton containerElement = {
+                          <Link to = {
+                              '/ItemCreation'} />
                           } >
                           <SvgIcons.ContentAddCircle color={green900}/>
-                          < /IconButton>
+                          </IconButton>
                         }
                         />
                       </div>
@@ -342,7 +340,7 @@ const AppHeader = React.createClass({
                     onTouchTap={this.handleRequestClose}/>
                 </div>
 
-              </div>
+
           </MuiThemeProvider>
         </div>
       );

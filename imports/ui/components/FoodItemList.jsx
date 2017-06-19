@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import {Router, Route, browserHistory, IndexRoute} from 'react-router';
 
 import {
   Card,
@@ -19,6 +20,16 @@ import PortionImages from './PortionImages';
 import Requests from './Requests';
 import {deleteFoodItem} from '../../api/FoodItems/methods';
 
+const smallButton = {
+  width: '25px',
+  height: '25px',
+  margin: '-175px',
+  position: 'relative',
+  top:' 50%',
+  transform: 'translateY(-50%)',
+};
+
+
 class FoodItemList extends React.Component{
 
   constructor() {
@@ -26,17 +37,36 @@ class FoodItemList extends React.Component{
     this.deleteFoodItemButton = this.deleteFoodItemButton.bind(this);
   }
 
+
   deleteFoodItemButton(foodItemID){
     return function(){
       deleteFoodItem.call({foodItemID})
     }
+
+
+  genTit(tit){
+    var len = 100;
+    var titty;
+    if (tit.lenth > len) {
+     var titty =  tit.substring(0, len) + "...";
+    }
+    console.log(titty)
+    return titty;
+  }
+
+  test(){
+    console.log("oooweeee")
   }
 
   renderItems(){
+    var xCount = 1;
+
     return this.props.foodItemList.map((foodItem) => {
+      xCount ++;
       return (
-        <Card key={foodItem._id}>
+        <Card key={foodItem._id + xCount}>
           <CardHeader
+
             title={foodItem.foodName}
             subtitle={<PortionImages
                         portions={foodItem.portions}
@@ -46,6 +76,15 @@ class FoodItemList extends React.Component{
             actAsExpander={true}
             showExpandableButton={true}
             />
+
+            title={this.genTit(foodItem.foodName)}
+            subtitle={<PortionImages portions={foodItem.portions} portionsLeft={foodItem.portionsLeft} />}
+            avatar={foodItem.imageURL}
+            actAsExpander={false}
+            showExpandableButton={false}
+            onClick={this.test()}
+          />
+
           {this.props.renderClaims ?
             foodItem.claims ?
             <CardText>
@@ -62,10 +101,17 @@ class FoodItemList extends React.Component{
           :
           ''
           }
-          <CardActions expandable={true}>
+
+
+
+          { this.props.comments == true ?
+          ""
+          :
+
+          <CardActions expandable={false}>
             <div className="buttons-container">
               <div className="buttons-item">
-                <ActionSchedule style="smallButton" />
+                <ActionSchedule style={smallButton} />
                 <TimeSince time={foodItem.createdAt}/>
               </div>
               {this.props.user == foodItem.username?
@@ -93,6 +139,8 @@ class FoodItemList extends React.Component{
               </div>
             </div>
           </CardActions>
+
+        }
         </Card>
       );
     });
