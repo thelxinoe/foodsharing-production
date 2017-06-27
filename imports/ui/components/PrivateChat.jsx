@@ -84,7 +84,7 @@ const PrivateChat = React.createClass({
 
   render() {
     var winHeight = window.innerHeight - 64;
-
+    if (!this.props.loading){
     return (
       <div id='containerDiv'>
         <br/>
@@ -97,6 +97,9 @@ const PrivateChat = React.createClass({
       </div>
 
     );
+  }else {
+    return(<div/>)
+  }
   }
 });
 

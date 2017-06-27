@@ -48,7 +48,6 @@ const FoodItemComments = React.createClass({
     },
 
     render : function () {
-      console.log(this.props)
       return (
         this.props.loading ?
         <div>'loading...'</div>

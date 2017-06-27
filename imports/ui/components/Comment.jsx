@@ -1,3 +1,5 @@
+import { Meteor } from 'meteor/meteor';
+
 import React from 'react';
 
 Comment = React.createClass({
@@ -9,8 +11,8 @@ Comment = React.createClass({
       container = "commentFlexUser-container";
       item = "commentFlexUser-item";
     }
-    console.log(this.props)
-
+    const avatarUser = {username:this.props.username}
+    const avatarUrl = Meteor.users.findOne().avatar(avatarUser).url({store:'images'})
     return(
       <div>
         { this.props.same ?
@@ -27,10 +29,7 @@ Comment = React.createClass({
               <div>
                 <img
                   className="avatar"
-                  src={this.props.messageThread.sharedBy==this.props.username ?
-                      this.props.messageThread.sharedImage().url({store:'images'}) :
-                      this.props.messageThread.requestedImage().url({store:'images'})
-                    } />
+                  src={ avatarUrl } />
                 <br/>
                 {this.props.date}
               </div>

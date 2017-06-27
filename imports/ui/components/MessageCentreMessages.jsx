@@ -50,7 +50,6 @@ const MessageCentreMessages = React.createClass({
   },
 
   renderMessagesList: function(){
-    console.log(this)
     if(this.props.messageThreads){
       return this.props.messageThreads.map((thread) => {
         const otherUser = this.getOtherUser([thread.sharedBy, thread.requestedBy], this.props.user)
@@ -103,7 +102,6 @@ const MessageCentreMessages = React.createClass({
                             this.context.location.path,
                             queryString
                           )
-      console.log(messageID)
       updateSeenBy.call({messageID})
 
     }.bind(this);

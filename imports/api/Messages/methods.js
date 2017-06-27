@@ -92,7 +92,6 @@ export const updateSeenBy = new ValidatedMethod({
         'api.FoodItem.makeFoodClaim.notLoggedIn',
         'Must be logged in.');
       }
-    console.log(user.username, messageID)
     Messages.update(
       {_id: messageID},
       {$addToSet:

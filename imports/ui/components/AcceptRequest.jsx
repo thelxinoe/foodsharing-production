@@ -32,7 +32,6 @@ class AcceptRequest extends React.Component {
     }
 
     render() {
-        console.log(this)
         const actions = [
           <ClaimControl
             portionsLeft={this.props.claim.requested}

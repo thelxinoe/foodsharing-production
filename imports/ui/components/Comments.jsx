@@ -6,7 +6,6 @@ import TimeSince from './TimeSince.jsx';
 class Comments extends React.Component {
 
     render() {
-        console.log(this.props.comments)
 
         return (
             <div>
