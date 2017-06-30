@@ -95,7 +95,7 @@ class FoodItemList extends React.Component{
           <CardActions expandable={false}>
             <div className="buttons-container">
               <div className="buttons-item">
-                <ActionSchedule style={smallButton} />
+                <ActionSchedule />
                 <TimeSince time={foodItem.createdAt}/>
               </div>
               {this.props.user == foodItem.username?

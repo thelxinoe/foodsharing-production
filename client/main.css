@@ -98,7 +98,8 @@ body
 .smallButton{
   width: 25px;
   height: 25px;
-  margin: -175px;
+  top: 0;
+  bottom: 0;
   vertical-align: center;
 }
 

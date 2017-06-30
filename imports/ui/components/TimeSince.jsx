@@ -31,9 +31,9 @@ const TimeSince = React.createClass({
 	},
 		render: function () {
 			return(
-				<div>
+				<aside>
 					{this.calcTime(this.props.time)}
-				</div>
+				</aside>
 				);
 		}
 
