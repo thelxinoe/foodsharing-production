@@ -98,7 +98,7 @@ const PrivateChat = React.createClass({
 
     );
   }else {
-    return(<div/>)
+      return(<div/>)
   }
   }
 });

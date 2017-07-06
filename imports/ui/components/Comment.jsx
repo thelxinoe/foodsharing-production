@@ -11,8 +11,8 @@ Comment = React.createClass({
       container = "commentFlexUser-container";
       item = "commentFlexUser-item";
     }
-    const avatarUser = {username:this.props.username}
-    const avatarUrl = Meteor.users.findOne().avatar(avatarUser).url({store:'images'})
+    console.log('avatar',this.props.avatar)
+    const avatarUrl = this.props.avatar[this.props.username].avatar().url({store:'images'})//avatarThing.avatar().url({store:'images'})
     return(
       <div>
         { this.props.same ?

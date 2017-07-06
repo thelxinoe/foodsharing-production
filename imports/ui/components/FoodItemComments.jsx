@@ -60,6 +60,7 @@ const FoodItemComments = React.createClass({
         <CommentSystem
           comments={this.props.foodItem.comments}
           addComment={this.addComment}
+          avatar={this.props.avatar}
         />
 
         </div>

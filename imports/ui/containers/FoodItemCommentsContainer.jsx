@@ -12,11 +12,22 @@ const FoodItemCommentsContainer = createContainer((props) => {
     const query = {
           _id: props.params.foodID
         }
-
+    const profile = Meteor.subscribe('profile');
     const foodItems = Meteor.subscribe('foodItems');
     const foodItem = FoodItems.findOne(query);
-    const loading = !foodItems.ready();
-    return { loading, foodItem, user };
+    const loading = !foodItems.ready() && !profile.ready();
+    var avatar = {}
+    if (!loading && !!foodItem){
+      var uniqueUsers = [...new Set(foodItem.comments.map(item => item.username))];
+      for (var i = 0, len = uniqueUsers.length; i < len; i++) {
+        var avatarUser = uniqueUsers[i];
+        avatar[avatarUser] = Meteor.users.findOne({username:avatarUser});
+        console.log(avatar, avatarUser, uniqueUsers)
+      }
+
+    }
+    console.log(avatar)
+    return {avatar, loading, foodItem, user };
 
 }, FoodItemComments);
 
