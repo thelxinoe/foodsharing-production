@@ -23,6 +23,7 @@ import ContentSend from 'material-ui/svg-icons/content/send';
 
 import TimeSince from './TimeSince';
 import CommentSystem from './CommentSystem';
+import ItemsSharedContainer from '../containers/ItemsSharedContainer';
 import { insertMessage } from '../../api/Messages/methods';
 
 import {
@@ -84,11 +85,17 @@ const PrivateChat = React.createClass({
 
   render() {
     var winHeight = window.innerHeight - 64;
+    console.log(this.props)
     if (!this.props.loading){
     return (
       <div id='containerDiv'>
-        <br/>
-        <br/>
+        <ItemsSharedContainer
+          imageItemID={this.props.messageThread.imageItemID}
+          requestedBy={this.props.messageThread.requestedBy}
+          sharedBy={this.props.messageThread.sharedBy}
+          user={this.props.user}
+          url={this.props.messageThread.foodImage().url({store: 'thumbs'})}
+        />
         <CommentSystem
           comments={this.props.messageThread.messages}
           addComment={this.addComment}
@@ -98,7 +105,7 @@ const PrivateChat = React.createClass({
 
     );
   }else {
-      return(<div/>)
+      return(<div>'loading...'</div>)
   }
   }
 });

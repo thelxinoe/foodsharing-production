@@ -21,8 +21,8 @@ const PrivateChatContainer = createContainer(({ messageID }) => {
   var avatar = {}
 
   if(messageThreadExists){
-    avatar[messageThread.requestedBy] = Meteor.users.findOne({username:messageThread.requestedBy})
-    avatar[messageThread.sharedBy] = Meteor.users.findOne({username:messageThread.sharedBy})
+    avatar[messageThread.requestedBy] = Meteor.users.findOne({username:messageThread.requestedBy});
+    avatar[messageThread.sharedBy] = Meteor.users.findOne({username:messageThread.sharedBy});
   }
   return {
            avatar,

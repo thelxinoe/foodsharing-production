@@ -26,7 +26,6 @@ const FoodItemCommentsContainer = createContainer((props) => {
       }
 
     }
-    console.log(avatar)
     return {avatar, loading, foodItem, user };
 
 }, FoodItemComments);
