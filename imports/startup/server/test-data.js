@@ -13,7 +13,7 @@ for (i = 0; i < numUsers; i++) {
     email: 'tom' + i + '@mail.com',
     password: 'password',
     profile: {
-        avatar: "JJMDkbZSz49aiL96u",
+        avatar: "8AbzvpwEnpkrQ5Gvg",
     }
   });
 };
@@ -25,9 +25,9 @@ Messages.remove({});
 
 
 images = [
-  "JJMDkbZSz49aiL96u",
-  "JJMDkbZSz49aiL96u",
-  "JJMDkbZSz49aiL96u"
+  "8AbzvpwEnpkrQ5Gvg",
+  "8AbzvpwEnpkrQ5Gvg",
+  "8AbzvpwEnpkrQ5Gvg"
 ];
 users = ['tom0','tom1','tom2']
 var numPortions = 5;

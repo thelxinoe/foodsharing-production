@@ -1,5 +1,14 @@
 import React, { PropTypes } from 'react';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import {
+  Card, 
+  CardActions, 
+  CardHeader, 
+  CardMedia, 
+  CardTitle, 
+  CardText, 
+  RaisedButton} from 'material-ui/Card';
+import TransactionCompleteButton from './TransactionCompleteButton';
+
 
 class ItemsShared extends React.Component {
   constructor() {
@@ -32,6 +41,9 @@ class ItemsShared extends React.Component {
           avatar={this.props.url}
           actAsExpander={true}
           showExpandableButton={true}
+        />
+        <TransactionCompleteButton
+          completeUpdates={this.props.completeUpdates}
         />
         <CardText expandable={true}>
           {this.props.sharedItemList}

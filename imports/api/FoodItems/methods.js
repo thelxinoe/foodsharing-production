@@ -194,3 +194,30 @@ export const deleteFoodItem = new ValidatedMethod({
       })
     }
   });
+
+export const completeClaim = new ValidatedMethod({
+  name: 'foodItem.completeClaim',
+  validate: new SimpleSchema({
+    foodItemID: {
+      type: SimpleSchema.RegEx.Id,
+    },
+    username: {
+      type: String,
+    },
+  }).validator(),
+  run({foodItemID, username}) {
+    const user = Meteor.user()
+    if (!user) {
+      throw new Meteor.Error(
+        'api.FoodItem.acceptFoodClaim.notLoggedIn',
+        'Must be logged in.');
+      }
+    FoodItems.update({
+        _id: foodItemID,
+        "claims.username": username
+      },
+      { $set:
+        {"claims.$.complete":true}
+      })  
+  }
+});

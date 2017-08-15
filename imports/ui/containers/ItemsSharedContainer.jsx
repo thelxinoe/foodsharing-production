@@ -40,11 +40,21 @@ const ItemsSharedContainer = createContainer((
       return sum + portions
     }, 0)
   }
-
+  const completeUpdates = {
+    foodItemIDs: sharedItems.map((item)=>{return item._id}),
+    username: requestedBy,
+  }
   const otherUser = user==sharedBy ? sharedBy : requestedBy;
   const sharingRequesting = user === sharedBy ? ['sharing', 'with'] : ['requesting', 'from'];
 
-  return { loading, otherUser, sharedItemList, sharingRequesting, url, totalItems, sharedItems }
+  return { 
+    loading, 
+    otherUser, 
+    sharedItemList, 
+    sharingRequesting, 
+    url, 
+    totalItems,
+    completeUpdates }
 }, ItemsShared);
 
 export default ItemsSharedContainer;
