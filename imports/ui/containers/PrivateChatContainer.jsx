@@ -1,4 +1,4 @@
-import { Meteor } from 'meteor/meteor';
+  import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
 
 import PrivateChat from '../components/PrivateChat';
@@ -12,11 +12,11 @@ const PrivateChatContainer = createContainer(({ messageID }) => {
 
   const profile = Meteor.subscribe('profile');
   const messages = Meteor.subscribe('messages');
-  const loading = !messages.ready() && !profile.ready();
 
   const query = { _id :  messageID};
   const messageThread = Messages.findOne(query);
-  const messageThreadExists = !loading && !!messageThread;
+  const messageThreadExists = !!messageThread;
+  const loading = !(messages.ready() && profile.ready() && messageThreadExists) ;
 
   var avatar = {}
 

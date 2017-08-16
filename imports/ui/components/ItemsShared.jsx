@@ -44,6 +44,7 @@ class ItemsShared extends React.Component {
         />
         <TransactionCompleteButton
           completeUpdates={this.props.completeUpdates}
+          messageID={this.props.messageID}
         />
         <CardText expandable={true}>
           {this.props.sharedItemList}

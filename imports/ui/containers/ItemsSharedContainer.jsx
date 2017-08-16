@@ -7,7 +7,7 @@ import { FoodItems } from '../../api/FoodItems/FoodItems.js';
 
 const ItemsSharedContainer = createContainer((
   {
-    requestedBy, sharedBy, imageItemID, user, url
+    requestedBy, sharedBy, imageItemID, user, url, messageID
   }) => {
 
   const foodItems = Meteor.subscribe('foodItems');
@@ -54,7 +54,8 @@ const ItemsSharedContainer = createContainer((
     sharingRequesting, 
     url, 
     totalItems,
-    completeUpdates }
+    completeUpdates,
+    messageID }
 }, ItemsShared);
 
 export default ItemsSharedContainer;

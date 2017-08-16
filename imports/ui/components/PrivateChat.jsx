@@ -90,6 +90,7 @@ const PrivateChat = React.createClass({
     return (
       <div id='containerDiv'>
         <ItemsSharedContainer
+          messageID={this.props.messageID}
           imageItemID={this.props.messageThread.imageItemID}
           requestedBy={this.props.messageThread.requestedBy}
           sharedBy={this.props.messageThread.sharedBy}

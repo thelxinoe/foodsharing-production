@@ -100,3 +100,21 @@ export const updateSeenBy = new ValidatedMethod({
     )
   }
 })
+
+export const deleteMessage = new ValidatedMethod({
+  name: 'messages.delete',
+  validate: new SimpleSchema({
+    messageID:{
+      type:SimpleSchema.RegEx.Id,
+    }
+  }).validator(),
+  run({messageID}){
+    const user = Meteor.user()
+    if (!user) {
+      throw new Meteor.Error(
+        'api.FoodItem.makeFoodClaim.notLoggedIn',
+        'Must be logged in.');
+      }
+    Messages.remove({_id:messageID})
+  }
+})
