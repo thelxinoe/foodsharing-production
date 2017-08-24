@@ -50,13 +50,20 @@ class RequestedItem extends React.Component {
         onTouchTap={this.rejectRequestToggle}
       />,
     ];
+    let avatar = undefined;
+    try{
+      avatar = <Avatar src={Meteor.users.findOne({username:this.props.claim.username}).avatar().url({store:'images'})} />
+    }
+    catch(e){
+      avatar = <Avatar src="http://thesocialmediamonthly.com/wp-content/uploads/2015/08/photo.png" />
+    }
     return(
       <div>
         <ListItem
         primaryText={this.props.claim.username}
         secondaryText={"Has requested " + this.props.claim.requested + " portions"}
         leftAvatar={
-          <Avatar src="http://thesocialmediamonthly.com/wp-content/uploads/2015/08/photo.png" />
+          avatar
         }
         primaryTogglesNestedList={true}
         nestedItems={acceptReject}

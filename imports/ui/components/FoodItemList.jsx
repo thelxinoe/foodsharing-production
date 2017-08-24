@@ -105,8 +105,5 @@ class FoodItemList extends React.Component{
     );
   }
 
-};
-
-
-
+}
 export default FoodItemList;

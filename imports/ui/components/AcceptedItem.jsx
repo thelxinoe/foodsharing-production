@@ -12,6 +12,7 @@ class AcceptedItem extends React.Component {
 
   openPrivateMessage(messageID) {
     return function () {
+      console.log(this.context)
       const queryString = Object.assign(
                             {},
                             this.context.location.query,
@@ -22,19 +23,26 @@ class AcceptedItem extends React.Component {
                           );
       this.context.router.pushState(
                             this.context.location,
-                            this.context.location.path,
+                            this.context.location.pathname,
                             queryString
                           )
     }.bind(this);
   }
 
   render() {
+    let avatar = undefined;
+    try{
+      avatar = <Avatar src={Meteor.users.findOne({username:this.props.claim.username}).avatar().url({store:'images'})} />
+    }
+    catch(e){
+      avatar = <Avatar src="http://thesocialmediamonthly.com/wp-content/uploads/2015/08/photo.png" />
+    }
     return (<div>
       <ListItem
         primaryText={this.props.claim.username}
         secondaryText={"You have accepted " + this.props.claim.accepted + " out of " + this.props.claim.requested + " requested portions"}
         leftAvatar={
-          <Avatar src="http://thesocialmediamonthly.com/wp-content/uploads/2015/08/photo.png" />
+          avatar
         }
         rightIcon={
           <CommunicationChat />
