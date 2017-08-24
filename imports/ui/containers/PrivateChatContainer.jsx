@@ -1,4 +1,4 @@
-  import { Meteor } from 'meteor/meteor';
+import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
 
 import PrivateChat from '../components/PrivateChat';
@@ -12,11 +12,24 @@ const PrivateChatContainer = createContainer(({ messageID }) => {
 
   const profile = Meteor.subscribe('profile');
   const messages = Meteor.subscribe('messages');
+  const images = Meteor.subscribe('images');
 
   const query = { _id :  messageID};
   const messageThread = Messages.findOne(query);
-  const messageThreadExists = !!messageThread;
-  const loading = !(messages.ready() && profile.ready() && messageThreadExists) ;
+  console.log(messageThread)
+  let messageThreadExists = !!messageThread;
+  let loading = !(messages.ready() && profile.ready() && images.ready() && messageThreadExists);
+
+  try{
+    console.log(messageThread.foodImage())
+    Meteor.users.findOne({username:messageThread.requestedBy}).avatar();
+    Meteor.users.findOne({username:messageThread.sharedBy}).avatar();
+
+  }
+  catch(e){
+    loading = true;
+  }
+
 
   var avatar = {}
 

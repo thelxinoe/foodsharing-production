@@ -6,14 +6,14 @@ import faker from 'faker';
 
 Meteor.users.remove({});
 
-var numUsers = 5;
+var numUsers = 3;
 for (i = 0; i < numUsers; i++) {
   Accounts.createUser({
     username: 'tom' + i,
     email: 'tom' + i + '@mail.com',
     password: 'password',
     profile: {
-        avatar: "8AbzvpwEnpkrQ5Gvg",
+        avatar: "ZyEA3oNuC3jXHMhPj",
     }
   });
 };
@@ -25,9 +25,9 @@ Messages.remove({});
 
 
 images = [
-  "8AbzvpwEnpkrQ5Gvg",
-  "8AbzvpwEnpkrQ5Gvg",
-  "8AbzvpwEnpkrQ5Gvg"
+  "ZyEA3oNuC3jXHMhPj",
+  "ZyEA3oNuC3jXHMhPj",
+  "ZyEA3oNuC3jXHMhPj"
 ];
 users = ['tom0','tom1','tom2']
 var numPortions = 5;
