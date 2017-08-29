@@ -30,6 +30,7 @@ const ClaimControl = React.createClass({
 		return (
 			<div>
 				<NumberOptions
+					value = {this.state.portionClaim}
 					options={this.props.portionsLeft}
 					optionChange={this.getPortionClaim}
 					/>

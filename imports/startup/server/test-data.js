@@ -22,8 +22,6 @@ ImageItems.remove({});
 FoodItems.remove({});
 Messages.remove({});
 
-
-
 images = [
   "ZyEA3oNuC3jXHMhPj",
   "ZyEA3oNuC3jXHMhPj",

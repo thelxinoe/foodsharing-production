@@ -131,7 +131,7 @@ var seconds = Math.floor((new Date() - date) / 1000);
           });
         });
         return (
-          infowindow.setContent(content),
+          infowindow.setContent(content)
         );
       }else{
         console.log(foodItem)

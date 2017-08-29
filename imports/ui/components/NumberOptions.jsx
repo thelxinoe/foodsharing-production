@@ -12,7 +12,6 @@ const NumberOptions = React.createClass({
   getInitialState(){
     return{
       openClaim: false,
-      values: 1,
     }
   },
 
@@ -27,7 +26,6 @@ const NumberOptions = React.createClass({
   },
 
   handleChange : function (e, index, value){
-    this.setState({values: value});
     this.props.optionChange(value);
   },
 
@@ -35,7 +33,7 @@ const NumberOptions = React.createClass({
     return(
       <DropDownMenu
         maxHeight={300}
-        value={this.state.values}
+        value={this.props.value}
         onChange={this.handleChange}>
         {this.portionNumbers(this.props.options)}
       </DropDownMenu>

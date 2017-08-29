@@ -6,9 +6,9 @@ import { Meteor } from 'meteor/meteor';
 import { Random } from 'meteor/random';
 
 const GoogleMapAdd = React.createClass({
-  propTypes: {
-    options: React.PropTypes.object.isRequired
-  },
+  // propTypes: {
+  //   options: React.PropTypes.object.isRequired
+  // },
   getOptions(){
     let additionalOptions = this.props.options || {}
     let options = Object.assign({},
@@ -22,6 +22,7 @@ const GoogleMapAdd = React.createClass({
   },
   componentDidMount() {
     GoogleMaps.load(this.getOptions());
+    this.forceUpdate();
   },
   componentDidUpdate() {
     if(this.props.loaded){
