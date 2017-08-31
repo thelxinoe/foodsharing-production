@@ -116,8 +116,8 @@ const ItemCreation = React.createClass({
             disableTouchRipple={true}
             disableFocusRipple={true}
             primary={true}
-            onTouchTap={stepIndex === 3
-              ? browserHistory.push('/')
+            onTouchTap={stepIndex === 2
+              ? function(){browserHistory.push('/')}  
               : this.handleNext}
               style={{
                 marginRight: 12
