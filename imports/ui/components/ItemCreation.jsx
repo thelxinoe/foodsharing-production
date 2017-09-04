@@ -117,7 +117,7 @@ const ItemCreation = React.createClass({
             disableFocusRipple={true}
             primary={true}
             onTouchTap={stepIndex === 2
-              ? function(){browserHistory.push('/')}  
+              ? function(){browserHistory.push('/')}
               : this.handleNext}
               style={{
                 marginRight: 12
@@ -175,7 +175,10 @@ const ItemCreation = React.createClass({
                 <StepContent>
                   <FoodItemListAddContainer imageItemIDFilter={this.props.imageItemID}/>
                   <br/>
-                  <AddItem handleSubmit={this.handleSubmit}/>
+                  <AddItem
+                    handleSubmit={this.handleSubmit}
+                    imageItemIDFilter={this.state.imageItemID}
+                  />
                   <br/>
                   {this.genStepButtons(2)}
                 </StepContent>

@@ -5,6 +5,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import Snackbar from 'material-ui/Snackbar';
 
 import NumberOptions from './NumberOptions';
+import YourItemsContainer from '../containers/YourItemsContainer';
 
 const AddItem = React.createClass({
 
@@ -62,6 +63,9 @@ const AddItem = React.createClass({
         primary={true}
         fullWidth={true}
         onTouchTap={this.handleSubmit}
+      />
+    <YourItemsContainer
+        imageItemIDFilter={this.props.imageItemIDFilter}
       />
       <Snackbar
         open={this.state.open}

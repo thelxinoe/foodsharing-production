@@ -5,12 +5,16 @@ import FoodItemList from '../components/FoodItemList.jsx';
 
 import {FoodItems} from '../../api/FoodItems/FoodItems.js';
 
-const YourItemsContainer = createContainer(() => {
+const YourItemsContainer = createContainer(({ imageItemIDFilter }) => {
 
     const user = Meteor.user()
         ? Meteor.user().username
         : '';
-    const query = {
+    const query = imageItemIDFilter ? {
+        username: user,
+        imageItemID: imageItemIDFilter,
+    } :
+    {
         username: user
     };
     const renderClaims = true;
