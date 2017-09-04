@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { ImageItems } from '../../api/ImageItems/ImageItems.js';
 import { FoodItems } from '../../api/FoodItems/FoodItems.js';
 import { Messages } from '../../api/Messages/Messages.js';
+import { NotificationLink } from '../../api/NotificationLink/NotificationLink.js';
 import faker from 'faker';
 
 Meteor.users.remove({});
@@ -21,6 +22,7 @@ for (i = 0; i < numUsers; i++) {
 ImageItems.remove({});
 FoodItems.remove({});
 Messages.remove({});
+NotificationLink.remove({});
 
 images = [
   "ZyEA3oNuC3jXHMhPj",
@@ -106,6 +108,11 @@ for (let j = 0; j < images.length; j++) {
             rejected: false,
           }, ],
         }, function(err,id){
+          NotificationLink.insert({
+            link:'/FoodComments/'+id,
+            notificationFor:['tom0','tom1','tom2'],
+            seenBy:[]
+          })
           var numComments = 35;
           for (i = 0; i < numComments; i++) {
             currUser = Meteor.users.find().fetch()[Math.floor(Math.random() * numUsers)];
