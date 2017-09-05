@@ -22,7 +22,6 @@ const FoodItemCommentsContainer = createContainer((props) => {
       for (var i = 0, len = uniqueUsers.length; i < len; i++) {
         var avatarUser = uniqueUsers[i];
         avatar[avatarUser] = Meteor.users.findOne({username:avatarUser});
-        console.log(avatar, avatarUser, uniqueUsers)
       }
 
     }

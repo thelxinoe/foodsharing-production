@@ -17,11 +17,8 @@ const PrivateChatContainer = createContainer(({ messageID }) => {
 
   const query = { _id :  messageID};
   const messageThread = Messages.findOne(query);
-  console.log('privatechat',messageThread)
   let messageThreadExists = !!messageThread;
-  console.log(messageThread)
   let loading = !(messages.ready() && profile.ready() && images.ready() && imageItems.ready() && messageThreadExists);
-  console.log('loading', loading)
 
 
   var avatar = {}

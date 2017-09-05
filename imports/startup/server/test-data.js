@@ -109,6 +109,7 @@ for (let j = 0; j < images.length; j++) {
           }, ],
         }, function(err,id){
           NotificationLink.insert({
+            message:'get the actual name of the thing in here',
             link:'/FoodComments/'+id,
             notificationFor:['tom0','tom1','tom2'],
             seenBy:[]

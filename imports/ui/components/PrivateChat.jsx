@@ -85,7 +85,6 @@ const PrivateChat = React.createClass({
 
   render() {
     var winHeight = window.innerHeight - 64;
-    console.log(this.props)
     if (!this.props.loading){
     return (
       <div id='containerDiv'>

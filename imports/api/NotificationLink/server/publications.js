@@ -3,18 +3,13 @@ import { Meteor } from 'meteor/meteor';
 import { NotificationLink } from '../NotificationLink.js';
 
 Meteor.publish('notificationLink', function(username){
-
-    return NotificationLink.find({
+    const query = {
       notificationFor:{
-        $elemMatch {
-          username
-        }
+        $in : [username]
       },
       seenBy:{
-        $nin {
-          username
-        }
+        $nin : [username]
       }
-    });
-
+    }
+    return NotificationLink.find(query);
 });

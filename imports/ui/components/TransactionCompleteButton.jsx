@@ -39,7 +39,6 @@ class TransactionCompleteButton extends React.Component {
   }
 
   render(){
-    console.log(this)
     const dialogActions = [
       <FlatButton onTouchTap={this.closeDialog} label="CANCEL" />,
       <FlatButton onTouchTap={this.completeTransaction} label="CONTINUE" />
@@ -48,13 +47,13 @@ class TransactionCompleteButton extends React.Component {
     return(
       <div>
       <CardActions>
-        <RaisedButton 
+        <RaisedButton
           backgroundColor={lightGreenA200}
           label="This food has been Shared!"
           onTouchTap={this.openDialog}
         />
       </CardActions>
-      <Dialog 
+      <Dialog
         title="Have you shared the food?"
         modal={false}
         actions={dialogActions}

@@ -11,6 +11,9 @@ NotificationLink.deny({
 });
 
 NotificationLink.schema = new SimpleSchema({
+  message:{
+    type:String
+  },
   link:{
     type:String
   },
@@ -19,12 +22,17 @@ NotificationLink.schema = new SimpleSchema({
   },
   seenBy:{
     type:[String]
-  }
+  },
+  createdAt:{
+    type: Date,
+    defaultValue: new Date(),
+  },
 })
 
 NotificationLink.attachSchema(NotificationLink.schema);
 
 NotificationLink.publicFields = {
+  itemName:1,
   link:1,
   notificationFor:1,
   seenBy:1,

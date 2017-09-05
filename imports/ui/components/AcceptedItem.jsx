@@ -12,7 +12,6 @@ class AcceptedItem extends React.Component {
 
   openPrivateMessage(messageID) {
     return function () {
-      console.log(this.context)
       const queryString = Object.assign(
                             {},
                             this.context.location.query,
