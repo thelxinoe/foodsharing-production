@@ -23,6 +23,7 @@ import PrivateChatDrawer from './PrivateChatDrawer';
 import TimeSince from './TimeSince.jsx';
 
 import { updateSeenBy } from '../../api/Messages/methods';
+import { seenNotification } from '../../api/NotificationLink/methods';
 
 const MessageCentreMessages = React.createClass({
 
@@ -53,8 +54,19 @@ const MessageCentreMessages = React.createClass({
     if(this.props.messageThreads){
       return this.props.messageThreads.map((thread) => {
         const otherUser = this.getOtherUser([thread.sharedBy, thread.requestedBy], this.props.user)
-        const item =
+        {console.log(thread, thread.link)}
+        const item = thread.link ?
+          <ListItem
+            key={thread._id}
+            leftIcon={<SvgIcons.CommunicationChatBubble />}
+            primaryText={thread.message}
+            onTouchTap={
+              this.followNotificationLink(thread.link, thread._id)
+            }
+          />
+        :
         (<ListItem
+          key={thread._id}
           leftAvatar={
             <Avatar src={thread.foodImage().url({store:'images'})} />
           }
@@ -74,8 +86,7 @@ const MessageCentreMessages = React.createClass({
             </div>
           }
           secondaryTextLines={2}
-        />
-        )
+        />)
         return(item)
       });
     }else{
@@ -85,6 +96,13 @@ const MessageCentreMessages = React.createClass({
         </div>
       );
     }
+  },
+  followNotificationLink: function(link, notificationID){
+      return function(){
+        this.context.router.push(link)
+        console.log('id',notificationID)
+        seenNotification.call({notificationID:notificationID})
+      }.bind(this)
   },
 
   openPrivateMessage: function(messageID) {

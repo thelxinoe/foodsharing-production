@@ -16,6 +16,7 @@ import {
 import FoodItemList from './FoodItemList';
 import CommentSystem from './CommentSystem';
 import { insertFoodItemComment } from '../../api/FoodItems/methods';
+import { newNotification } from '../../api/NotificationLink/methods';
 
 const styles = {
   claim: {
@@ -45,6 +46,11 @@ const FoodItemComments = React.createClass({
         foodItemID: this.props.params.foodID,
         comment: comment,
       });
+      newNotification.call({
+          message: 'There\'s a new message for you about '+this.props.foodItem.foodName,
+          link: '/FoodComments/'+this.props.foodItem._id,
+          notificationFor: this.props.uniqueUsers,
+      })
     },
 
     render : function () {

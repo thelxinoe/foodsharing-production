@@ -11,7 +11,7 @@ const MessageCentreMessagesContainer = createContainer(() => {
   function sortByKey(array, key) {
     return array.sort(function(a, b) {
         var x = a[key]; var y = b[key];
-        return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+        return ((x > y) ? -1 : ((x < y) ? 1 : 0));
     });
   }
 
@@ -19,17 +19,17 @@ const MessageCentreMessagesContainer = createContainer(() => {
 
   const images = Meteor.subscribe('images');
   const messages = Meteor.subscribe('messages');
-  const notifications = Meteor.subscribe("notificationLink", 'tom0');
-  const loading = !(messages.ready()&&images.ready()&&notifications.ready());
+  const notifications = Meteor.subscribe("notificationLink", user);
+  const loading = !(messages.ready() && images.ready() && notifications.ready());
 
   const query = { $or: [{ sharedBy: user }, { requestedBy: user }] };
   var messageThreads = Messages.find(query).fetch();
   const notificationList = NotificationLink.find().fetch();
   const messageThreadExists = !loading && !!messageThreads && !!images.ready() && !!notificationList
-  console.log(messageThreads.concat(notificationList))
+  console.log(sortByKey(messageThreads.concat(notificationList),'createdAt'))
   return { loading,
            messageThreads : messageThreadExists
-            ? messageThreads
+            ? sortByKey(messageThreads.concat(notificationList),'createdAt')
             :
             [],
            user };
