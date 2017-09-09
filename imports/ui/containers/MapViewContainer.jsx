@@ -16,9 +16,10 @@ const MapViewContainer = createContainer(() => {
             }
         }
     };
+    const images = Meteor.subscribe('images');
     const imageItems = Meteor.subscribe('imageItems');
     const imageItemList = ImageItems.find(query).fetch()
-    const loaded = (imageItems.ready() && GoogleMaps.loaded());
+    const loaded = (images.ready(),imageItems.ready() && GoogleMaps.loaded());
 
     return {loaded, imageItemList};
 

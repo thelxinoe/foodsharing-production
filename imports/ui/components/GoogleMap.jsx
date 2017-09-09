@@ -58,7 +58,7 @@ var seconds = Math.floor((new Date() - date) / 1000);
         }
 
         var image = {
-          url: foodItem.imageURL,
+          url: foodItem.image().url({store: 'images'}),
           // This marker is 20 pixels wide by 32 pixels high.
           scaledSize: new google.maps.Size(60, 60),
           // The origin for this image is (0, 0).
@@ -69,24 +69,20 @@ var seconds = Math.floor((new Date() - date) / 1000);
           optimized:false
         };
         var infowindow = new google.maps.InfoWindow({maxWidth: 350});
-
+        console.log(foodItem.totalItems)
         var marker = new google.maps.Marker({
             position: new google.maps.LatLng(coords[0], coords[1]),
             map: maps,
             icon: image,
-            title: foodItem.foodDescription,
+            title: foodItem.totalItems + ' items to share.',
           });
 
-        var imgURL = foodItem.imgURL;
+        var imgURL = foodItem.image().url({store: 'images'});
         var imgsrc = "<IMG id='imgLinkItem' width='100%' BORDER='0' ALIGN='Left' SRC='" + imgURL + "' />";
         var tSince = this.calcTime(foodItem.createdAt);
-        var foodDesc = foodItem.foodDescription;
-        if (foodDesc == undefined){
-          foodDesc = "No food description provided... Ask a question!"
-        }
 
         var content = '<div id="iw-container">' +
-                  '<div class="iw-title">' + foodItem.foodDescription + '</div>' +
+                  '<div class="iw-title">' + foodItem.totalItems + ' items to share.' + '</div>' +
                   '<div class="iw-content">' +
                     '<div className="iwTop-container">' +
                       '<div className="leftcolumn">'
@@ -98,7 +94,6 @@ var seconds = Math.floor((new Date() - date) / 1000);
                       '</div>' +
                     '</div>' +
                     imgsrc +
-                    '<p>' + foodDesc + '</p>' +
                   '<div class="iw-bottom-gradient"></div>' +
                 '</div>';
                 //create event listener from mapImg & rightbutton2 that navigates to ItemView
