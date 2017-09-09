@@ -81,9 +81,14 @@ const ItemCreation = React.createClass({
         lng: location.latLng.lng()
       },
     }
-    const imageItemID = insertImageItem.call(
-                          insertItem
-                        )
+    try{
+      var imageItemID = insertImageItem.call(
+                            insertItem
+                          )
+    }
+    catch(e){
+      this.handleError(e)
+    }
     this.setState({
       latLng: {
         lat: location.latLng.lat(),
