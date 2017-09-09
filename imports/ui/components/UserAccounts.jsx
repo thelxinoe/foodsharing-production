@@ -5,7 +5,8 @@ import { Router, Route, Link, IndexRoute, browserHistory } from 'react-router';
 
 import {
 	TextField,
-	RaisedButton
+	RaisedButton,
+	Snackbar
 } from 'material-ui'
 
 import {
@@ -31,24 +32,21 @@ const UserAccounts = React.createClass({
 
 	handleUserName: function(event){
 		this.setState({username: event.target.value});
-		console.log(this.state.username)
 	},
 
 	handlePassword: function(event){
 		this.setState({password: event.target.value});
-		console.log(this.state.password)
+	},
+
+	loginFailClose(){
+		this.setState({openErrPop:false})
 	},
 
 	loginFail(err){
 		var that = this;
-		loginF = function (event) {
-			if(err == "close"){
-				that.setState({openErrPop: false})
-			}else{
-				that.setState({errPopMess: err, openErrPop: true, username: '', password: ''})
-			}
-		}
-		return loginF
+		console.log(err)
+		console.log(that)
+   	that.setState({errPopMess: err, openErrPop: true, username: '', password: ''});
 	},
 
 	handleLogin(){
@@ -58,7 +56,7 @@ const UserAccounts = React.createClass({
 		var that = this;
 		if(pass !== '' && username !== ''){
 			Meteor.loginWithPassword(username, pass, function(err) {
-  				if (err) {
+  			if (err) {
 			    	that.loginFail(err.message);
 				}else{
 			  	console.log("Successful Login!")
@@ -83,13 +81,7 @@ const UserAccounts = React.createClass({
 
 	render : function () {
 		var haveAcc = this.state.haveAcc;
-		const errActions = [
-	    <RaisedButton
-		label="ok"
-		secondary={true}
-		onTouchTap={this.loginFail("close")}
-	    />,
-	];
+
 	  	return(
 			<div style={{height: '100%', width: '100%'}}>
 				<div>
@@ -132,6 +124,12 @@ const UserAccounts = React.createClass({
 						</div>
 					</div>
 				</div>
+				<Snackbar
+          open={this.state.openErrPop}
+          message={this.state.errPopMess}
+          autoHideDuration={4000}
+          onRequestClose={this.loginFailClose}
+        />
 			</div>
 	  	);
 	  }
