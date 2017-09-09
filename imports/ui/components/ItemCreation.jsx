@@ -28,14 +28,18 @@ const ItemCreation = React.createClass({
       imageItemID: '',
 
       //For the snackbar
-      open: false
+      open: false,
+      message: ''
     }
   },
 
   //Snackbar code
 
-  handleError() {
-    this.setState({open: true});
+  handleError(message) {
+    this.setState({
+      open: true,
+      message: message
+    });
   },
 
   handleRequestClose() {
@@ -52,7 +56,7 @@ const ItemCreation = React.createClass({
         finished: stepIndex >= 2
       });
     } else {
-      this.handleError()
+      this.handleError("Please complete this section before moving on.")
     }
   },
 
@@ -99,7 +103,12 @@ const ItemCreation = React.createClass({
       portions: portions,
       weight: parseInt(weight)
     }
-    insertFoodItems.call(foodItem)
+    try{
+      insertFoodItems.call(foodItem)
+    }
+    catch(e){
+      this.handleError(e)
+    }
   },
 
   genStepButtons(step) {
@@ -188,7 +197,7 @@ const ItemCreation = React.createClass({
 
             <Snackbar
               open={this.state.open}
-              message="Please complete this section before moving on."
+              message={this.state.message}
               autoHideDuration={4000}
               onRequestClose={this.handleRequestClose}
             />
