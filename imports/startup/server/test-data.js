@@ -88,6 +88,7 @@ for (let j = 0; j < images.length; j++) {
           username: users[j],
           portions: numPortions,
           portionsLeft: portionsLeft,
+          weight: 100,
           claims: [{
             username: Meteor.users.find().fetch()[Math.floor(Math.random() * numUsers)].username,
             requested: 1,

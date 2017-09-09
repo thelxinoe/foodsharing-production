@@ -52,6 +52,9 @@ FoodItems.schema = new SimpleSchema({
     optional:true,
     blackbox:true,
   },
+  weight:{
+    type: Number,
+  },
 });
 
 FoodItems.attachSchema(FoodItems.schema);

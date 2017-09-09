@@ -13,11 +13,15 @@ const AddItem = React.createClass({
     return{
       foodName:'',
       prtNo:1,
-      open:false
+      open:false,
+      weight:0
     }
   },
   setPrtNo(prtNo){
     this.setState({prtNo:prtNo});
+  },
+  setWeight(event){
+    this.setState({weight:event.target.value})
   },
   handleName(event){
     this.setState({foodName:event.target.value});
@@ -29,8 +33,16 @@ const AddItem = React.createClass({
     if((this.state.foodName == '')){
       this.setState({open:true});
     }else{
-      this.props.handleSubmit({foodName: this.state.foodName,portions:this.state.prtNo});
-      this.setState({foodName:'',prtNo:1});
+      this.props.handleSubmit({
+        foodName: this.state.foodName,
+        portions:this.state.prtNo,
+        weight:this.state.weight,
+      });
+      this.setState({
+        foodName:'',
+        prtNo:1,
+        weight:0
+      });
     }
   },
   render() {
@@ -55,8 +67,18 @@ const AddItem = React.createClass({
           optionChange={this.setPrtNo}
         />
       </div>
+      <br />
+      <div className="textBox">
+        Item weight in grams:
+        <TextField
+          value={this.state.weight}
+          type='number'
+          onChange={this.setWeight}
+        />
+      </div>
       <p>
-        Fill this in for each item in your picture!
+        Fill this in for each item in your picture! We need the weight to
+        continue to get our funding, please help us!
       </p>
       <RaisedButton
         label="Add Item"

@@ -18,9 +18,13 @@ export const insertFoodItems = new ValidatedMethod({
     },
     portions: {
       type: Number
-    }
+    },
+    weight: {
+      type: Number
+    },
+
   }).validator(),
-  run({imageItemID, imageID, foodName, portions}) {
+  run({imageItemID, imageID, foodName, portions, weight}) {
     const user = Meteor.user()
     if (!user) {
       throw new Meteor.Error('api.lists.makePublic.notLoggedIn', 'Must be logged in.');
@@ -31,7 +35,8 @@ export const insertFoodItems = new ValidatedMethod({
       foodName: foodName,
       username: user.username,
       portionsLeft: portions,
-      portions: portions
+      portions: portions,
+      weight: weight,
     })
   }
 
@@ -218,6 +223,6 @@ export const completeClaim = new ValidatedMethod({
       },
       { $set:
         {"claims.$.complete":true}
-      })  
+      })
   }
 });

@@ -91,12 +91,13 @@ const ItemCreation = React.createClass({
     });
   },
 
-  handleSubmit({foodName, portions}) {
+  handleSubmit({foodName, portions, weight}) {
     const foodItem = {
       imageItemID: this.state.imageItemID,
       imageID: this.state.imageID,
       foodName: foodName,
       portions: portions,
+      weight: parseInt(weight)
     }
     insertFoodItems.call(foodItem)
   },
