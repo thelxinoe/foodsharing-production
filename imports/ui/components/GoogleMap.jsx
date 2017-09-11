@@ -17,7 +17,7 @@ const GoogleMap = React.createClass({
   },
 
   calcTime: function(date){
-var seconds = Math.floor((new Date() - date) / 1000);
+      var seconds = Math.floor((new Date() - date) / 1000);
       var interval = Math.floor(seconds / 31536000);
 
       if (interval > 1) {
@@ -138,7 +138,7 @@ var seconds = Math.floor((new Date() - date) / 1000);
 
   linkToItem(id) {
     console.log("linkToItem called...")
-    var path = '/ItemView/'+id;
+    var path = '/ImageItems/'+id;
     browserHistory.push(path);
   },
 

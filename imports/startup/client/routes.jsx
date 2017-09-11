@@ -23,6 +23,10 @@ const renderRoutes = () => (
     <Route path='/' component={AppHeader}>
       <IndexRoute component={GridListTab}/>
       <Route
+        path='/ImageItems/:imageID'
+        component={GridListTab}
+      />
+      <Route
         path='/Login'
         component={UserAccounts}
       />
