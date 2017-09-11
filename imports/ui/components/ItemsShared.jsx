@@ -8,7 +8,7 @@ import {
   CardText, 
   RaisedButton} from 'material-ui/Card';
 import TransactionCompleteButton from './TransactionCompleteButton';
-
+import Loading from './Tools/circleloading'
 
 class ItemsShared extends React.Component {
   constructor() {
@@ -28,7 +28,7 @@ class ItemsShared extends React.Component {
     console.log(this.props)
     return(
       this.props.loading ?
-      <div>Loading..</div>
+      <div><Loading /></div>
       :
       <Card expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
         <CardHeader

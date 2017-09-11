@@ -36,6 +36,8 @@ import {
   grey50
 } from 'material-ui/styles/colors';
 
+import Loading from './Tools/circleloading'
+
 const styles = {
   claim: {
     width: '100%',
@@ -105,7 +107,7 @@ const PrivateChat = React.createClass({
 
     );
   }else {
-      return(<div>'loading...'</div>)
+      return(<div><Loading /></div>)
   }
   }
 });

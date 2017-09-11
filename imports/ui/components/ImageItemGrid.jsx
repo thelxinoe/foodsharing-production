@@ -4,6 +4,7 @@ import {
   GridTile,
 } from 'material-ui';
 import TimeSince from './TimeSince';
+import Loading from './Tools/circleloading'
 
 const styles = {
   root: {
@@ -58,7 +59,7 @@ const ImageItemGrid = React.createClass({
   render() {
     return (
       <div style={styles.root}>
-        {this.props.loading ? 'loading...' : this.renderGridList()}
+        {this.props.loading ? <Loading />: this.renderGridList()}
       </div>
     );
   },

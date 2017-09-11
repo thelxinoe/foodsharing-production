@@ -24,6 +24,7 @@ import TimeSince from './TimeSince.jsx';
 
 import { updateSeenBy } from '../../api/Messages/methods';
 import { seenNotification } from '../../api/NotificationLink/methods';
+import Loading from './Tools/circleloading'
 
 const MessageCentreMessages = React.createClass({
 
@@ -132,7 +133,7 @@ const MessageCentreMessages = React.createClass({
   render : function(){
     return(
       this.props.loading ?
-      <div>'loading...'</div>
+      <div><Loading/></div>
       :
       <div>
         <List>

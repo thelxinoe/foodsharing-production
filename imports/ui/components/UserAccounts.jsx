@@ -87,7 +87,7 @@ const UserAccounts = React.createClass({
 				<div>
 					<div className="loginContain">
 						<div className="loginField">
-							Need an account? <RaisedButton backgroundColor={lightGreenA200} onTouchTap={this.haveAccSwitch()} label="Register" />
+							Need an account? <RaisedButton backgroundColor={lightGreenA200} onClick={this.haveAccSwitch()} label="Register" />
 						</div>
 
 						<div className="loginField">
@@ -116,7 +116,7 @@ const UserAccounts = React.createClass({
 						<div className="loginField">
 							<RaisedButton
 								label="Login"
-								onTouchTap={this.handleLogin}
+								onClick={this.handleLogin}
 								fullWidth={true}
 								style={{width: '100%', backgroundColor: lightGreenA200 }}
 								backgroundColor={lightGreenA200}
