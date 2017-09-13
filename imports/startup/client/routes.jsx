@@ -11,6 +11,7 @@ import MapViewContainer from '../../ui/containers/MapViewContainer';
 import YourItemsContainer from '../../ui/containers/YourItemsContainer';
 import FoodItemCommentsContainer from '../../ui/containers/FoodItemCommentsContainer';
 import ItemCreation from '../../ui/components/ItemCreation';
+import FoodItemListContainer from '../../ui/containers/FoodItemListContainer';
 
 const requireAuth = function(nextState, replace){
   if(Meteor.userId() == null){
@@ -24,7 +25,7 @@ const renderRoutes = () => (
       <IndexRoute component={GridListTab}/>
       <Route
         path='/ImageItems/:imageID'
-        component={GridListTab}
+        component={FoodItemListContainer}
       />
       <Route
         path='/Login'

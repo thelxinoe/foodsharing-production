@@ -88,7 +88,6 @@ const GoogleMap = React.createClass({
                       '<div className="leftcolumn">'
                          + '<img className="smallButton" style="float:left" src="/imgs/icons/clock.svg" />' +
                          tSince +
-                         '<img id="iconLinkItem" style="float:right" src="/imgs/icons/messages.svg" />' +
                          '<br/>' +
                         'by ' + foodItem.username +
                       '</div>' +
@@ -118,9 +117,9 @@ const GoogleMap = React.createClass({
         var foodId = foodItem._id;
         google.maps.event.addListener(infowindow, 'domready', function() {
           that.genDOMmanip();
-          document.getElementById("iconLinkItem").addEventListener("click", function(){
-              that.linkToItem(foodId);
-          });
+          // document.getElementById("iconLinkItem").addEventListener("click", function(){
+          //     that.linkToItem(foodId);
+          // });
           document.getElementById("imgLinkItem").addEventListener("click", function(){
               that.linkToItem(foodId);
           });

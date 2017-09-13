@@ -5,17 +5,18 @@ import FoodItemList from '../components/FoodItemList.jsx';
 
 import {FoodItems} from '../../api/FoodItems/FoodItems.js';
 
-const FoodItemListContainer = createContainer(({ imageItemIDFilter }) => {
+const FoodItemListContainer = createContainer(({ imageItemIDFilter, params }) => {
     const user = Meteor.user()
         ? Meteor.user().username
         : '';
-    const query = imageItemIDFilter ? {
+    const imageID = imageItemIDFilter || (params ? params.imageID : 0)
+    const query = imageID ? {
         username: {
             $not: {
                 $eq: user
             }
         },
-        imageItemID: imageItemIDFilter,
+        imageItemID: imageID,
     } :
     {
         username: {
