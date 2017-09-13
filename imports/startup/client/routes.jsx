@@ -51,6 +51,7 @@ const renderRoutes = () => (
       <Route
         path='/ItemCreation'
         component={ItemCreation}
+        onEnter={requireAuth}
       />
     </Route>
   </Router>

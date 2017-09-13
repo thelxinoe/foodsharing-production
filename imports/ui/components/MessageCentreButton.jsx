@@ -40,10 +40,6 @@ class MessageCentreButton extends React.Component {
       </Badge>
       :
       <IconButton
-        linkButton={true}
-        containerElement={
-          <Link to={{ pathname: this.props.pathname, query: queryString}}/>
-        }
         tooltip="Messages"
         tooltipPosition="top-right"
         disabled={false}>
