@@ -52,6 +52,7 @@ const AddItem = React.createClass({
         <div className="textBox">
 
           <TextField
+            id={Math.random()}
             hintText="Please enter name of the item."
             value={this.state.foodName}
             onChange={this.handleName}
@@ -62,6 +63,7 @@ const AddItem = React.createClass({
         <div className="textBox">
           Number of Portions:
         <NumberOptions
+          id={Math.random()}
           value={this.state.prtNo}
           options="20"
           optionChange={this.setPrtNo}
@@ -71,6 +73,7 @@ const AddItem = React.createClass({
       <div className="textBox">
         Item weight in grams:
         <TextField
+          id={Math.random()}
           value={this.state.weight}
           type='number'
           onChange={this.setWeight}

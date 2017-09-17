@@ -25,9 +25,9 @@ Messages.remove({});
 NotificationLink.remove({});
 
 images = [
-  "ZyEA3oNuC3jXHMhPj",
-  "ZyEA3oNuC3jXHMhPj",
-  "ZyEA3oNuC3jXHMhPj"
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/1200px-Good_Food_Display_-_NCI_Visuals_Online.jpg",
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/1200px-Good_Food_Display_-_NCI_Visuals_Online.jpg",
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/1200px-Good_Food_Display_-_NCI_Visuals_Online.jpg"
 ];
 users = ['tom0','tom1','tom2']
 var numPortions = 5;
