@@ -17,6 +17,7 @@ import FoodItemList from './FoodItemList';
 import CommentSystem from './CommentSystem';
 import { insertFoodItemComment } from '../../api/FoodItems/methods';
 import { newNotification } from '../../api/NotificationLink/methods';
+import Loading from './Tools/circleloading'
 
 const styles = {
   claim: {
@@ -56,7 +57,7 @@ const FoodItemComments = React.createClass({
     render : function () {
       return (
         this.props.loading ?
-        <div>'loading...'</div>
+        <div><Loading /></div>
         :
         <div className="fillDiv">
           <FoodItemList

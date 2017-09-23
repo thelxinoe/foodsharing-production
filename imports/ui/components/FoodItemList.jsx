@@ -18,6 +18,7 @@ import TimeSince from './TimeSince';
 import PortionImages from './PortionImages';
 import Requests from './Requests';
 import {deleteFoodItem} from '../../api/FoodItems/methods';
+import Loading from './Tools/circleloading'
 
 class FoodItemList extends React.Component{
 
@@ -100,7 +101,7 @@ class FoodItemList extends React.Component{
   render(){
     return(
       <div>
-        {this.renderItems()}
+       {this.props.loading ? <Loading />: this.renderItems()}
       </div>
     );
   }

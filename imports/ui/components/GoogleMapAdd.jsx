@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 
 import { Meteor } from 'meteor/meteor';
 import { Random } from 'meteor/random';
+import Loading from './Tools/circleloading'
 
 const GoogleMapAdd = React.createClass({
   // propTypes: {
@@ -54,7 +55,7 @@ const GoogleMapAdd = React.createClass({
     }else{
       return(
         <div>
-          Loading map...
+          <Loading />
         </div>
       );
     }

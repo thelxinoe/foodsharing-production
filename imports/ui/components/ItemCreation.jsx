@@ -13,6 +13,8 @@ import PhotoUpload from './PhotoUpload';
 import AddLocation from './AddLocation';
 import AddItem from './AddItem';
 import FoodItemListAddContainer from '../containers/FoodItemListAddContainer';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+
 
 const ItemCreation = React.createClass({
 
@@ -48,7 +50,6 @@ const ItemCreation = React.createClass({
 
   //Stepper Code
   handleNext() {
-
     stepIndex = this.state.stepIndex;
     if ((stepIndex + 1) == this.state.completedIndex) {
       this.setState({
@@ -56,6 +57,7 @@ const ItemCreation = React.createClass({
         finished: stepIndex >= 2
       });
     } else {
+      console.log("error")
       this.handleError("Please complete this section before moving on.")
     }
   },
@@ -131,7 +133,7 @@ const ItemCreation = React.createClass({
             disableTouchRipple={true}
             disableFocusRipple={true}
             primary={true}
-            onTouchTap={stepIndex === 2
+            onClick={stepIndex === 2
               ? function(){browserHistory.push('/')}
               : this.handleNext}
               style={{
@@ -143,7 +145,7 @@ const ItemCreation = React.createClass({
                   disabled={stepIndex === 0}
                   disableTouchRipple={true}
                   disableFocusRipple={true}
-                  onTouchTap={this.handlePrev}/>
+                  onClick={this.handlePrev}/>
               )
             }
           </div>
