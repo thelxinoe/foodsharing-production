@@ -33,7 +33,8 @@ import ActionDashboard from 'material-ui/svg-icons/action/dashboard';
 
 import MessageCentreButtonContainer from '../containers/MessageCentreButtonContainer';
 import MessageCentre from './MessageCentre';
-import PrivateChatDrawer from './PrivateChatDrawer'
+import PrivateChatDrawer from './PrivateChatDrawer';
+import Loading from './Tools/circleloading';
 
 const logoutContentStyle = {
   width: '100%',
@@ -120,6 +121,7 @@ const AppHeader = React.createClass({
     h2.style["color"] = "#1b5e20";
   },
 
+
   handleLogout: function() {
     Meteor.logout();
     this.setState({openLogout: false});
@@ -167,7 +169,27 @@ const AppHeader = React.createClass({
     this.context.router.goBack();
   },
 
+  waitForElement: function(elementId, callBack){
+  window.setTimeout(function(){
+    var element = document.getElementById(elementId);
+    if(element){
+      callBack(elementId, element);
+    }else{
+      waitForElement(elementId, callBack);
+    }
+  },500)
+},
+
+
+getcontentContainHieght: function(){
+this.waitForElement("contentContain",function(){
+    console.log("contentContain loaded...");
+  });
+},
+
+
   render: function() {
+  
     const actions = [
       < FlatButton
       label = "Logout"
@@ -194,8 +216,10 @@ const AppHeader = React.createClass({
       }
       onTouchTap = {
         this.handleClose
-      } />
+      } 
+      />
     ];
+
 
     return (
       <div className="bigBoy">
@@ -274,14 +298,19 @@ const AppHeader = React.createClass({
                         </ToolbarGroup>
                         </Toolbar>
                       </div>
-
+                      <div>
+        {this.props.loading ? <Loading />: 
                       <div className="contentContain">
+                     
                         {
-                        <Scrollbars
+                        <Scrollbars universal
                           autoHeight
-                          style={{
-                            position: 'relative'
-                          }}
+                                 style={{
+                                  height: '100%',
+                                  top: 0,
+                                  right: 0,
+                                }}
+                          
                           >
                           {React.cloneElement(this.props.children, {
                             openMessages: this.handleOpenMessage
@@ -289,7 +318,8 @@ const AppHeader = React.createClass({
                         </Scrollbars>
                       }
                       </div>
-
+                  }
+                        </div>
                       <div className="tabsContain">
 
                         <Tabs>

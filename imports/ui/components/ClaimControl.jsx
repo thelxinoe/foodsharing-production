@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { FlatButton, Snackbar } from 'material-ui';
-
+import Loading from './Tools/circleloading';
 import NumberOptions from './NumberOptions';
 
 const ClaimControl = React.createClass({
@@ -28,6 +28,7 @@ const ClaimControl = React.createClass({
 
 	render() {
 		return (
+			this.props.loading ? <Loading />: 
 			<div>
 				<NumberOptions
 					value = {this.state.portionClaim}
@@ -46,7 +47,9 @@ const ClaimControl = React.createClass({
 					onTouchTap={this.handleSnackbarClose}
 					onRequestClose={this.handleSnackbarClose}/>
 			</div>
+		
 		);
-	}
+	
+}
 });
 export default ClaimControl;

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 
 import GoogleMapAddContainer from '../containers/GoogleMapAddContainer';
 import { Meteor } from 'meteor/meteor';
+import Loading from './Tools/circleloading';
 
 const AddLocation = React.createClass({
 
@@ -92,6 +93,7 @@ const AddLocation = React.createClass({
   },
   render() {
       return(
+        this.props.loading ? <Loading />: 
         <div className="smallMap">
 
           <input
@@ -108,8 +110,9 @@ const AddLocation = React.createClass({
           />
 
         </div>
+      
     )
-  }
-
+  
+}
 });
 export default AddLocation;

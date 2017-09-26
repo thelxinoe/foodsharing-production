@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-
+import Loading from './Tools/circleloading';
 import {
   Link,
 } from 'react-router';
@@ -40,6 +40,7 @@ class PrivateChatDrawer extends React.Component {
           color={green900}/>
     </IconButton>
     return (
+      this.props.loading ? <Loading />:
       <div id='drawerContainerDIv'>
         <Drawer
           containerClassName='containerRoot'
@@ -62,6 +63,7 @@ class PrivateChatDrawer extends React.Component {
           />
         </Drawer>
       </div>
+    
   )
   }
 }

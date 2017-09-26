@@ -9,6 +9,7 @@ import ClaimControl from './ClaimControl';
 
 import { createMessageClaim } from '../../api/Messages/methods';
 import { acceptFoodItemClaim } from '../../api/FoodItems/methods';
+import Loading from './Tools/circleloading';
 
 class AcceptRequest extends React.Component {
     constructor(){
@@ -44,6 +45,7 @@ class AcceptRequest extends React.Component {
           />,
         ];
         return (
+           this.props.loading ? <Loading />: 
             <Dialog
               title="Accept"
               actions={actions}
@@ -55,8 +57,8 @@ class AcceptRequest extends React.Component {
               open={this.props.open}>
                 How many portions do you wish to accept?
             </Dialog>
+          
         )
     }
 }
-
 export default AcceptRequest;

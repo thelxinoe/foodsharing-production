@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, Link, IndexRoute, browserHistory } from 'react-router';
-
+import Loading from './Tools/circleloading';
 import {
   DropDownMenu,
   MenuItem
@@ -31,12 +31,14 @@ const NumberOptions = React.createClass({
 
   render() {
     return(
+      this.props.loading ? <Loading />:
       <DropDownMenu
         maxHeight={300}
         value={this.props.value}
         onChange={this.handleChange}>
         {this.portionNumbers(this.props.options)}
       </DropDownMenu>
+    
     );
   },
 });

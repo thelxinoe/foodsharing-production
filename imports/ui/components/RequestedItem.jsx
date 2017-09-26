@@ -8,7 +8,7 @@ import {
 
 import ActionCheckCircle from 'material-ui/svg-icons/action/check-circle';
 import ContentBlock from 'material-ui/svg-icons/content/block';
-
+import Loading from './Tools/circleloading';
 import AcceptRequest from './AcceptRequest';
 import RejectRequest from './RejectRequest';
 
@@ -58,6 +58,7 @@ class RequestedItem extends React.Component {
       avatar = <Avatar src="http://thesocialmediamonthly.com/wp-content/uploads/2015/08/photo.png" />
     }
     return(
+      this.props.loading ? <Loading />:
       <div>
         <ListItem
         primaryText={this.props.claim.username}
@@ -80,6 +81,7 @@ class RequestedItem extends React.Component {
           {...this.props}
         />
       </div>
+    
   )}
 }
 

@@ -7,6 +7,17 @@ body
   margin: 0px 0px 0px 0px;
 }
 
+.center{
+  margin: auto;
+  text-align: center;
+  display: block;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-align-content: center;
+  align-content: center;
+}
+
 .avatar{
   max-width:40px;
   max-height:40px;
@@ -24,9 +35,15 @@ body
 }
 
 .fillDivNoScroll{
-  max-width:100%;
-  max-height:100%;
-  overflow:hidden;
+  max-width: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  text-align: center;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-align-content: center;
+  align-content: center;
 }
 
 
@@ -712,8 +729,11 @@ html {
   max-height:100% !important;
   /*height: 350px;*/
   background-image: url("/imgs/bgTrans.png");
-  background-repeat:repeat;
-  margin: 0px 0px 0px 0px;
+  background-repeat:repeat;  
+padding-left: 3000px;
+margin-left: -3000px;
+padding-right: 3000px;
+margin-right: -3000px;
 }
 
 .vertAlign{

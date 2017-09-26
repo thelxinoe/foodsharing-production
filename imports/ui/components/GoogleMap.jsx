@@ -2,9 +2,8 @@ import { default as update } from "react-addons-update";
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, Link, IndexRoute, browserHistory } from 'react-router';
-
+import Loading from './Tools/circleloading';
 import TimeSince from './TimeSince.jsx';
-
 import ActionSchedule from 'material-ui/svg-icons/action/schedule';
 
 var iwArray = [];
@@ -328,7 +327,9 @@ const GoogleMap = React.createClass({
 
   render() {
     return (
+      this.props.loading ? <Loading />:
         <div className="map-container"><input id="pacinput" ref="pacinput" className="controls" type="text" placeholder="Search Box" /></div>
+    
     );
   }
 });

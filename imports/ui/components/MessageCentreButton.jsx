@@ -1,22 +1,20 @@
 import {Meteor} from 'meteor/meteor';
-
+import Loading from './Tools/circleloading'
 import React, { PropTypes } from 'react';
-
 import {
   Link,
 } from 'react-router';
-
 import {
-  IconButton,
+ IconButton,
   Badge,
 } from 'material-ui';
-
 import SvgIcons from 'material-ui/svg-icons';
 
 class MessageCentreButton extends React.Component {
   render(){
     const queryString = Object.assign({},this.props.query,{ openMessageCentre: true });
     return (
+      this.props.loading ? <Loading />:
       this.props.user ?
       <Badge
         badgeContent={this.props.unreadMessages}
@@ -45,7 +43,7 @@ class MessageCentreButton extends React.Component {
         disabled={false}>
         <SvgIcons.CommunicationForum color='White'/>
       </IconButton>
-
+    
     )
   }
 }

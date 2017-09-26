@@ -6,6 +6,7 @@ import Snackbar from 'material-ui/Snackbar';
 
 import NumberOptions from './NumberOptions';
 import YourItemsContainer from '../containers/YourItemsContainer';
+import Loading from './Tools/circleloading';
 
 const AddItem = React.createClass({
 
@@ -47,6 +48,7 @@ const AddItem = React.createClass({
   },
   render() {
     return (
+      this.props.loading ? <Loading />: 
       <div>
 
         <div className="textBox">
@@ -99,6 +101,7 @@ const AddItem = React.createClass({
         onRequestClose={this.handleRequestClose}
         />
     </div>
+  
   );
 }
 

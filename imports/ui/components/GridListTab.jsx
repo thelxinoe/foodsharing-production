@@ -5,7 +5,7 @@ import {Router, Route, Link, IndexRoute, browserHistory} from 'react-router';
 import FoodItemList from './FoodItemList.jsx';
 import ImageItemGridContainer from '../containers/ImageItemGridContainer.jsx';
 import FoodItemListContainer from '../containers/FoodItemListContainer.jsx';
-
+import Loading from './Tools/circleloading';
 import ActionViewModule from 'material-ui/svg-icons/action/view-module.js';
 import ActionList from 'material-ui/svg-icons/action/list.js';
 
@@ -39,6 +39,7 @@ const GridListTab = React.createClass({
 
   render: function() {
     return (
+      this.props.loading ? <Loading />:
       <Tabs
         value={this.state.value}
         onChange={this.handleChange}>
@@ -60,6 +61,7 @@ const GridListTab = React.createClass({
           imageItemIDFilter={this.state.imageItemID}/>
       </Tab>
     </Tabs>
+  
   );
 }
 });

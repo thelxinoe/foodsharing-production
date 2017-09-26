@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-
+import Loading from './Tools/circleloading';
 import React from 'react';
 
 Comment = React.createClass({
@@ -15,6 +15,7 @@ Comment = React.createClass({
     const avatarUrl = this.props.avatar[this.props.username].avatar().url({store:'images'})//avatarThing.avatar().url({store:'images'})
     return(
       <div>
+       this.props.loading ? <Loading />: 
         { this.props.same ?
           ""
           :
@@ -39,6 +40,7 @@ Comment = React.createClass({
             {this.props.comment}
           </div>
         </div>
+      
       </div>
     );
   }

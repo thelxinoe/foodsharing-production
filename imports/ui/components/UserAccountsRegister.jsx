@@ -29,7 +29,7 @@ import {
 import {ImagePhotoCamera } from 'material-ui/svg-icons/image/photo-camera';
 import {EditorModeEdit } from 'material-ui/svg-icons/editor/mode-edit';
 import {MapsPlace } from 'material-ui/svg-icons/maps/place';
-
+import Loading from './Tools/circleloading';
 import PhotoUpload from './PhotoUpload';
 import AddLocation from './AddLocation';
 import RegisterForm from './RegisterForm';
@@ -204,6 +204,7 @@ const UserAccountRegister = React.createClass({
         const contentStyle = {margin: '0 16px'};
 
         return (
+        	this.props.loading ? <Loading />:
 			<div style={{width: '100%', maxWidth: 700, margin: 'auto'}}>
 			<br/>
 			<br/>
@@ -242,7 +243,7 @@ const UserAccountRegister = React.createClass({
 			<br/>
 			<br/>
 			</div>
-			);
+		);
 
     }
 });

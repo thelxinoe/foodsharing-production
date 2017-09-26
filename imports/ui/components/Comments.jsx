@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-
+import Loading from './Tools/circleloading';
 import Comment from './Comment';
 import TimeSince from './TimeSince.jsx';
 
@@ -8,6 +8,7 @@ class Comments extends React.Component {
     render() {
 
         return (
+            this.props.loading ? <Loading />:
             <div>
                 {this.props.comments.map((comment) => {
                     var prvUsr;
@@ -26,6 +27,7 @@ class Comments extends React.Component {
                     )
                 })}
             </div>
+        
         )
 
     }

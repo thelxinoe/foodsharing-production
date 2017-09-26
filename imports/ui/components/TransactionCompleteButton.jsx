@@ -7,7 +7,7 @@ import {
   lightGreenA200
 } from 'material-ui/styles/colors';
 import {browserHistory} from 'react-router';
-
+import Loading from './Tools/circleloading';
 import {completeClaim} from '../../api/FoodItems/methods';
 import {deleteMessage} from '../../api/Messages/methods';
 
@@ -45,6 +45,7 @@ class TransactionCompleteButton extends React.Component {
     ];
 
     return(
+      this.props.loading ? <Loading />:
       <div>
       <CardActions>
         <RaisedButton
@@ -63,6 +64,7 @@ class TransactionCompleteButton extends React.Component {
         Do you want to continue?
       </Dialog>
       </div>
+    
     );
   }
 }

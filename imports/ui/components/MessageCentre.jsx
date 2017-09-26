@@ -1,4 +1,5 @@
 import React, {PropTypes} from 'react';
+import Loading from './Tools/circleloading';
 
 import {
   Link,
@@ -35,6 +36,7 @@ class MessageCentre extends React.Component {
           color={green900}/>
     </IconButton>
     return (
+      this.props.loading ? <Loading />:
       <Drawer
         width={window.innerWidth}
         openSecondary={true}
@@ -54,6 +56,7 @@ class MessageCentre extends React.Component {
         </div>
         <MessageCentreMessagesContainer />
       </Drawer>
+    
     )
   }
 }

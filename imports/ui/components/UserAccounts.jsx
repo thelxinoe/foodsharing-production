@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, Link, IndexRoute, browserHistory } from 'react-router';
 // import Accounts from 'meteor/std:accounts-basic';
-
+import Loading from './Tools/circleloading';
 import {
 	TextField,
 	RaisedButton,
@@ -83,6 +83,7 @@ const UserAccounts = React.createClass({
 		var haveAcc = this.state.haveAcc;
 
 	  	return(
+	  		this.props.loading ? <Loading />:
 			<div style={{height: '100%', width: '100%'}}>
 				<div>
 					<div className="loginContain">
@@ -131,6 +132,7 @@ const UserAccounts = React.createClass({
           onRequestClose={this.loginFailClose}
         />
 			</div>
+		
 	  	);
 	  }
 	});

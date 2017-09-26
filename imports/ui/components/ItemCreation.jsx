@@ -5,6 +5,7 @@ import { Meteor } from 'meteor/meteor';
 
 import { Step, Stepper, StepLabel, StepContent } from 'material-ui/Stepper';
 import { Snackbar, RaisedButton, FlatButton } from 'material-ui';
+import Loading from './Tools/circleloading';
 
 import { insertImageItem } from '../../api/ImageItems/methods.js';
 import { insertFoodItems } from '../../api/FoodItems/methods.js';
@@ -159,6 +160,7 @@ const ItemCreation = React.createClass({
         };
 
         return (
+          this.props.loading ? <Loading />:
           <div style={{
               width: '100%',
               maxWidth: 700,
@@ -210,6 +212,7 @@ const ItemCreation = React.createClass({
             />
 
           </div>
+        
         );
 
       }

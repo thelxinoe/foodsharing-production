@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-
+import Loading from './Tools/circleloading';
 import {
   FlatButton,
   Dialog,
@@ -36,18 +36,21 @@ class RejectRequest extends React.Component {
       />,
     ];
     return (
-      <Dialog
-        title="Reject"
-        actions={actions}
-        modal={true}
-        contentStyle={{
-          width: '100%',
-          maxWidth: 'none',
-        }}
-        open={this.props.open}
-      >
-      Do you really want to reject this claim?
-      </Dialog>);
+      this.props.loading ? <Loading />:
+        <Dialog
+          title="Reject"
+          actions={actions}
+          modal={true}
+          contentStyle={{
+            width: '100%',
+            maxWidth: 'none',
+          }}
+          open={this.props.open}
+        >
+        Do you really want to reject this claim?
+        </Dialog>
+      
+    );
   }
 }
 

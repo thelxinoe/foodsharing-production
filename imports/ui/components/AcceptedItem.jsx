@@ -5,7 +5,7 @@ import {
   Divider,
   Avatar,
 } from 'material-ui';
-
+import Loading from './Tools/circleloading'
 import CommunicationChat from 'material-ui/svg-icons/communication/chat';
 
 class AcceptedItem extends React.Component {
@@ -29,6 +29,7 @@ class AcceptedItem extends React.Component {
   }
 
   render() {
+     
     let avatar = undefined;
     try{
       avatar = <Avatar src={Meteor.users.findOne({username:this.props.claim.username}).avatar().url({store:'images'})} />

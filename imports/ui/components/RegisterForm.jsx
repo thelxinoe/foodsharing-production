@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, Link, IndexRoute, browserHistory } from 'react-router';
-
+import Loading from './Tools/circleloading';
 import { Meteor } from 'meteor/meteor'
 
 import {
@@ -76,6 +76,7 @@ const RegisterForm = React.createClass({
 
   render() {
     return (
+      this.props.loading ? <Loading />:
       <div>
 
         <div className="loginContain">
@@ -178,6 +179,7 @@ const RegisterForm = React.createClass({
           />
 
       </div>
+    
     );
   }
 });

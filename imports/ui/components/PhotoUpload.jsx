@@ -3,7 +3,7 @@ import Dropzone from 'react-dropzone';
 import Snackbar from 'material-ui/Snackbar';
 
 import { Images } from '../../api/Images/Images';
-
+import Loading from './Tools/circleloading';
 import { Meteor } from 'meteor/meteor';
 const images = Meteor.subscribe('images');
 
@@ -30,6 +30,7 @@ const PhotoUpload = React.createClass({
 
     render() {
         return (
+          this.props.loading ? <Loading />:
             <div>
                 {this.state.imageUpload == '' ?
                 <Dropzone onDrop={this.onDrop} multiple={false}>
@@ -42,6 +43,7 @@ const PhotoUpload = React.createClass({
                 onRequestClose={this.handleRequestClose}
               />
             </div>
+          
         );
     }
 

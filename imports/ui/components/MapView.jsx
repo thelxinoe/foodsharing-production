@@ -2,8 +2,8 @@ import { default as update } from "react-addons-update";
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, Link, IndexRoute, browserHistory } from 'react-router';
-
-import GoogleMap from './GoogleMap.jsx'
+import Loading from './Tools/circleloading';
+import GoogleMap from './GoogleMap.jsx';
 
 const MapView = React.createClass({
 
@@ -38,7 +38,7 @@ const MapView = React.createClass({
         listeners={this.listeners()} />;
     }
     return <div>
-      Loading map...
+      <Loading />
     </div>;
   }
 });

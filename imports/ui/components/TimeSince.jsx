@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, Link, IndexRoute, browserHistory } from 'react-router';
+import Loading from './Tools/circleloading';
 
 const TimeSince = React.createClass({
 
@@ -30,10 +31,13 @@ const TimeSince = React.createClass({
 	    return Math.floor(seconds) + " secs";
 	},
 		render: function () {
+
 			return(
-				<div>
-					{this.calcTime(this.props.time)}
-				</div>
+				this.props.loading ? <Loading />:
+					<div>
+						{this.calcTime(this.props.time)}
+					</div>
+				
 				);
 		}
 

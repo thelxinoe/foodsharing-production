@@ -15,6 +15,7 @@ import {
 
 import FoodItemList from './FoodItemList';
 import Comments from './Comments';
+import Loading from './Tools/circleloading';
 
 const styles = {
   claim: {
@@ -57,6 +58,7 @@ const CommentSystem = React.createClass({
 
     render : function () {
       return (
+        this.props.loading ? <Loading />:
         <div>
           <Scrollbars style={{ height: 215, position: 'relative' }}>
             <div>
@@ -89,6 +91,7 @@ const CommentSystem = React.createClass({
             </div>
           </Paper>
         </div>
+      
       );
     }
   }
