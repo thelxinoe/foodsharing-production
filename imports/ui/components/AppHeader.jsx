@@ -304,14 +304,13 @@ this.waitForElement("contentContain",function(){
                      
                         {
                         <Scrollbars universal
-                          autoHeight
-                                 style={{
-                                  height: '100%',
-                                  top: 0,
-                                  right: 0,
-                                }}
-                          
-                          >
+                          autoHeight={true}
+                          style={{
+                            top: 0,
+                            right: 0,
+                           position: 'relative',
+                          }}       
+                        >
                           {React.cloneElement(this.props.children, {
                             openMessages: this.handleOpenMessage
                           })}

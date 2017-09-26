@@ -724,16 +724,19 @@ html {
 
 .contentContain{
   position: absolute;
-  width:100%;
+  width:100% !important;
   height:100% !important;
   max-height:100% !important;
+  overflow: hidden !important;
+  max-height: 100% !important;
+  max-width: 100% !important;
   /*height: 350px;*/
   background-image: url("/imgs/bgTrans.png");
   background-repeat:repeat;  
-padding-left: 3000px;
-margin-left: -3000px;
-padding-right: 3000px;
-margin-right: -3000px;
+  padding-left: 3000px;
+  margin-left: -3000px;
+  padding-right: 3000px;
+  margin-right: -3000px;
 }
 
 .vertAlign{
