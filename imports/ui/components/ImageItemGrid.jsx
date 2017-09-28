@@ -42,7 +42,7 @@ const ImageItemGrid = React.createClass({
         >
         console.log(image())
         <img
-          src={imageItem.image().url({store: 'images'})}
+          src={this.props.loading ? <Loading />: imageItem.image().url({store: 'images'})}
         />
       </GridTile>
     ));

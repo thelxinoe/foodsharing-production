@@ -286,7 +286,10 @@ this.waitForElement("contentContain",function(){
                             {/* <ToolbarGroup style={{
                               bottom: '35%'
                             }}>
-                            <AutoComplete floatingLabelText="Search..." filter={AutoComplete.caseInsensitiveFilter} dataSource={searchNames} onUpdateInput={this.filterList} style={{
+                            <AutoComplete floatingLabelText="Search..."
+                              filter={AutoComplete.caseInsensitiveFilter}
+                              dataSource={searchNames}
+                              onUpdateInput={this.filterList} style={{
                             color: 'white'
                           }}/>
                         </ToolbarGroup> */}
@@ -305,6 +308,7 @@ this.waitForElement("contentContain",function(){
                         {
                         <Scrollbars universal
                           autoHeight={true}
+                          renderThumbVertical={props => <div {...props} className="thumb-vertical"/>}
                           style={{
                             top: 0,
                             right: 0,

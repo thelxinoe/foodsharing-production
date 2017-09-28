@@ -1,5 +1,5 @@
 import React from 'react';
-import Loading from './Tools/circleloading';
+import LoadingSmall from './Tools/circleloadingSmall';
 import ImagePhoto from 'material-ui/svg-icons/image/photo';
 import { Dialog, FlatButton } from 'material-ui';
 
@@ -25,7 +25,7 @@ export default class ImagePopOverButton extends React.Component {
         />
     ];
     return (
-      this.props.loading ? <Loading />:
+      this.props.loading ? <LoadingSmall />:
       <div>
         <ImagePhoto onTouchTap={this.openImage}/>
         <Dialog

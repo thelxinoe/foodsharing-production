@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import { Dialog, FlatButton } from 'material-ui';
 import ActionShoppingCart from 'material-ui/svg-icons/action/shopping-cart';
 import { makeFoodItemClaim } from '../../api/FoodItems/methods';
-import Loading from './Tools/circleloading';
+import LoadingSmall from './Tools/circleloadingSmall';
 import ClaimControl from './ClaimControl';
 
 class ClaimsButton extends React.Component {
@@ -42,7 +42,7 @@ class ClaimsButton extends React.Component {
       />
     ];
     return (
-       this.props.loading ? <Loading />: 
+       this.props.loading ? <LoadingSmall />: 
       <div>
         <ActionShoppingCart onTouchTap={this.openClaim}/>
         <Dialog
