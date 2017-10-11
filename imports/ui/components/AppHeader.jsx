@@ -170,22 +170,51 @@ const AppHeader = React.createClass({
   },
 
   waitForElement: function(elementId, callBack){
+    /*console.log("elementId = " + elementId)
   window.setTimeout(function(){
     var element = document.getElementById(elementId);
-    if(element){
+    console.log(element)*/
+    /*if(element){
       callBack(elementId, element);
+  }},500)
+*/
+   (function flux(){
+    setTimeout(function(){
+        var done = document.getElementById(elementId);
+        if( done ){
+          console.log(done)
+         callback(elementId, element);
+        }else{
+         console.log("Error!")
+         flux();
+        }
+    },250);
+ });
+
+},
+
+
+  getcontentContainHieght: function(elementId){
+    console.log(this.waitForElement(elementId))
+  this.waitForElement(elementId ,function(){
+      console.log("contentContain loaded...");
+    });
+  },
+
+  autoHeightMax: function(){
+    if (this.props.loading){
+      var contentContainLoaded = this.getcontentContainHieght("contentContain")
+    console.log(document.getElementById('contentContain'))
+    if (contentContainLoaded){
+      var height = document.getElementById('contentContain').offsetHeight;
+      console.log(height)
+      return height;
     }else{
-      waitForElement(elementId, callBack);
-    }
-  },500)
-},
-
-
-getcontentContainHieght: function(){
-this.waitForElement("contentContain",function(){
-    console.log("contentContain loaded...");
-  });
-},
+      console.log("error: contentContainLoaded = " + contentContainLoaded)
+      return 500;
+    };
+  }else{console.log("Not loaded?")};
+  },
 
 
   render: function() {
@@ -306,19 +335,11 @@ this.waitForElement("contentContain",function(){
                       <div className="contentContain">
                      
                         {
-                        <Scrollbars universal
-                          autoHeight={true}
-                          renderThumbVertical={props => <div {...props} className="thumb-vertical"/>}
-                          style={{
-                            top: 0,
-                            right: 0,
-                           position: 'relative',
-                          }}       
-                        >
+                        <div>
                           {React.cloneElement(this.props.children, {
                             openMessages: this.handleOpenMessage
                           })}
-                        </Scrollbars>
+                        </div>
                       }
                       </div>
                   }
