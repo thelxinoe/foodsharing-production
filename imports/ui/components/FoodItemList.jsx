@@ -17,7 +17,7 @@ import ClaimsButton from './ClaimsButton';
 import TimeSince from './TimeSince';
 import PortionImages from './PortionImages';
 import Requests from './Requests';
-import {deleteFoodItem} from '../../api/FoodItems/methods';
+import { deleteFoodItem } from '../../api/FoodItems/methods';
 
 class FoodItemList extends React.Component{
 
@@ -98,7 +98,11 @@ class FoodItemList extends React.Component{
     });
   }
   render(){
+
     return(
+      this.props.loading ?
+      <div>'loading...'</div>
+      :
       <div>
         {this.renderItems()}
       </div>
