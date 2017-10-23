@@ -198,10 +198,8 @@ const AppHeader = React.createClass({
     ];
 
     return (
-      <div className="bigBoy">
         <MuiThemeProvider muiTheme={muiTheme}>
-          <div className="phone">
-            <div className="container">
+            <div>
 
               <div className="headContain">
                 <AppBar
@@ -278,16 +276,11 @@ const AppHeader = React.createClass({
 
                       <div className="contentContain">
                         {
-                        <Scrollbars
-                          style={{
-                            height: 350,
-                            position: 'relative'
-                          }}
-                          >
+                        <div className="mainContainerThing">
                           {React.cloneElement(this.props.children, {
                             openMessages: this.handleOpenMessage
                           })}
-                        </Scrollbars>
+                        </div>
                       }
                       </div>
 
@@ -341,10 +334,7 @@ const AppHeader = React.createClass({
                     action="Close"
                     onTouchTap={this.handleRequestClose}/>
                 </div>
-
-              </div>
           </MuiThemeProvider>
-        </div>
       );
 
     }
