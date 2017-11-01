@@ -56,9 +56,10 @@ const ImageItemGrid = React.createClass({
   },
 
   render() {
+    console.log(this.props)
     return (
       <div style={styles.root}>
-        {(this.props.loading && !this.props.imageItemList.length)? 'loading...' : this.renderGridList()}
+        {!(!this.props.loading && this.props.imageItemList.length)? 'loading...' : this.renderGridList()}
       </div>
     );
   },

@@ -100,7 +100,7 @@ class FoodItemList extends React.Component{
   render(){
 
     return(
-      (this.props.loading && !this.props.foodItemList.length)?
+      !(!this.props.loading && this.props.foodItemList.length)?
       <div>'loading...'</div>
       :
       <div>
