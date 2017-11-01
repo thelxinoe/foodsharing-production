@@ -16,7 +16,7 @@ const FoodItemCommentsContainer = createContainer((props) => {
     const foodItems = Meteor.subscribe('foodItems');
     const images = Meteor.subscribe('images');
     const foodItem = FoodItems.findOne(query);
-    const loading = !foodItems.ready() && !profile.ready() && !images.ready();
+    const loading = !(foodItems.ready() && profile.ready() && images.ready());
     var avatar = {}
     if (!loading && !!foodItem){
       var uniqueUsers = [...new Set(foodItem.comments.map(item => item.username))];

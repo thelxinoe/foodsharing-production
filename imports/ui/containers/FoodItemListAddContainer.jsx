@@ -17,7 +17,7 @@ const FoodItemListAddContainer = createContainer(({ imageItemIDFilter }) => {
     const images = Meteor.subscribe('images');
     const foodItems = Meteor.subscribe('foodItems');
     const foodItemList = FoodItems.find(query).fetch();
-    const loading = !foodItems.ready() && !images.ready();
+    const loading = !(foodItems.ready() && images.ready());
 
     return {loading, foodItemList, user};
 
