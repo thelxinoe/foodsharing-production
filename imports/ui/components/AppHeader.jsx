@@ -108,16 +108,6 @@ const AppHeader = React.createClass({
   },
 
   componentDidMount() {
-    var el = ReactDOM.findDOMNode(this);
-    var childs = el.getElementsByTagName("h1");
-    var h1 = childs[0];
-    h1.style["background-image"] = 'url("/imgs/LogoNameMedium.png")';
-    h1.style["background-size"] = "auto 85%";
-    h1.style["background-repeat"] = "no-repeat";
-    h1.style["background-position"] = "center";
-
-    var h2 = childs[1];
-    h2.style["color"] = "#1b5e20";
     console.log("componentDidMount")
   },
 
