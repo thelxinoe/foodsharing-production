@@ -118,6 +118,7 @@ const AppHeader = React.createClass({
 
     var h2 = childs[1];
     h2.style["color"] = "#1b5e20";
+    console.log("componentDidMount")
   },
 
   handleLogout: function() {
@@ -220,7 +221,8 @@ const AppHeader = React.createClass({
                           <SvgIcons.ContentAddCircle color={green900}/>
                           < /IconButton>
                         }
-                        />
+                        ><h1></h1>
+                        </AppBar>
                       </div>
                       <div className="toolContain">
                         <Toolbar>
