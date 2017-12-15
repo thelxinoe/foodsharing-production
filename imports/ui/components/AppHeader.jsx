@@ -221,7 +221,7 @@ const AppHeader = React.createClass({
                           <SvgIcons.ContentAddCircle color={green900}/>
                           < /IconButton>
                         }
-                        ><h1></h1>
+                        ><div className="header"><img className="bannerimg" src="/imgs/LogoNameMedium.png" /></div>
                         </AppBar>
                       </div>
                       <div className="toolContain">
